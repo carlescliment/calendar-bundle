@@ -37,6 +37,10 @@ class Calendar implements CalendarInterface {
         return $this->getRepository()->findAllByWeek($date);
     }
 
+    public function findAllByMonth($date) {
+        return $this->getRepository()->findAllByMonth($date);
+    }
+
     public function persist(EventInterface $event) {
         $this->om->persist($event);
         $this->om->flush();

@@ -1,7 +1,7 @@
 {% if events %}
     <ul class="events">
         {% for event in events %}
-            <li class="event">{{ event.title }}</li>
+            <li class="event">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
         {% endfor %}
     </ul>
 {% else %}

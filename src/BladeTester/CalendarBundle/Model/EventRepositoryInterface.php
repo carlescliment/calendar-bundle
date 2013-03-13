@@ -11,4 +11,6 @@ interface EventRepositoryInterface {
     public function findAllByDay(\DateTime $date);
 
     public function findAllByWeek(\DateTime $date);
+
+    public function findAllByMonth(\DateTime $date);
 }

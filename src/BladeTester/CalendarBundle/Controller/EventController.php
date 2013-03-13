@@ -44,8 +44,8 @@ class EventController extends Controller {
     /**
      * @Template
      */
-    public function listByDayAction($date) {
-        $day = new \DateTime($date);
+    public function listByDayAction($year, $month, $day) {
+        $day = new \DateTime("$year-$month-$day");
         return array(
             'events' => $this->getCalendar()->findAllByDay($day)
         );
@@ -55,10 +55,20 @@ class EventController extends Controller {
     /**
      * @Template
      */
-    public function listByWeekAction($date) {
-        $day = new \DateTime($date);
+    public function listByWeekAction($year, $month, $day) {
+        $day = new \DateTime("$year-$month-$day");
         return array(
             'events' => $this->getCalendar()->findAllByWeek($day)
+        );
+    }
+
+    /**
+     * @Template
+     */
+    public function listByMonthAction($year, $month) {
+        $day = new \DateTime("$year-$month-01");
+        return array(
+            'events' => $this->getCalendar()->findAllByMonth($day)
         );
     }
 

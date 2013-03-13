@@ -68,7 +68,9 @@ class EventControllerTest extends WebTestCase {
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2008-01-01'))));
 
         // Act
-        $crawler = $this->visit('calendar_event_list_by_day', array('date' => $today->format('Y-m-d')));
+        $crawler = $this->visit('calendar_event_list_by_day', array('year' => $today->format('Y'),
+                                                                    'month' => $today->format('m'),
+                                                                    'day' => $today->format('d')));
 
         // Assert
         $this->assertEquals(2, $crawler->filter('.event')->count());
@@ -84,12 +86,31 @@ class EventControllerTest extends WebTestCase {
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2008-01-01'))));
 
         // Act
-        $crawler = $this->visit('calendar_event_list_by_week', array('date' => '2013-03-15'));
+        $crawler = $this->visit('calendar_event_list_by_week', array('year' => '2013',
+                                                                     'month' => '03',
+                                                                     'day' => '15'));
 
         // Assert
         $this->assertEquals(2, $crawler->filter('.event')->count());
     }
 
+    /**
+     * @test
+     */
+    public function IShouldSeeTheEventsInAMonth() {
+        // Arrange
+        $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-03-11'))));
+        $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-03-17'))));
+        $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-04-17'))));
+        $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2008-01-01'))));
+
+        // Act
+        $crawler = $this->visit('calendar_event_list_by_month', array('year' => '2013',
+                                                                      'month' => '03'));
+
+        // Assert
+        $this->assertEquals(2, $crawler->filter('.event')->count());
+    }
 
     private function getEvent(array $data = array()) {
         $event = $this->calendar->createEvent();
