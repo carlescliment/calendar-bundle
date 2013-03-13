@@ -21,12 +21,25 @@ class EventController extends Controller {
             $form->bind($request);
             if ($form->isValid()) {
                 $calendar->persist($event);
-                return $this->redirect($this->generateUrl('calendar_home'));
+                return $this->redirect($this->generateUrl('calendar_event_list'));
             }
         }
         return array(
             'form' => $form->createView()
             );
+    }
+
+
+    /**
+     * @Template()
+     */
+    public function listAction()
+    {
+        $calendar = $this->get('blade_tester_calendar.calendar');
+        return array(
+            'events' => $calendar->findAll()
+        );
+
     }
 
 }

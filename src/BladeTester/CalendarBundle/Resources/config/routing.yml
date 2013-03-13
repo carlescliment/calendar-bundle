@@ -1,3 +1,7 @@
+calendar_event_list:
+    pattern:  /calendar
+    defaults: { _controller: BladeTesterCalendarBundle:Event:list }
+
 calendar_event_add:
     pattern:  /calendar/add
     defaults: { _controller: BladeTesterCalendarBundle:Event:add }

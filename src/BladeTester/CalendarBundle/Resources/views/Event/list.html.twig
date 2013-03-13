@@ -1,0 +1,9 @@
+{% if events %}
+    <ul class="events">
+        {% for event in events %}
+            <li class="event">{{ event.title }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    {{ 'bladetester_calendar.list.no_events'}}
+{% endif %}

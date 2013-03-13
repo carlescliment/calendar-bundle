@@ -39,6 +39,28 @@ class EventControllerTest extends WebTestCase {
         $this->assertCount(1, $this->calendar->findAll());
     }
 
+
+    /**
+     * @test
+     */
+    public function IShouldSeeTheEventsList() {
+        // Arrange
+        $this->calendar->persist($this->calendar->createEvent());
+        $this->calendar->persist($this->calendar->createEvent());
+        $this->calendar->persist($this->calendar->createEvent());
+
+        // Act
+        $crawler = $this->visit('calendar_event_list');
+
+        // Assert
+        $this->assertEquals(3, $crawler->filter('.event')->count());
+    }
+
+
+
+
+
+
     private function visit($route_name, array $arguments = array()) {
         $route = $this->router->generate($route_name, $arguments);
         return $this->client->request('GET', $route);
