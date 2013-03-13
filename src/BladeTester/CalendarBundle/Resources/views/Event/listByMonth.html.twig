@@ -1,9 +1,39 @@
-{% if events %}
-    <ul class="events">
-        {% for event in events %}
-            <li class="event">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    {{ 'bladetester_calendar.list.no_events'}}
-{% endif %}
+{% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
+
+{% block calendar_body %}
+    {% if events %}
+        <section class="calendar-view-month">
+
+            <ul class="timetable-table">
+                <li class="timetable-table-days">
+                    <ul>
+                        <li scope="col" class="day"><abbr title="lunes">lun</abbr></li>
+                        <li scope="col" class="day"><abbr title="martes">mar</abbr></li>
+                        <li scope="col" class="day"><abbr title="miércoles">mié</abbr></li>
+                        <li scope="col" class="day"><abbr title="jueves">jue</abbr></li>
+                        <li scope="col" class="day"><abbr title="viernes">vie</abbr></li>
+                        <li scope="col" class="day"><abbr title="sábado">sáb</abbr></li>
+                        <li scope="col" class="day"><abbr title="domingo">dom</abbr></li>
+                    </ul>
+                </li>
+                <li class="timetable-table-hours">
+                    <ul class="timetable-table-row">
+                        {% for date in dates %}
+                            <li scope="row" class="day day-other-month" style="height: 139px;">
+                                <time class="day-number" datetime="">{{ date|date('d') }}</time>
+                                <ul>
+                                    {% for event in events.allByDate(date) %}
+                                        <li class="appointment">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
+                                    {% endfor %}
+                                </ul>
+                                <a href="#" class="full-link"></a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    {% else %}
+        {{ 'bladetester_calendar.list.no_events'}}
+    {% endif %}
+{% endblock %}

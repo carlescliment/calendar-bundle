@@ -133,4 +133,20 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $this->calendar->persist($event);
     }
 
+    /**
+     * @test
+     */
+    public function itBringsAllDaysInAMonthSheet() {
+        // Arrange
+
+        // Act
+        $days = $this->calendar->getMonthSheetDays(new \DateTime('2013-03-13'));
+
+        // Expect
+        $this->assertCount(35, $days);
+        $this->assertEquals('2013-02-25', $days[0]->format('Y-m-d'));
+        $this->assertEquals('2013-03-31', $days[34]->format('Y-m-d'));
+
+    }
+
 }

@@ -1,0 +1,276 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+font-family: sans-serif;
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*
+ ********************
+ */
+
+
+time { color: #666; }
+
+.tabs-btn {
+overflow: hidden;
+}
+    .tabs-btn li {}
+        .tab-btn {
+        background: #eee;
+            background: -webkit-linear-gradient(top,  #fafafa, #ddd);
+            background:    -moz-linear-gradient(top,  #fafafa, #ddd);
+            background:     -ms-linear-gradient(top,  #fafafa, #ddd);
+            background:      -o-linear-gradient(top,  #fafafa, #ddd);
+            background:   linear-gradient(to bottom,  #fafafa, #ddd);
+        border: 1px solid #aaa;
+        border-right: 0;
+        color: #333;
+        text-shadow: none;
+        display: block;
+        float: left;
+        }
+            .tab-btn.active {
+            background: #ddd;
+            }
+        .tab-first {
+        border-radius: .3em 0 0 .3em;
+        }
+        .tab-last {
+        border-radius: 0 .3em .3em 0;
+        border-right: 1px solid #aaa;
+        } 
+
+
+.timetable {
+border-top: 1px solid #ddd;
+}
+
+    .timetable-hour-block {
+    /*
+    background: #1e5799;
+        background: -webkit-linear-gradient(top, transparent, transparent 50%, rgba(0,0,0,.1) 50.2%, transparent 50%, transparent);
+        background:    -moz-linear-gradient(top, transparent, transparent 50%, rgba(0,0,0,.1) 50.2%, transparent 50%, transparent);
+        background:     -ms-linear-gradient(top, transparent, transparent 50%, rgba(0,0,0,.1) 50.2%, transparent 50%, transparent);
+        background:      -o-linear-gradient(top, transparent, transparent 50%, rgba(0,0,0,.1) 50.2%, transparent 50%, transparent);
+        background:   linear-gradient(to bottom, transparent, transparent 50%, rgba(0,0,0,.1) 50.2%, transparent 50%, transparent);
+    */
+    border-bottom: 1px solid #ddd;
+    padding: .3em 0 .3em 70px;
+    min-height: 40px;
+    }
+        .timetable-hour {
+        border-right: 1px solid #ddd;
+        position: absolute;
+        width: 60px;
+        left: 0;
+        z-index: 100;
+        text-align: right;
+        height: 40px;
+        line-height: 40px;
+        padding-right: 10px;
+        top: 50%;
+        margin-top: -20px;
+        }
+
+.appointment {
+background: #eee;
+border-left: 6px solid;
+padding: .5em;
+border-radius: .3em;
+margin-right: 10px;
+
+z-index: 100;
+}
+    .appointment-type-01 { border-color: #f90; }
+    .appointment-type-02 { border-color: #9d0; }
+    .appointment-date {}
+
+
+    .calendar-view-day   .appointment,
+    .calendar-view-week  .appointment,
+    .calendar-view-month .appointment {
+    max-width: 250px;
+    display: inline-block;
+    }
+
+
+.full-link {
+background: rgba(255,0,0,.1);
+position: absolute;
+left: 0;
+top: 0;
+right: 0;
+bottom: 0;
+text-indent: -999em;
+overflow: hidden;
+}
+    .full-link:hover,
+    .full-link:active {
+    background: rgba(255,0,0,.5);
+    }
+
+
+
+.timetable-table {
+border-bottom: 1px solid #ddd;
+margin: 2em 0;
+
+overflow: hidden;
+}
+    .timetable-table ul {
+    overflow: hidden;
+    }
+    .timetable-table > li > ul > li {
+    border-left: 1px solid #ddd;
+    width: 12.5%;
+    display: block;
+    float: left;
+    min-height: 40px;
+    }
+        .timetable-table-days li[scope] {
+        background: none;
+        border: 0;
+        font-size: 14px;
+        text-align: center;
+        line-height: 40px;
+        }
+    .timetable-table-hour {
+    width: 60px;
+    text-align: center;
+    line-height: 40px;
+    }
+    
+    .timetable-table-hours > ul {
+    border-top: 1px solid #ddd;
+    }
+    
+    .timetable-table .appointment ~ .appointment {
+    margin-top: -70px;
+    box-shadow: 0 -2px 1px -1px rgba(0,0,0,.3) ;
+    }
+
+
+.calendar-view-month .day {
+width: 14.28%;
+}
+    .day-other-month {
+    background: #f7f7f7;
+    }
+    .day-past {
+    background: #fdfdfd;
+    }
+    .day-today {
+    box-shadow: inset 0 0 0 2px #adf;
+    }
+    .calendar-view-month .day-number {
+    padding: 10px;
+    display: block;
+    margin: 0 0 -10px;
+    color: #888;
+    }
+    .calendar-view-month .appointment-patient {
+    display: none;
+    }
+    
+.calendar-view-schedule .appointment-date,
+.calendar-view-schedule .appointment-issue,
+.calendar-view-schedule .appointment-patient,
+.calendar-view-schedule .veterinary {
+display: inline-block;
+margin-right: 20px;
+}
+.calendar-view-schedule .appointment {
+margin-bottom: .5em;
+}
+
+.calendar-view-schedule .day-link {
+padding: .5em 0;
+}
+.calendar-view-schedule .calendar-group-appointments {
+margin-bottom: 2em;
+}
+
+.nav-zone {
+outline: 1px solid red;
+width: 100%;
+display: block;
+background: #def;
+}
+    .tabs-btn {
+    }
+    .calendar-list-options,
+    .calendar-date-selector {
+    position: absolute;
+    right: 0;
+    top: 0;
+    }
+        .calendar-date-selector {
+        top: 10px;
+        }
+
+.calendar-container {
+overflow: hidden;
+}
+    .calendar-sidebar {
+    float: left;
+    width: 20%;
+    }
+    .calendar-view {
+    padding-top: 50px;
+    float: right;
+    min-width: 80%;
+    padding-left: 20px;
+    }
+
+input[type="checkbox"],
+input[type="checkbox"] + label {
+display: inline-block;
+vertical-align: middle;
+}
+    input[type="checkbox"] {
+    margin-right: 3px;
+}

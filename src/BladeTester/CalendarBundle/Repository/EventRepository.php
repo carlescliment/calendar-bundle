@@ -3,11 +3,9 @@
 namespace BladeTester\CalendarBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use BladeTester\CalendarBundle\Model\EventRepositoryInterface;
+use BladeTester\CalendarBundle\Model\EventRepositoryInterface,
+    BladeTester\CalendarBundle\Model\DatesTransformer;
 
-/**
- * @todo : extract methods to TimeMachine
- */
 class EventRepository Extends EntityRepository implements EventRepositoryInterface {
 
     private $class;
@@ -30,14 +28,14 @@ class EventRepository Extends EntityRepository implements EventRepositoryInterfa
     }
 
     public function findAllByWeek(\DateTime $date) {
-        $monday = $this->toMonday($date)->setTime(0, 0);
-        $sunday = $this->toSunday($date)->setTime(0, 0);
+        $monday = DatesTransformer::toMonday($date)->setTime(0, 0);
+        $sunday = DatesTransformer::toSunday($date)->setTime(0, 0);
         return $this->findAllByDates($monday, $sunday);
     }
 
     public function findAllByMonth(\DateTime $date) {
-        $start = $this->toFirstMonthDay($date)->setTime(0, 0);
-        $end = $this->toLastMonthDay($date)->setTime(23, 59);
+        $start = DatesTransformer::toFirstMonthDay($date)->setTime(0, 0);
+        $end = DatesTransformer::toLastMonthDay($date)->setTime(23, 59);
         return $this->findAllByDates($start, $end);
     }
 
@@ -50,41 +48,4 @@ class EventRepository Extends EntityRepository implements EventRepositoryInterfa
                 ->setParameter('end', $end);
         return $q->getResult();
     }
-
-    private function toMonday(\DateTime $date) {
-        $givenday = $this->getWeekDay($date);
-        if ($givenday == 1) {
-            return $date;
-        }
-        $days_to_remove = $givenday - 1;
-        $new_date = clone($date);
-        return $new_date->sub(date_interval_create_from_date_string("$days_to_remove days"));
-    }
-
-    private function toSunday(\DateTime $date) {
-        $givenday = $this->getWeekDay($date);
-        if ($givenday == 0) {
-            return $date;
-        }
-        $days_to_add = 7 - $givenday;
-        $new_date = clone($date);
-        return $new_date->add(date_interval_create_from_date_string("$days_to_add days"));
-    }
-
-
-    private function getWeekDay(\DateTime $date) {
-        return date("w", mktime(0, 0, 0, $date->format('m'), $date->format('d'), $date->format('Y')));
-    }
-
-
-    private function toFirstMonthDay(\DateTime $date) {
-        return new \DateTime($date->format('Y') . '-' . $date->format('m') . '-01');
-    }
-
-    private function toLastMonthDay(\DateTime $date) {
-        $first_day = $this->toFirstMonthDay($date);
-        $next_month_day = $first_day->add(date_interval_create_from_date_string("1 month"));
-        return $next_month_day->sub(date_interval_create_from_date_string("1 day"));
-    }
-
 }

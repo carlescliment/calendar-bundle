@@ -53,7 +53,7 @@ class EventControllerTest extends WebTestCase {
         $crawler = $this->visit('calendar_event_list');
 
         // Assert
-        $this->assertEquals(3, $crawler->filter('.event')->count());
+        $this->assertEquals(3, $crawler->filter('.appointment')->count());
     }
 
 
@@ -109,7 +109,7 @@ class EventControllerTest extends WebTestCase {
                                                                       'month' => '03'));
 
         // Assert
-        $this->assertEquals(2, $crawler->filter('.event')->count());
+        $this->assertEquals(2, $crawler->filter('.appointment')->count());
     }
 
     private function getEvent(array $data = array()) {

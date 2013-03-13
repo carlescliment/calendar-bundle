@@ -1,9 +1,22 @@
-{% if events %}
-    <ul class="events">
-        {% for event in events %}
-            <li class="event">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    {{ 'bladetester_calendar.list.no_events'}}
-{% endif %}
+{% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
+
+{% block calendar_body %}
+    {% if events %}
+        <section class="calendar-view-schedule">
+            <ul class="timetable-list">
+                {% for date in events.dates %}
+                    <li class="day">
+                        <p class="day-link"><a href="#"><time datetime="{{ date|date('Y-m-d H:i') }}">{{ date|date('l, d') }} de {{ date|date('F') }}</time></a></p>
+                        <ul class="calendar-group-appointments">
+                            {% for event in events.allByDate(date) %}
+                                <li class="appointment">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% else %}
+        {{ 'bladetester_calendar.list.no_events'}}
+    {% endif %}
+{% endblock %}

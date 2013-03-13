@@ -47,6 +47,12 @@ class Calendar implements CalendarInterface {
         return $this;
     }
 
+    public function getMonthSheetDays(\DateTime $date) {
+        $first_day = DatesTransformer::toMonday(DatesTransformer::toFirstMonthDay($date));
+        $last_day = DatesTransformer::toSunday(DatesTransformer::toLastMonthDay($date));
+        return DatesTransformer::getAllDaysBetween($first_day, $last_day);
+    }
+
     private function getRepository() {
         return $this->om->getRepository($this->eventClass);
     }

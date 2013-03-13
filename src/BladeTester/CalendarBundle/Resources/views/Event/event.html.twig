@@ -1,1 +1,2 @@
-{{ event.title }} | {{ event.start|date('Y-m-d') }} to {{ event.end|date('Y-m-d') }}
+<time datetime="{{ event.start|date('Y-m-d H:i') }}" class="appointment-date">{{ event.start|date('H:i') }}</time>
+<p class="appointment-issue">{{ event.title }}</p>

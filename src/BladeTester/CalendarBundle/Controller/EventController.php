@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use BladeTester\CalendarBundle\Model\EventCollection;
+
 class EventController extends Controller {
 
     /**
@@ -35,8 +37,10 @@ class EventController extends Controller {
      */
     public function listAction()
     {
+        $events = $this->getCalendar()->findAll();
+        $collection = new EventCollection($events);
         return array(
-            'events' => $this->getCalendar()->findAll()
+            'events' => $collection
         );
     }
 
@@ -67,8 +71,11 @@ class EventController extends Controller {
      */
     public function listByMonthAction($year, $month) {
         $day = new \DateTime("$year-$month-01");
+        $events = $this->getCalendar()->findAllByMonth($day);
+        $collection = new EventCollection($events);
         return array(
-            'events' => $this->getCalendar()->findAllByMonth($day)
+            'events' => $collection,
+            'dates' => $this->getCalendar()->getMonthSheetDays($day),
         );
     }
 
