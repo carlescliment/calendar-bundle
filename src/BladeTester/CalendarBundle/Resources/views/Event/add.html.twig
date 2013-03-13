@@ -1,0 +1,6 @@
+{% block body %}
+<form id="event-add" method="POST" action="{{ url('calendar_event_add') }}" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <input type="submit" value="{{ 'bladetester_calendar.label.event.add'|trans }}" />
+</form>
+{% endblock %}

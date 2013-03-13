@@ -1,0 +1,11 @@
+parameters:
+    #foo: bar
+
+services:
+    blade_tester_calendar.forms.event:
+        class: "%blade_tester_calendar.form.type.event.class%"
+        arguments: ["%blade_tester_calendar.classes.event.entity%"]
+
+    blade_tester_calendar.calendar:
+        class: "BladeTester\CalendarBundle\Model\Calendar"
+        arguments: ["@doctrine.orm.entity_manager", "%blade_tester_calendar.classes.event.entity%"]
