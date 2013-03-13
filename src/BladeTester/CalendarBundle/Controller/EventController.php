@@ -40,6 +40,7 @@ class EventController extends Controller {
         );
     }
 
+
     /**
      * @Template
      */
@@ -49,6 +50,18 @@ class EventController extends Controller {
             'events' => $this->getCalendar()->findAllByDay($day)
         );
     }
+
+
+    /**
+     * @Template
+     */
+    public function listByWeekAction($date) {
+        $day = new \DateTime($date);
+        return array(
+            'events' => $this->getCalendar()->findAllByWeek($day)
+        );
+    }
+
 
     private function getCalendar() {
         return $this->get('blade_tester_calendar.calendar');

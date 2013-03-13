@@ -74,6 +74,22 @@ class EventControllerTest extends WebTestCase {
         $this->assertEquals(2, $crawler->filter('.event')->count());
     }
 
+    /**
+     * @test
+     */
+    public function IShouldSeeTheEventsInAWeek() {
+        // Arrange
+        $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-03-11'))));
+        $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-03-17'))));
+        $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2008-01-01'))));
+
+        // Act
+        $crawler = $this->visit('calendar_event_list_by_week', array('date' => '2013-03-15'));
+
+        // Assert
+        $this->assertEquals(2, $crawler->filter('.event')->count());
+    }
+
 
     private function getEvent(array $data = array()) {
         $event = $this->calendar->createEvent();

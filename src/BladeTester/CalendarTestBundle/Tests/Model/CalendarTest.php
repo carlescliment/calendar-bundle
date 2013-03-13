@@ -87,6 +87,23 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
+    public function itBringsEventsByWeek() {
+        // Arrange
+        $today = new \DateTime();
+
+        // Expect
+        $this->repository->expects($this->once())
+            ->method('findAllByWeek')
+            ->with($today);
+
+        // Act
+        $this->calendar->findAllByWeek($today);
+    }
+
+
+    /**
+     * @test
+     */
     public function itPersistsEvents() {
         // Arrange
         $event = $this->calendar->createEvent();

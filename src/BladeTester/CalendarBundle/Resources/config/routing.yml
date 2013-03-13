@@ -6,6 +6,10 @@ calendar_event_list_by_day:
     pattern:  /calendar/by_day/{date}
     defaults: { _controller: BladeTesterCalendarBundle:Event:listByDay }
 
+calendar_event_list_by_week:
+    pattern:  /calendar/by_week/{date}
+    defaults: { _controller: BladeTesterCalendarBundle:Event:listByWeek }
+
 calendar_event_add:
     pattern:  /calendar/add
     defaults: { _controller: BladeTesterCalendarBundle:Event:add }
