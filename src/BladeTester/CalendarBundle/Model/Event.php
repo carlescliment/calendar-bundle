@@ -4,10 +4,10 @@ namespace BladeTester\CalendarBundle\Model;
 
 class Event implements EventInterface {
 
-    private $title;
-    private $description;
-    private $start;
-    private $end;
+    protected $title = '';
+    protected $description = '';
+    protected $start;
+    protected $end;
 
     public function getTitle() {
         return $this->title;
@@ -23,7 +23,9 @@ class Event implements EventInterface {
     }
 
     public function setDescription($description) {
-        $this->description = $description;
+        if (!is_null($description)) {
+            $this->description = $description;
+        }
         return $this;
     }
 

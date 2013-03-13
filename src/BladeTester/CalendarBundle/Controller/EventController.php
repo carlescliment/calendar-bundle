@@ -13,7 +13,7 @@ class EventController extends Controller {
      */
     public function addAction(Request $request)
     {
-        $calendar = $this->get('blade_tester_calendar.calendar');
+        $calendar = $this->getCalendar();
         $event = $calendar->createEvent();
         $form_instance = $this->get('blade_tester_calendar.forms.event');
         $form = $this->createForm($form_instance, $event);
@@ -35,11 +35,24 @@ class EventController extends Controller {
      */
     public function listAction()
     {
-        $calendar = $this->get('blade_tester_calendar.calendar');
         return array(
-            'events' => $calendar->findAll()
+            'events' => $this->getCalendar()->findAll()
         );
-
     }
+
+    /**
+     * @Template
+     */
+    public function listByDayAction($date) {
+        $day = new \DateTime($date);
+        return array(
+            'events' => $this->getCalendar()->findAllByDay($day)
+        );
+    }
+
+    private function getCalendar() {
+        return $this->get('blade_tester_calendar.calendar');
+    }
+
 
 }

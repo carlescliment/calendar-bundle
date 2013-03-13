@@ -45,9 +45,9 @@ class EventControllerTest extends WebTestCase {
      */
     public function IShouldSeeTheEventsList() {
         // Arrange
-        $this->calendar->persist($this->calendar->createEvent());
-        $this->calendar->persist($this->calendar->createEvent());
-        $this->calendar->persist($this->calendar->createEvent());
+        $this->calendar->persist($this->getEvent());
+        $this->calendar->persist($this->getEvent());
+        $this->calendar->persist($this->getEvent());
 
         // Act
         $crawler = $this->visit('calendar_event_list');
@@ -57,9 +57,31 @@ class EventControllerTest extends WebTestCase {
     }
 
 
+    /**
+     * @test
+     */
+    public function IShouldSeeTheEventsInADay() {
+        // Arrange
+        $today = new \DateTime();
+        $this->calendar->persist($this->getEvent(array('start' => $today)));
+        $this->calendar->persist($this->getEvent(array('start' => $today)));
+        $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2008-01-01'))));
+
+        // Act
+        $crawler = $this->visit('calendar_event_list_by_day', array('date' => $today->format('Y-m-d')));
+
+        // Assert
+        $this->assertEquals(2, $crawler->filter('.event')->count());
+    }
 
 
-
+    private function getEvent(array $data = array()) {
+        $event = $this->calendar->createEvent();
+        if (isset($data['start'])) {
+            $event->setStart($data['start']);
+        }
+        return $event;
+    }
 
     private function visit($route_name, array $arguments = array()) {
         $route = $this->router->generate($route_name, $arguments);

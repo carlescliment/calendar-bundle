@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="BladeTester\CalendarBundle\Entity\Event">
+
+        <field name="title" column="title" type="string" length="255" />
+
+        <field name="description" column="description" type="text" />
+
+        <field name="start" column="start" type="datetime" />
+
+        <field name="end" column="end" type="datetime" />
+    </mapped-superclass>
+
+</doctrine-mapping>

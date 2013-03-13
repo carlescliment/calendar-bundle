@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="events")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BladeTester\CalendarBundle\Repository\EventRepository")
  */
 class Event extends BaseEvent {
 
