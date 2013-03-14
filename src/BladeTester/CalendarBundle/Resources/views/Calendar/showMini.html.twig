@@ -1,0 +1,38 @@
+<div id="mini-calendar" class="dpdiv goog-zippy-expanded goog-zippy-content" style="">
+    <div class="dp-monthtablediv monthtableSpace">
+        <table class="dp-monthtable" role="presentation" cellspacing="0" cellpadding="0" style="-moz-user-select:none;-webkit-user-select:none;">
+            <tbody>
+                <tr id="dp_0_header" class="monthtableHeader">
+                    <td colspan="5" id="dp_0_cur" class="dp-cell dp-sb-cur">
+                        <span class="calHeaderSpace">marzo de 2013</span>
+                    </td>
+                    <td colspan="2" class="dp-cell dp-sb-nav">
+                        <span id="dp_0_prev" class="dp-cell dp-sb-prev goog-inline-block"><</span>
+                        <span id="dp_0_next" class="dp-cell dp-sb-next goog-inline-block">></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="dp-monthtable monthtableBody" summary="Minicalendario - marzo de 2013" cellspacing="0" cellpadding="0" id="dp_0_tbl" style="-moz-user-select:none;-webkit-user-select:none;">
+            <colgroup span="7"></colgroup>
+            <tbody>
+                <tr class="dp-days">
+                    <th scope="col" class="dp-cell dp-dayh" title="lunes">L</th>
+                    <th scope="col" class="dp-cell dp-dayh" title="martes">M</th>
+                    <th scope="col" class="dp-cell dp-dayh" title="miércoles">X</th>
+                    <th scope="col" class="dp-cell dp-dayh" title="jueves">J</th>
+                    <th scope="col" class="dp-cell dp-dayh" title="viernes">V</th>
+                    <th scope="col" class="dp-cell dp-dayh dp-cell dp-weekendh" title="sábado">S</th>
+                    <th scope="col" class="dp-cell dp-dayh dp-cell dp-weekendh" title="domingo">D</th>
+                </tr>
+                {% for day in dates %}
+                    {% if loop.index0%7 == 0 %}<tr>{% endif %}
+                        <td class="day{% if day|date('Y-m-d') == "today"|date('Y-m-d') %} today{% endif %}{% if day|date('m') != "today"|date('m') %} offmonth{% endif %}">
+                            <a href="{{ path('calendar_event_list_by_day', {'year': day|date('Y'), 'month': day|date('m'), 'day': day|date('d') }) }}">{{ day|date('d') }}</a>
+                        </td>
+                    {% if loop.index0%7 == 6 %}</tr>{% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

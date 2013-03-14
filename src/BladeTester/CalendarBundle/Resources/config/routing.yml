@@ -17,3 +17,8 @@ calendar_event_list_by_month:
 calendar_event_add:
     pattern:  /calendar/add
     defaults: { _controller: BladeTesterCalendarBundle:Event:add }
+
+calendar_mini_calendar:
+    pattern:  /calendar/mini/{year}/{month}
+    defaults: { _controller: BladeTesterCalendarBundle:Calendar:showMini }
+

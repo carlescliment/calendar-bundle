@@ -1,6 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
+        <aside class="calendar-sidebar">
+            {% block calendar_sidebar %}
+                {% render 'BladeTesterCalendarBundle:Calendar:showMini' with { year : "now"|date('Y'), month: "now"|date('m') } %}
+            {% endblock %}
+        </aside>
+        <nav class="calendar-date-selector"></nav>
         {% block calendar_body %}
         {% endblock %}
 {% endblock %}
