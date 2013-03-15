@@ -86,6 +86,15 @@ class EventController extends Controller {
             );
     }
 
+    public function deleteAction($id, Request $request) {
+        $calendar = $this->getCalendar();
+        $event = $calendar->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($event);
+        $em->flush();
+        return $this->redirectFromRequest($request);
+    }
+
 
     /**
      * @Template()
@@ -105,8 +114,13 @@ class EventController extends Controller {
      */
     public function listByDayAction($year, $month, $day) {
         $day = new \DateTime("$year-$month-$day");
+        $events = $this->getCalendar()->findAllByDay($day);
+        $collection = new EventCollection($events);
         return array(
-            'events' => $this->getCalendar()->findAllByDay($day)
+            'events' => $collection,
+            'current' => $day,
+            'next' => DatesTransformer::nextDay($day),
+            'previous' => DatesTransformer::previousDay($day),
         );
     }
 

@@ -1,13 +1,23 @@
 {% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
 
+{% block calendar_date_selector %}
+    <span class="calendar-date-current-date">
+        {{ '%week_day%, %month% %day%th of %year%'|trans({'%week_day%': current|date('l')|trans, '%day%': current|date('d'), '%month%': current|date('F')|trans, '%year%': current|date('Y')}) }}
+    </span>
+    <a href="{{ path('calendar_event_list_by_day', {'year': previous|date('Y'), 'month': previous|date('m'), 'day':previous|date('d')}) }}" class="btn">&lt;</a>
+    <a href="{{ path('calendar_event_list_by_day', {'year': next|date('Y'), 'month': next|date('m'), 'day':next|date('d')}) }}" class="btn">&gt;</a>
+{% endblock %}
+
 {% block calendar_body %}
-    {% if events %}
-        <ul class="events">
-            {% for event in events %}
-                <li class="event">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
+    <section class="calendar-view-day">
+        <ul class="timetable">
+            {% for hour in 0..23 %}
+            <li class="timetable-hour-block">
+                <time datetime="" class="timetable-hour">{{ hour }}:00</time>
+                {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDateAndTime(current, hour)} %}
+                <a href="{{ path('calendar_event_add') }}?year={{ current|date('Y')}}&month={{ current|date('m') }}&day={{ current|date('d') }}&hour={{ hour }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>
+            </li>
             {% endfor %}
         </ul>
-    {% else %}
-        {{ 'bladetester_calendar.list.no_events'}}
-    {% endif %}
+    </section>
 {% endblock %}

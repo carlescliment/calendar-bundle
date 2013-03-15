@@ -1,5 +1,7 @@
 bladetester_calendar.label.event.add: Añadir evento
 bladetester_calendar.label.event.update: Actualizar evento
+bladetester_calendar.label.event.delete: Eliminar
+bladetester_calendar.label.event.delete_warning: ¿De verdad quieres eliminar este evento?
 bladetester_calendar.label.agenda: Agenda
 bladetester_calendar.label.day: Día
 bladetester_calendar.label.week: Semana
@@ -8,8 +10,10 @@ bladetester_calendar.label.print: Imprimir
 bladetester_calendar.label.configure: Configurar
 
 %month% of %year%: %month% de %year%
-'%month%-%day%': %day%/%month%
-'Week from %from_day%, %from_month% of %from_year% to %to_day%, %to_month% of %to_year%': Semana del %from_day% de %from_month% de %from_year% al %to_day% de %to_month% de %to_year%
+%month%-%day%: %day%/%month%
+Week from %from_day%, %from_month% of %from_year% to %to_day%, %to_month% of %to_year%: Semana del %from_day% de %from_month% de %from_year% al %to_day% de %to_month% de %to_year%
+%week_day%, %month% %day%th of %year%: %week_day%, %day% de %month% de %year%
+
 
 bladetester_calendar.abbr.monday: lun
 bladetester_calendar.abbr.tuesday: mar
@@ -32,13 +36,13 @@ October: Octubre
 November: Noviembre
 December: Diciembre
 
-monday: lunes
-tuesday: martes
-wednesday: miércoles
-thursday: jueves
-friday: viernes
-saturday: sábado
-sunday: domingo
+Monday: lunes
+Tuesday: martes
+Wednesday: miércoles
+Thursday: jueves
+Friday: viernes
+Saturday: sábado
+Sunday: domingo
 
 Mon: lun
 Tue: mar

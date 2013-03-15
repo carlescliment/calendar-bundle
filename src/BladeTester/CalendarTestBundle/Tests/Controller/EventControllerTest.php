@@ -62,6 +62,21 @@ class EventControllerTest extends WebTestCase {
     /**
      * @test
      */
+    public function IShouldDeleteAnEvent() {
+        // Arrange
+        $event = $this->calendar->persist($this->getEvent());
+
+        // Act
+        $this->visit('calendar_event_delete', array('id' => $event->getId()));
+
+        // Assert
+        $this->assertCount(0, $this->calendar->findAll());
+    }
+
+
+    /**
+     * @test
+     */
     public function IShouldSeeTheEventsList() {
         // Arrange
         $this->calendar->persist($this->getEvent());
@@ -92,7 +107,7 @@ class EventControllerTest extends WebTestCase {
                                                                     'day' => $today->format('d')));
 
         // Assert
-        $this->assertEquals(2, $crawler->filter('.event')->count());
+        $this->assertEquals(2, $crawler->filter('.appointment')->count());
     }
 
     /**

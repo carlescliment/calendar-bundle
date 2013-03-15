@@ -75,6 +75,19 @@ class DatesTransformer {
         return $previous_week_date->sub($interval);
     }
 
+    public static function nextDay(\DateTime $date) {
+        $next_day_date = new \DateTime($date->format('Y-m-d'));
+        $interval = \DateInterval::createFromDateString('1 day');
+        return $next_day_date->add($interval);
+    }
+
+    public static function previousDay(\DateTime $date) {
+        $previous_day_date = new \DateTime($date->format('Y-m-d'));
+        $interval = \DateInterval::createFromDateString('1 day');
+        return $previous_day_date->sub($interval);
+    }
+
+
     private static function isFebruaryVulnerable(\DateTime $date) {
         return $date >= new \DateTime($date->format('Y-01-29 00:00')) &&
                $date <= new \DateTime($date->format('Y-01-31 23:59'));
