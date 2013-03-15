@@ -278,12 +278,18 @@ vertical-align: middle;
     margin-right: 3px;
 }
 
+
 /* Custom */
 .calendar-sidebar {
-    left: -280px;
-    float:none !important;
-    position: absolute;
-    width: auto;
+position: static;
+float: left!important;
+width: 25%!important;
+}
+
+section[class*="calendar-view-"] {
+float: left!important;
+padding-left: 20px!important;
+width: 75%!important;
 }
 
 .calendar-sidebar .day a {
@@ -309,3 +315,4 @@ color: #999;
     float:right;
     clear:both;
 }
+
