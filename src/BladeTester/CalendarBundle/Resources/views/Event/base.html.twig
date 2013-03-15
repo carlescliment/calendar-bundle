@@ -1,6 +1,7 @@
 <html>
     <head>
-        <link rel="stylesheet" href="{{ asset('public/css/calendar.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar-header.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar.css') }}">
     </head>
     <body>
 
@@ -33,6 +34,8 @@
 
         {% block calendar_body %}
         {% endblock %}
+
+    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/calendar.js') }}"></script>
     </body>
 </html>
 
