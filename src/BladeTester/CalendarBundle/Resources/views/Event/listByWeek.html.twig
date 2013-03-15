@@ -7,7 +7,7 @@
     <a href="{{ path('calendar_event_list_by_week', {'year': next|date('Y'), 'month': next|date('m'), 'day':next|date('d')}) }}" class="btn">&gt;</a>
 {% endblock %}
 
-{% block body %}
+{% block calendar_body %}
     <section class="calendar-view-week">
         <ul class="timetable-table">
             <li class="timetable-table-days">

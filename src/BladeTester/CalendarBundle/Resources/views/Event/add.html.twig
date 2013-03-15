@@ -1,11 +1,8 @@
 {% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
 
-{% block calendar_nav %}
-{% endblock %}
-
 {% block body %}
-    <form id="event-add" method="POST" action="{{ url('calendar_event_add') }}?destination={{ app.request.get('destination') }}" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
-        <input type="submit" value="{{ 'bladetester_calendar.label.event.add'|trans }}" />
-    </form>
+<form id="event-add" method="POST" action="{{ url('calendar_event_add') }}?destination={{ app.request.get('destination') }}" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <input type="submit" value="{{ 'bladetester_calendar.label.event.add'|trans }}" />
+</form>
 {% endblock %}
