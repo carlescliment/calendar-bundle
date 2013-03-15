@@ -1,6 +1,6 @@
 <?php
 
-namespace BladeTester\CalendarTestBundle\Tests\Controller;
+namespace BladeTester\CalendarBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
