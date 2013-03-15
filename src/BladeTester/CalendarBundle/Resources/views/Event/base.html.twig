@@ -5,7 +5,7 @@
     <body>
         <aside class="calendar-sidebar">
             {% block calendar_sidebar %}
-                <a href="{{ path('calendar_event_add') }}" class="btn">{{ 'bladetester_calendar.label.add'|trans }}</a>
+                <a href="{{ path('calendar_event_add') }}?destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="btn">{{ 'bladetester_calendar.label.add'|trans }}</a>
                 {% render 'BladeTesterCalendarBundle:Calendar:showMini' with { year : "now"|date('Y'), month: "now"|date('m') } %}
             {% endblock %}
         </aside>
