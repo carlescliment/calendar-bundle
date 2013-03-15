@@ -32,7 +32,8 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
 
     public function setUp() {
         $this->om = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
-        $this->repository = $this->getMock('BladeTester\CalendarBundle\Model\EventRepositoryInterface');
+        $this->repository = $this->getMock('BladeTester\CalendarBundle\Model\EventRepositoryInterface',
+		array('findAll', 'findAllByDay', 'findAllByWeek', 'findAllByMonth', 'getId', 'setClass', 'find'));
         $this->om->expects($this->any())
             ->method('getRepository')
             ->will($this->returnValue($this->repository));

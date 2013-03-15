@@ -6,8 +6,6 @@ interface EventRepositoryInterface {
 
     public function setClass($class);
 
-    public function find($id);
-
     public function findAll();
 
     public function findAllByDay(\DateTime $date);
