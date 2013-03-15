@@ -1,2 +1,3 @@
 <time datetime="{{ event.start|date('Y-m-d H:i') }}" class="appointment-date">{{ event.start|date('H:i') }}</time>
 <p class="appointment-issue">{{ event.title }}</p>
+<a href="{{ path('calendar_event_edit', { id: event.id })}}?destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>

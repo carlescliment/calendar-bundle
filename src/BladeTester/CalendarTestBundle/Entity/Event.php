@@ -19,4 +19,9 @@ class Event extends BaseEvent {
      */
     private $id;
 
+
+    public function getId() {
+        return $this->id;
+    }
+
 }

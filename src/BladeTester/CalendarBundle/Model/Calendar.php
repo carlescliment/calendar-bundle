@@ -25,6 +25,11 @@ class Calendar implements CalendarInterface {
         return $event;
     }
 
+
+    public function find($id) {
+        return $this->getRepository()->find($id);
+    }
+
     public function findAll() {
         return $this->getRepository()->findAll();
     }
@@ -44,7 +49,7 @@ class Calendar implements CalendarInterface {
     public function persist(EventInterface $event) {
         $this->om->persist($event);
         $this->om->flush();
-        return $this;
+        return $event;
     }
 
     public function getMonthSheetDays(\DateTime $date) {

@@ -17,17 +17,18 @@
                     </ul>
                 </li>
                 <li class="timetable-table-hours">
-                    <ul class="timetable-table-row">
-                        {% for date in dates %}
-                            <li scope="row" class="day day-other-month" style="height: 139px;">
+                    {% for date in dates %}
+                        {% if loop.index0%7 == 0 %}<ul class="timetable-table-row">{% endif %}
+                            <li scope="row" class="day{% if date|date('Y-m-d') == "today"|date('Y-m-d') %} today{% endif %}{% if date|date('m') != "today"|date('m') %} day-other-month{% endif %}" style="height: 139px;">
                                 <time class="day-number" datetime="">{{ date|date('d') }}</time>
-                                <ul>
+                                <ul class="calendar-group-appointments">
                                     {% for event in events.allByDate(date) %}
                                         <li class="appointment">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
                                     {% endfor %}
                                 </ul>
-                                <a href="#" class="full-link"></a>
+                                <a href="{{ path('calendar_event_add') }}?year={{ date|date('Y')}}&month={{ date|date('m') }}&day={{ date|date('d') }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>
                             </li>
+                            {% if loop.index0%7 == 6 %}</ul>{% endif %}
                         {% endfor %}
                     </ul>
                 </li>
@@ -36,4 +37,8 @@
     {% else %}
         {{ 'bladetester_calendar.list.no_events'}}
     {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="javascript" src="{{ asset('public/js/calendar.js') }}"></script>
 {% endblock %}

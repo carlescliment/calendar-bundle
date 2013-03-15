@@ -29,7 +29,7 @@ class EventControllerTest extends WebTestCase {
         $crawler = $this->visit('calendar_event_add');
         $start_date = new \DateTime();
         $end_date = $start_date->add(date_interval_create_from_date_string('1 hour'));
-        $form = $crawler->filter('form#event-add input[type="submit"]')->form();
+        $form = $crawler->filter('form#event-add')->form();
         $form['event[title]'] = 'This is a test creating an event';
 
         // Act
@@ -37,6 +37,25 @@ class EventControllerTest extends WebTestCase {
 
         // Assert
         $this->assertCount(1, $this->calendar->findAll());
+    }
+
+    /**
+     * @test
+     */
+    public function IShouldEditAnEvent() {
+        // Arrange
+        $event = $this->calendar->persist($this->getEvent());
+        $crawler = $this->visit('calendar_event_edit', array('id' => $event->getId()));
+        $form = $crawler->filter('form#event-edit')->form();
+        $new_description = 'I have changed the description';
+        $form['event[description]'] = $new_description;
+
+        // Act
+        $this->client->submit($form);
+
+        // Assert
+        $this->em->refresh($event);
+        $this->assertEquals($new_description, $event->getDescription());
     }
 
 

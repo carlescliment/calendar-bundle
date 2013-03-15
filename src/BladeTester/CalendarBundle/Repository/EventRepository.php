@@ -14,6 +14,7 @@ class EventRepository Extends EntityRepository implements EventRepositoryInterfa
         $this->class = $class;
     }
 
+
     public function findAll() {
         $q = $this->getEntityManager()->createQuery("SELECT e
                                      FROM $this->class e

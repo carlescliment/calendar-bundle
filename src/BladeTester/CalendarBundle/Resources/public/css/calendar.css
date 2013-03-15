@@ -299,3 +299,13 @@ border: 1px solid;
 color: #999;
 }
 
+.nav-zone {
+    padding-top: 30px;
+}
+
+.calendar-date-selector {
+    position: relative;
+    top: 0px;
+    float:right;
+    clear:both;
+}

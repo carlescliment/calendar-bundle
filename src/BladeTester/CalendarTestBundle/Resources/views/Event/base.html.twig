@@ -1,12 +1,38 @@
 {% extends '::base.html.twig' %}
 
+{% block actions %}
+    <li><a class="btn" href="#" onclick="window.print();return false;">Imprimir</a></li>
+    <li><a class="btn" href="#">Configurar</a></li>
+{% endblock %}
+
 {% block body %}
         <aside class="calendar-sidebar">
             {% block calendar_sidebar %}
                 {% render 'BladeTesterCalendarBundle:Calendar:showMini' with { year : "now"|date('Y'), month: "now"|date('m') } %}
             {% endblock %}
         </aside>
-        <nav class="calendar-date-selector"></nav>
+        <div>
+            <ul class="tabs-btn">
+                <li>
+                    <a href="{{ path('calendar_event_list') }}" class="btn tab-btn tab-first{% if app.request.attributes.get('_route') == 'calendar_event_list' %} active{% endif %}">Agenda</a>
+                </li>
+                <li>
+                    <a href="{{ path('calendar_event_list_by_day', {'year': "now"|date('Y'), 'month': "now"|date('m'), 'day' : "now"|date('d')}) }}" class="btn tab-btn tab-middle{% if app.request.attributes.get('_route') == 'calendar_event_list_by_day' %} active{% endif %}">Día</a></li>
+                <li>
+                    <a href="{{ path('calendar_event_list_by_week', {'year': "now"|date('Y'), 'month': "now"|date('m'), 'day' : "now"|date('d')}) }}" class="btn tab-btn tab-middle{% if app.request.attributes.get('_route') == 'calendar_event_list_by_week' %} active{% endif %}">Semana</a></li>
+                <li>
+                    <a href="{{ path('calendar_event_list_by_month', {'year': "now"|date('Y'), 'month': "now"|date('m')}) }}" class="btn tab-btn tab-last{% if app.request.attributes.get('_route') == 'calendar_event_list_by_month' %} active{% endif %}">Mes</a></li>
+            </ul>
+            <nav class="calendar-date-selector">
+                {% block calendar_date_selector %}
+                    <a href="#" class="btn">Hoy</a>
+                    <span class="calendar-date-current-date">sábado, 9 de marzo 2013</span>
+                    <a href="#" class="btn">&lt;</a>
+                    <a href="#" class="btn">&gt;</a>
+                {% endblock %}
+            </nav>
+        </div>
+        <div class="clear"></div>
         {% block calendar_body %}
         {% endblock %}
 {% endblock %}

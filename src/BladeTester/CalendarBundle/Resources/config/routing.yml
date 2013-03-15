@@ -18,6 +18,10 @@ calendar_event_add:
     pattern:  /calendar/add
     defaults: { _controller: BladeTesterCalendarBundle:Event:add }
 
+calendar_event_edit:
+    pattern:  /calendar/{id}/edit
+    defaults: { _controller: BladeTesterCalendarBundle:Event:edit }
+
 calendar_mini_calendar:
     pattern:  /calendar/mini/{year}/{month}
     defaults: { _controller: BladeTesterCalendarBundle:Calendar:showMini }

@@ -1,0 +1,8 @@
+{% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
+
+{% block body %}
+<form id="event-edit" method="POST" action="{{ url('calendar_event_edit', {'id' : event.id}) }}?destination={{ app.request.get('destination') }}" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <input type="submit" value="{{ 'bladetester_calendar.label.event.update'|trans }}" />
+</form>
+{% endblock %}

@@ -56,6 +56,23 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
+    public function itBringsAnEventById() {
+        // Arrange
+        $event_id = 34;
+
+        // Expect
+        $this->repository->expects($this->once())
+            ->method('find')
+            ->with(34);
+
+        // Act
+        $this->calendar->find($event_id);
+    }
+
+
+    /**
+     * @test
+     */
     public function itBringsAllEvents() {
         // Arrange
 
