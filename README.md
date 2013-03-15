@@ -105,6 +105,12 @@ Copy the template in `Resources/views/Event/base.html.twig` into your own bundle
 Go to http://yourapp.com/calendar and enjoy :)
 
 
+## Testing
+CalendarBundle has been developed using the TDD technique, so it contains unitary and functional tests. If you want to check your installation, run the tests once you have properly configured it.
+
+    app/console doctrine:schema:update -e test --force
+    phpunit -c app/ vendor/carlescliment/calendar-bundle/src/BladeTester/CalendarBundle/Tests/
+
 ## Credits
 
 * Author: [Carles Climent][carlescliment]
