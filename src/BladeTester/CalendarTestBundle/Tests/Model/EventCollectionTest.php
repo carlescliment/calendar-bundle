@@ -61,6 +61,24 @@ class EventCollectionTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
+    public function itBringsEventsByDayAndTime() {
+        // Arrange
+        $this->addEventToCollection(array('start' => new \DateTime('2013-03-03 11:00')));
+        $this->addEventToCollection(array('start' => new \DateTime('2013-03-04 06:00')));
+        $this->addEventToCollection(array('start' => new \DateTime('2013-03-04 06:00')));
+        $this->addEventToCollection(array('start' => new \DateTime('2013-03-04 11:00')));
+
+        // Act
+        $events = $this->collection->getAllByDateAndTime(new \DateTime('2013-03-04'), '06');
+
+        // Expect
+        $this->assertCount(2, $events);
+    }
+
+
+    /**
+     * @test
+     */
     public function IShouldGetEventDates() {
         // Arrange
         $this->addEventToCollection(array('start' => new \DateTime('2013-03-11')));
@@ -73,6 +91,7 @@ class EventCollectionTest extends \PHPUnit_Framework_TestCase {
         // Assert
         $this->assertCount(2, $dates);
     }
+
 
     private function addEventToCollection(array $data = array()) {
         $event = new Event;

@@ -20,9 +20,20 @@ class EventCollection {
     }
 
     public function getAllByDate(\DateTime $date) {
+        return $this->filterByDateFormat('Y-m-d', $date);
+    }
+
+    public function getAllByDateAndTime(\DateTime $date, $hour) {
+        $date_events = array();
+        $check_date = clone($date);
+        $check_date->setTime($hour, 0);
+        return $this->filterByDateFormat('Y-m-d H', $check_date);
+    }
+
+    private function filterByDateFormat($format, $date) {
         $date_events = array();
         foreach ($this->events as $event) {
-            if ($event->getStart()->format('Y-m-d') == $date->format('Y-m-d')) {
+            if ($event->getStart()->format($format) == $date->format($format)) {
                 $date_events[] = $event;
             }
         }

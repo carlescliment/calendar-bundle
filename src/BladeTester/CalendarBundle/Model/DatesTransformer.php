@@ -48,4 +48,35 @@ class DatesTransformer {
         }
         return $dates;
     }
+
+    public static function nextMonth(\DateTime $date) {
+        if (self::isFebruaryVulnerable($date)) {
+            return new \DateTime($date->format('Y-02-28'));
+        }
+        $next_month_date = new \DateTime($date->format('Y-m-d'));
+        $interval = \DateInterval::createFromDateString('1 month');
+        return $next_month_date->add($interval);
+    }
+
+    public static function previousMonth(\DateTime $date) {
+        $previous_month_date = new \DateTime($date->format('Y-m-d'));
+        $interval = \DateInterval::createFromDateString('1 month');
+        return $previous_month_date->sub($interval);
+    }
+
+    public static function nextWeek(\DateTime $date) {
+        $next_week_date = new \DateTime($date->format('Y-m-d'));
+        $interval = \DateInterval::createFromDateString('7 days');
+        return $next_week_date->add($interval);
+    }
+    public static function previousWeek(\DateTime $date) {
+        $previous_week_date = new \DateTime($date->format('Y-m-d'));
+        $interval = \DateInterval::createFromDateString('7 days');
+        return $previous_week_date->sub($interval);
+    }
+
+    private static function isFebruaryVulnerable(\DateTime $date) {
+        return $date >= new \DateTime($date->format('Y-01-29 00:00')) &&
+               $date <= new \DateTime($date->format('Y-01-31 23:59'));
+    }
 }

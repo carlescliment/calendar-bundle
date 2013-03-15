@@ -34,15 +34,15 @@ class Calendar implements CalendarInterface {
         return $this->getRepository()->findAll();
     }
 
-    public function findAllByDay($date) {
+    public function findAllByDay(\DateTime $date) {
         return $this->getRepository()->findAllByDay($date);
     }
 
-    public function findAllByWeek($date) {
+    public function findAllByWeek(\DateTime $date) {
         return $this->getRepository()->findAllByWeek($date);
     }
 
-    public function findAllByMonth($date) {
+    public function findAllByMonth(\DateTime $date) {
         return $this->getRepository()->findAllByMonth($date);
     }
 
@@ -55,6 +55,12 @@ class Calendar implements CalendarInterface {
     public function getMonthSheetDays(\DateTime $date) {
         $first_day = DatesTransformer::toMonday(DatesTransformer::toFirstMonthDay($date));
         $last_day = DatesTransformer::toSunday(DatesTransformer::toLastMonthDay($date));
+        return DatesTransformer::getAllDaysBetween($first_day, $last_day);
+    }
+
+    public function getWeekSheetDays(\DateTime $date) {
+        $first_day = DatesTransformer::toMonday($date);
+        $last_day = DatesTransformer::toSunday($date);
         return DatesTransformer::getAllDaysBetween($first_day, $last_day);
     }
 

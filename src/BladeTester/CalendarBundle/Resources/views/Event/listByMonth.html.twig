@@ -1,42 +1,41 @@
 {% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
 
-{% block calendar_body %}
-    {% if events %}
-        <section class="calendar-view-month">
 
-            <ul class="timetable-table">
-                <li class="timetable-table-days">
-                    <ul>
-                        <li scope="col" class="day"><abbr title="lunes">lun</abbr></li>
-                        <li scope="col" class="day"><abbr title="martes">mar</abbr></li>
-                        <li scope="col" class="day"><abbr title="miércoles">mié</abbr></li>
-                        <li scope="col" class="day"><abbr title="jueves">jue</abbr></li>
-                        <li scope="col" class="day"><abbr title="viernes">vie</abbr></li>
-                        <li scope="col" class="day"><abbr title="sábado">sáb</abbr></li>
-                        <li scope="col" class="day"><abbr title="domingo">dom</abbr></li>
-                    </ul>
-                </li>
-                <li class="timetable-table-hours">
-                    {% for date in dates %}
-                        {% if loop.index0%7 == 0 %}<ul class="timetable-table-row">{% endif %}
-                            <li scope="row" class="day{% if date|date('Y-m-d') == "today"|date('Y-m-d') %} today{% endif %}{% if date|date('m') != "today"|date('m') %} day-other-month{% endif %}" style="height: 139px;">
-                                <time class="day-number" datetime="">{{ date|date('d') }}</time>
-                                <ul class="calendar-group-appointments">
-                                    {% for event in events.allByDate(date) %}
-                                        <li class="appointment">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
-                                    {% endfor %}
-                                </ul>
-                                <a href="{{ path('calendar_event_add') }}?year={{ date|date('Y')}}&month={{ date|date('m') }}&day={{ date|date('d') }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>
-                            </li>
-                            {% if loop.index0%7 == 6 %}</ul>{% endif %}
-                        {% endfor %}
-                    </ul>
-                </li>
-            </ul>
-        </section>
-    {% else %}
-        {{ 'bladetester_calendar.list.no_events'}}
-    {% endif %}
+{% block calendar_date_selector %}
+    <span class="calendar-date-current-date">{{ '%month% of %year%'|trans({ '%month%': current|date('F')|trans, '%year%': current|date('Y')}) }}</span>
+    <a href="{{ path('calendar_event_list_by_month', {'year': previous|date('Y'), 'month': previous|date('m')}) }}" class="btn">&lt;</a>
+    <a href="{{ path('calendar_event_list_by_month', {'year': next|date('Y'), 'month': next|date('m')}) }}" class="btn">&gt;</a>
+{% endblock %}
+
+{% block calendar_body %}
+    <section class="calendar-view-month">
+
+        <ul class="timetable-table">
+            <li class="timetable-table-days">
+                <ul>
+                    <li scope="col" class="day"><abbr title="{{ 'monday'|trans }}">{{ 'bladetester_calendar.abbr.monday'|trans }}</abbr></li>
+                    <li scope="col" class="day"><abbr title="{{ 'tuesday'|trans }}">{{ 'bladetester_calendar.abbr.tuesday'|trans }}</abbr></li>
+                    <li scope="col" class="day"><abbr title="{{ 'wednesday'|trans }}">{{ 'bladetester_calendar.abbr.wednesday'|trans }}</abbr></li>
+                    <li scope="col" class="day"><abbr title="{{ 'thursday'|trans }}">{{ 'bladetester_calendar.abbr.thursday'|trans }}</abbr></li>
+                    <li scope="col" class="day"><abbr title="{{ 'friday'|trans }}">{{ 'bladetester_calendar.abbr.friday'|trans }}</abbr></li>
+                    <li scope="col" class="day"><abbr title="{{ 'saturday'|trans }}">{{ 'bladetester_calendar.abbr.saturday'|trans }}</abbr></li>
+                    <li scope="col" class="day"><abbr title="{{ 'sunday'|trans }}">{{ 'bladetester_calendar.abbr.sunday'|trans }}</abbr></li>
+                </ul>
+            </li>
+            <li class="timetable-table-hours">
+                {% for date in dates %}
+                    {% if loop.index0%7 == 0 %}<ul class="timetable-table-row">{% endif %}
+                        <li scope="row" class="cell{% if date|date('Y-m-d') == "today"|date('Y-m-d') %} today{% endif %}{% if date|date('m') != "today"|date('m') %} day-other-month{% endif %}">
+                            <time class="day-number" datetime="">{{ date|date('d') }}</time>
+                            {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDate(date)} %}
+                            <a href="{{ path('calendar_event_add') }}?year={{ date|date('Y')}}&month={{ date|date('m') }}&day={{ date|date('d') }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>
+                        </li>
+                        {% if loop.index0%7 == 6 %}</ul>{% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </section>
 {% endblock %}
 
 {% block javascripts %}

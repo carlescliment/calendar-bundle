@@ -6,7 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use BladeTester\CalendarBundle\Model\EventCollection;
+use BladeTester\CalendarBundle\Model\EventCollection,
+    BladeTester\CalendarBundle\Model\DatesTransformer;
 
 class EventController extends Controller {
 
@@ -115,8 +116,13 @@ class EventController extends Controller {
      */
     public function listByWeekAction($year, $month, $day) {
         $day = new \DateTime("$year-$month-$day");
+        $events = $this->getCalendar()->findAllByWeek($day);
+        $collection = new EventCollection($events);
         return array(
-            'events' => $this->getCalendar()->findAllByWeek($day)
+            'events' => $collection,
+            'dates' => $this->getCalendar()->getWeekSheetDays($day),
+            'next' => DatesTransformer::nextWeek($day),
+            'previous' => DatesTransformer::previousWeek($day),
         );
     }
 
@@ -130,6 +136,9 @@ class EventController extends Controller {
         return array(
             'events' => $collection,
             'dates' => $this->getCalendar()->getMonthSheetDays($day),
+            'current' => $day,
+            'next' => DatesTransformer::nextMonth($day),
+            'previous' => DatesTransformer::previousMonth($day),
         );
     }
 

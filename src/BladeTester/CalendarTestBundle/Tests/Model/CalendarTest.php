@@ -100,7 +100,6 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $this->calendar->findAllByDay($today);
     }
 
-
     /**
      * @test
      */
@@ -150,6 +149,23 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $this->calendar->persist($event);
     }
 
+
+    /**
+     * @test
+     */
+    public function itBringsAllDaysInAWeekSheet() {
+        // Arrange
+
+        // Act
+        $days = $this->calendar->getWeekSheetDays(new \DateTime('2013-03-13'));
+
+        // Expect
+        $this->assertCount(7, $days);
+        $this->assertEquals('2013-03-11', $days[0]->format('Y-m-d'));
+        $this->assertEquals('2013-03-17', $days[6]->format('Y-m-d'));
+
+    }
+
     /**
      * @test
      */
@@ -164,6 +180,16 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('2013-02-25', $days[0]->format('Y-m-d'));
         $this->assertEquals('2013-03-31', $days[34]->format('Y-m-d'));
 
+    }
+
+    private function mockEvent(array $data = array()) {
+        $event = $this->getMock('BladeTester\CalendarBundle\Model\EventInterface');
+        if (isset($data['start'])) {
+            $event->expects($this->any())
+                ->method('getStart')
+                ->will($this->returnValue($data['start']));
+        }
+        return $event;
     }
 
 }

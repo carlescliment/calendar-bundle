@@ -110,7 +110,7 @@ class EventControllerTest extends WebTestCase {
                                                                      'day' => '15'));
 
         // Assert
-        $this->assertEquals(2, $crawler->filter('.event')->count());
+        $this->assertEquals(2, $crawler->filter('.appointment')->count());
     }
 
     /**

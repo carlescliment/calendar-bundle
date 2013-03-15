@@ -1,2 +1,17 @@
 bladetester_calendar.label.event.add: Add event
 bladetester_calendar.label.event.update: Update event
+bladetester_calendar.label.agenda: Agenda
+bladetester_calendar.label.day: Day
+bladetester_calendar.label.week: Week
+bladetester_calendar.label.month: Month
+bladetester_calendar.label.print: Print
+bladetester_calendar.label.configure: Configure
+
+
+bladetester_calendar.abbr.monday: Mon
+bladetester_calendar.abbr.tuesday: Tue
+bladetester_calendar.abbr.wednesday: Wed
+bladetester_calendar.abbr.thursday: Thu
+bladetester_calendar.abbr.friday: Fri
+bladetester_calendar.abbr.saturday: Sat
+bladetester_calendar.abbr.sunday: Sun
