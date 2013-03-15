@@ -54,6 +54,7 @@ Create a new bundle extending BladeTesterCalendarBundle
         }
     }
 
+WARNING: If your bundles includes its own routing file, remember to delete it or completely override the parent bundle paths.
 
 ### 2. Map an Event class
 
