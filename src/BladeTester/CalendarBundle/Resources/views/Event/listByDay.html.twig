@@ -8,7 +8,7 @@
     <a href="{{ path('calendar_event_list_by_day', {'year': next|date('Y'), 'month': next|date('m'), 'day':next|date('d')}) }}" class="btn">&gt;</a>
 {% endblock %}
 
-{% block calendar_body %}
+{% block body %}
     <section class="calendar-view-day">
         <ul class="timetable">
             {% for hour in 0..23 %}
