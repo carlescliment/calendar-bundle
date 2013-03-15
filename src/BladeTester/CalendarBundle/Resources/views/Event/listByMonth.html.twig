@@ -25,7 +25,7 @@
             <li class="timetable-table-hours">
                 {% for date in dates %}
                     {% if loop.index0%7 == 0 %}<ul class="timetable-table-row">{% endif %}
-                        <li scope="row" class="cell{% if date|date('Y-m-d') == "today"|date('Y-m-d') %} today{% endif %}{% if date|date('m') != "today"|date('m') %} day-other-month{% endif %}">
+                        <li scope="row" class="day cell{% if date|date('Y-m-d') == "today"|date('Y-m-d') %} today{% endif %}{% if date|date('m') != "today"|date('m') %} day-other-month{% endif %}">
                             <time class="day-number" datetime="">{{ date|date('d') }}</time>
                             {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDate(date)} %}
                             <a href="{{ path('calendar_event_add') }}?year={{ date|date('Y')}}&month={{ date|date('m') }}&day={{ date|date('d') }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>
