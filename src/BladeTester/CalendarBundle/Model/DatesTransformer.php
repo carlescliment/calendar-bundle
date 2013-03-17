@@ -2,12 +2,17 @@
 
 namespace BladeTester\CalendarBundle\Model;
 
+use BladeTester\CalendarBundle\Exception\InvalidDateRangeException;
+
 class DatesTransformer {
 
     public static function toMonday(\DateTime $date) {
         $givenday = self::getWeekDay($date);
         if ($givenday == 1) {
             return $date;
+        }
+        if ($givenday == 0) {
+            $givenday = 7;
         }
         $days_to_remove = $givenday - 1;
         $new_date = clone($date);
@@ -40,6 +45,7 @@ class DatesTransformer {
     }
 
     public static function getAllDaysBetween(\DateTime $start, \DateTime $end) {
+        self::assertValidRange($start, $end);
         $dates = array();
         $current = $start;
         while ($current <= $end) {
@@ -49,17 +55,37 @@ class DatesTransformer {
         return $dates;
     }
 
+    private static function assertValidRange(\DateTime $start, \DateTime $end) {
+        if ($start->format('Y-m-d') > $end->format('Y-m-d')) {
+            throw new InvalidDateRangeException('Invalid range from ' . $start->format('Y-m-d') . ' to ' . $end->format('Y-m-d'));
+        }
+    }
+
     public static function nextMonth(\DateTime $date) {
         if (self::isFebruaryVulnerable($date)) {
             return new \DateTime($date->format('Y-02-28'));
+        }
+        if (self::isLastMonthDay($date)) {
+            return self::nextDay($date);
         }
         $next_month_date = new \DateTime($date->format('Y-m-d'));
         $interval = \DateInterval::createFromDateString('1 month');
         return $next_month_date->add($interval);
     }
 
+    private static function isLastMonthDay(\DateTime $date) {
+        $last_month_date = self::toLastMonthDay($date);
+        return $date->format('Y-m-d') == $last_month_date->format('Y-m-d');
+    }
+
     public static function previousMonth(\DateTime $date) {
         $previous_month_date = new \DateTime($date->format('Y-m-d'));
+        if ($previous_month_date->format('m') == 3) {
+            return new \DateTime($previous_month_date->format('Y-02-01'));
+        }
+        if ($previous_month_date->format('d') == 31) {
+            $previous_month_date = new \DateTime($previous_month_date->format('Y-m-30'));
+        }
         $interval = \DateInterval::createFromDateString('1 month');
         return $previous_month_date->sub($interval);
     }
@@ -69,6 +95,7 @@ class DatesTransformer {
         $interval = \DateInterval::createFromDateString('7 days');
         return $next_week_date->add($interval);
     }
+
     public static function previousWeek(\DateTime $date) {
         $previous_week_date = new \DateTime($date->format('Y-m-d'));
         $interval = \DateInterval::createFromDateString('7 days');
