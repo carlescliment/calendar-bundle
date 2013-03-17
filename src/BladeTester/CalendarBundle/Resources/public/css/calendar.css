@@ -220,6 +220,55 @@ vertical-align: middle;
 }
 
 
+/* @marcoscalatayud :: quick and dirty fixes/hacks */
+
+[id*="event_start_"],
+[id*="event_end_"] {
+    display: inline-block;
+    margin: 0;
+}
+[id*="time_hour"] {
+ margin-left: 20px;   
+}
+#mini-calendar td {
+padding: 10px;
+}
+.calendar-view-month .timetable-table-hours .day {
+min-height: 90px;
+}
+
+.calendar-date-current-date {
+font-size: 14px;
+}
+section[class*="calendar-view-"] {
+margin-left: -20px;
+}
+.calendar-sidebar {
+margin-right: 20px;
+}
+.timetable-table-hours>ul {
+border-right: 1px solid #ddd;
+}
+
+
+.tab-btn:hover {
+background: #ddd;
+}
+.tab-btn:active {
+background: #ddd;
+background: -webkit-linear-gradient(top,  #ddd, #fafafa);
+background:    -moz-linear-gradient(top,  #ddd, #fafafa);
+background:     -ms-linear-gradient(top,  #ddd, #fafafa);
+background:      -o-linear-gradient(top,  #ddd, #fafafa);
+background:   linear-gradient(to bottom,  #ddd, #fafafa);
+}
+
+/* IE9 */
+.calendar-sidebar + div > .tabs-btn {
+width: 250px;
+}
+
+
 /* Custom */
 .calendar-sidebar {
 position: static;
