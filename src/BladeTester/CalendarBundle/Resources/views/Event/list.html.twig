@@ -1,7 +1,7 @@
 {% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
 
 {% block calendar_body %}
-    {% if events %}
+    {% if events.count > 0 %}
         <section class="calendar-view-schedule">
             <ul class="timetable-list">
                 {% for date in events.dates %}
@@ -17,6 +17,8 @@
             </ul>
         </section>
     {% else %}
-        {{ 'bladetester_calendar.list.no_events'}}
+        <p>
+            {{ 'bladetester_calendar.list.no_events'|trans }}
+        </p>
     {% endif %}
 {% endblock %}

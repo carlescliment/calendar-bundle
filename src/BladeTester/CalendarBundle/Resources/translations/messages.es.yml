@@ -9,6 +9,10 @@ bladetester_calendar.label.month: Mes
 bladetester_calendar.label.print: Imprimir
 bladetester_calendar.label.configure: Configurar
 
+
+bladetester_calendar.list.no_events: Aún no hay eventos.
+
+
 %month% of %year%: %month% de %year%
 %month%-%day%: %day%/%month%
 Week from %from_day%, %from_month% of %from_year% to %to_day%, %to_month% of %to_year%: Semana del %from_day% de %from_month% de %from_year% al %to_day% de %to_month% de %to_year%
@@ -23,6 +27,7 @@ bladetester_calendar.abbr.friday: vie
 bladetester_calendar.abbr.saturday: sáb
 bladetester_calendar.abbr.sunday: dom
 
+
 January: Enero
 February: Febrero
 March: Marzo
@@ -36,6 +41,7 @@ October: Octubre
 November: Noviembre
 December: Diciembre
 
+
 Monday: lunes
 Tuesday: martes
 Wednesday: miércoles
@@ -43,6 +49,7 @@ Thursday: jueves
 Friday: viernes
 Saturday: sábado
 Sunday: domingo
+
 
 Mon: lun
 Tue: mar

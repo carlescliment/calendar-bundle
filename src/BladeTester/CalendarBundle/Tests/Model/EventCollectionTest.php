@@ -43,6 +43,22 @@ class EventCollectionTest extends \PHPUnit_Framework_TestCase {
         $this->assertCount(1, $this->collection->getAll());
     }
 
+
+    /**
+     * @test
+     */
+    public function itBringsEventCount() {
+        // Arrange
+        $this->addEventToCollection(array('start' => new \DateTime('2013-03-11')));
+        $this->addEventToCollection(array('start' => new \DateTime('2013-03-12')));
+
+        // Act
+        $count = $this->collection->count();
+
+        // Assert
+        $this->assertEquals(2, $count);
+    }
+
     /**
      * @test
      */

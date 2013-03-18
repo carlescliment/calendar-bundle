@@ -10,6 +10,9 @@ bladetester_calendar.label.print: Print
 bladetester_calendar.label.configure: Configure
 
 
+bladetester_calendar.list.no_events: No events found.
+
+
 bladetester_calendar.abbr.monday: Mon
 bladetester_calendar.abbr.tuesday: Tue
 bladetester_calendar.abbr.wednesday: Wed
@@ -17,3 +20,4 @@ bladetester_calendar.abbr.thursday: Thu
 bladetester_calendar.abbr.friday: Fri
 bladetester_calendar.abbr.saturday: Sat
 bladetester_calendar.abbr.sunday: Sun
+

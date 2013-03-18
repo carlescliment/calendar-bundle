@@ -15,6 +15,10 @@ class EventCollection {
         $this->events[] = $event;
     }
 
+    public function count() {
+        return count($this->events);
+    }
+
     public function getAll() {
         return $this->events;
     }
