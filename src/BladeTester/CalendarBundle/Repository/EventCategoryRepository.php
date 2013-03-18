@@ -23,6 +23,13 @@ class EventCategoryRepository Extends EntityRepository implements EventCategoryR
     }
 
 
+    public function findAll() {
+        $q = $this->getEntityManager()
+                    ->createQuery("SELECT c
+                                   FROM $this->class c");
+        return $q->getResult();
+    }
+
     public function findOneByName($name) {
         $q = $this->getEntityManager()
                     ->createQuery("SELECT c
