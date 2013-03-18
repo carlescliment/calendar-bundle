@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
+use BladeTester\CalendarBundle\Model\Color;
+
 class CategoryController extends Controller {
 
     /**
@@ -25,7 +27,9 @@ class CategoryController extends Controller {
             }
         }
         return array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'colors' => Color::getAll(),
+            'category' => $category,
             );
     }
 

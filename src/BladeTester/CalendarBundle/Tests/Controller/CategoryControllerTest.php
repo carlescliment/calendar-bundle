@@ -2,6 +2,7 @@
 
 namespace BladeTester\CalendarBundle\Tests\Controller;
 
+use BladeTester\CalendarBundle\Model\Color;
 
 class CategoryControllerTest extends BaseTestCase {
 
@@ -19,6 +20,7 @@ class CategoryControllerTest extends BaseTestCase {
         $crawler = $this->visit('calendar_category_add');
         $form = $crawler->filter('form#category-add')->form();
         $form['category[name]'] = 'A sample category';
+        $form['category[color]'] = Color::RED;
 
         // Act
         $this->client->submit($form);

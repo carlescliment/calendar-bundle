@@ -2,6 +2,25 @@
 
 {% block body %}
 <form id="category-add" method="POST" action="{{ url('calendar_category_add') }}?destination={{ app.request.get('destination') }}" {{ form_enctype(form) }}>
+    <ul>
+        <li>
+            {{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+        </li>
+        <li>
+            <ul class="calendar-colors">
+                {% for color in colors %}
+                    <li id="{{ color }}" class="calendar-color event-color-{{ color }}{% if category.color == color %} active{% endif %}"></li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li style="display:none">
+            {{ form_label(form.color) }}
+            {{ form_errors(form.color) }}
+            {{ form_widget(form.color) }}
+        </li>
+    </ul>
     {{ form_widget(form) }}
     <input type="submit" value="{{ 'bladetester_calendar.label.category.add'|trans }}" />
 </form>

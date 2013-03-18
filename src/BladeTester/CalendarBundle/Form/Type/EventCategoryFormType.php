@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use BladeTester\CalendarBundle\Model\Color;
+
 class EventCategoryFormType extends AbstractType {
 
     protected $dataClass;
@@ -19,7 +21,20 @@ class EventCategoryFormType extends AbstractType {
     {
         $builder
             ->add('name', 'text')
-        ;
+            ->add('color', 'choice', array(
+                'choices' => array(
+                    Color::BLACK => 'Black',
+                    Color::RED => 'Red',
+                    Color::GREEN => 'Green',
+                    Color::BLUE => 'Blue',
+                    Color::YELLOW => 'Yellow',
+                    Color::CYAN => 'Cyan',
+                    Color::MAGENTA => 'Magenta',
+                    Color::GRAY => 'Gray',
+                    Color::WHITE => 'White',
+                    ),
+                )
+            );
     }
 
     /**

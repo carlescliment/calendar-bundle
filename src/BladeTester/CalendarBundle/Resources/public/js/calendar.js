@@ -10,6 +10,8 @@ $('document').ready(function() {
         });
         $(this).find('.cell').height(max_height);
     });
+
+    $('form .calendar-colors li').click(calendar_toggle_color);
 });
 
 function calendar_get_max_height(row) {
@@ -17,5 +19,13 @@ function calendar_get_max_height(row) {
         return 139;
     }
     return 40;
+
+}
+
+function calendar_toggle_color() {
+    $('form .calendar-colors li').removeClass('active');
+    $(this).addClass('active');
+    var id = $(this).attr('id');
+    $('#category_color').val(id);
 
 }
