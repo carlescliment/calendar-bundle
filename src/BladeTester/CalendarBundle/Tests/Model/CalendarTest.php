@@ -3,7 +3,8 @@
 namespace BladeTester\CalendarBundle\Tests\Model;
 
 use BladeTester\CalendarBundle\Model\Calendar,
-    BladeTester\CalendarBundle\Model\EventInterface;
+    BladeTester\CalendarBundle\Model\EventInterface,
+    BladeTester\CalendarBundle\Model\EventCategory;
 
 class FakeEvent implements EventInterface {
     public function getTitle() {}
@@ -22,6 +23,7 @@ class FakeEvent implements EventInterface {
 
     public function setEnd(\DateTime $end) {}
 }
+
 
 
 class CalendarTest extends \PHPUnit_Framework_TestCase {

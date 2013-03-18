@@ -9,6 +9,8 @@ bladetester_calendar.label.month: Month
 bladetester_calendar.label.print: Print
 bladetester_calendar.label.configure: Configure
 
+bladetester_calendar.label.category.add: Add category
+
 
 bladetester_calendar.list.no_events: No events found.
 

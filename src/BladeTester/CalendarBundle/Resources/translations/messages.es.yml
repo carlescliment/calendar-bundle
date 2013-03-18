@@ -9,6 +9,7 @@ bladetester_calendar.label.month: Mes
 bladetester_calendar.label.print: Imprimir
 bladetester_calendar.label.configure: Configurar
 
+bladetester_calendar.label.category.add: Crear categoría
 
 bladetester_calendar.list.no_events: Aún no hay eventos.
 

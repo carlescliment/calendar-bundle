@@ -28,5 +28,8 @@ class BladeTesterCalendarExtension extends Extension
         $classes = $config['classes']['event'];
         $container->setParameter('blade_tester_calendar.form.type.event.class', $classes['form']);
         $container->setParameter('blade_tester_calendar.classes.event.entity', $classes['entity']);
+        $classes = $config['classes']['category'];
+        $container->setParameter('blade_tester_calendar.classes.category.entity', $classes['entity']);
+        $container->setParameter('blade_tester_calendar.form.type.category.class', $classes['form']);
     }
 }

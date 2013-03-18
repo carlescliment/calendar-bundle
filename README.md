@@ -56,7 +56,7 @@ Create a new bundle extending BladeTesterCalendarBundle
 
 WARNING: If your bundle includes its own routing file, remember to delete it or completely override the parent bundle paths.
 
-### 2. Map an Event class
+### 2. Map classes
 
 Create an entity and inherit the base Event class. The only mandatory field you have to add is "id" to map your entity properly.
 
@@ -88,6 +88,34 @@ NOTE: At the moment it works only with Doctrine. Contribution to provide other d
         }
     }
 
+
+    namespace Your\OwnCalendarBundle\Entity;
+
+    use Doctrine\ORM\Mapping as ORM;
+    use BladeTester\CalendarBundle\Entity\EventCategory as BaseEventCategory;
+
+
+    /**
+     * @ORM\Entity(repositoryClass="BladeTester\CalendarBundle\Repository\EventCategoryRepository")
+     * @ORM\Table(name="event_categories")
+     */
+    class EventCategory extends BaseEventCategory {
+
+        /**
+         * @ORM\Column(name="id", type="integer")
+         * @ORM\Id
+         * @ORM\GeneratedValue(strategy="AUTO")
+         */
+        private $id;
+
+
+        public function getId() {
+            return $this->id;
+        }
+    }
+
+
+
 ### 3. Modify your `app/config/config.yml`
 
     blade_tester_calendar:
@@ -96,6 +124,8 @@ NOTE: At the moment it works only with Doctrine. Contribution to provide other d
         classes:
             event:
                 entity: Your\OwnBundle\Entity\Event
+            category:
+                entity: Your\OwnBundle\Entity\EventCategory
 
 ### 4. Override the default base template
 Copy the template in `Resources/views/Event/base.html.twig` into your own bundle and modify it to extend your base template.

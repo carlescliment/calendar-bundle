@@ -25,7 +25,6 @@ class Calendar implements CalendarInterface {
         return $event;
     }
 
-
     public function find($id) {
         return $this->getRepository()->find($id);
     }
