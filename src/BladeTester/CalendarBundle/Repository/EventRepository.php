@@ -16,9 +16,32 @@ class EventRepository Extends EntityRepository implements EventRepositoryInterfa
 
 
     public function findAll() {
-        $q = $this->getEntityManager()->createQuery("SELECT e
-                                     FROM $this->class e
-                                     ORDER BY e.start ASC, e.end ASC");
+        $q = $this->getEntityManager()
+                    ->createQuery("SELECT e
+                                   FROM $this->class e
+                                   ORDER BY e.start ASC, e.end ASC");
+        return $q->getResult();
+    }
+
+    public function findNext() {
+        $q = $this->getEntityManager()
+                    ->createQuery("SELECT e
+                                   FROM $this->class e
+                                   WHERE e.end >= :now
+                                   ORDER BY e.start ASC, e.end ASC")
+                    ->setParameter(':now', new \DateTime);
+        return $q->getResult();
+    }
+
+    public function findBetween(\DateTime $start, \DateTime $end) {
+        $q = $this->getEntityManager()
+                    ->createQuery("SELECT e
+                                   FROM $this->class e
+                                   WHERE e.start >= :start
+                                   AND e.end <= :end
+                                   ORDER BY e.start ASC, e.end ASC")
+                    ->setParameter(':start', $start)
+                    ->setParameter(':end', $end);
         return $q->getResult();
     }
 

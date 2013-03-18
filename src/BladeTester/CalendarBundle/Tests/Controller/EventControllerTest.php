@@ -90,6 +90,23 @@ class EventControllerTest extends WebTestCase {
         $this->assertEquals(3, $crawler->filter('.appointment')->count());
     }
 
+    /**
+     * @test
+     */
+    public function IShouldNotSeePreviousEventsInTheEventsList() {
+        // Arrange
+        $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2001-02-02'),
+                                                       'end' => new \DateTime('2001-02-03'))));
+        $this->calendar->persist($this->getEvent());
+        $this->calendar->persist($this->getEvent());
+
+        // Act
+        $crawler = $this->visit('calendar_event_list');
+
+        // Assert
+        $this->assertEquals(2, $crawler->filter('.appointment')->count());
+    }
+
 
     /**
      * @test
@@ -150,6 +167,9 @@ class EventControllerTest extends WebTestCase {
         $event = $this->calendar->createEvent();
         if (isset($data['start'])) {
             $event->setStart($data['start']);
+        }
+        if (isset($data['end'])) {
+            $event->setEnd($data['end']);
         }
         return $event;
     }

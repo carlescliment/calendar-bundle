@@ -34,6 +34,14 @@ class Calendar implements CalendarInterface {
         return $this->getRepository()->findAll();
     }
 
+    public function findNext() {
+        return $this->getRepository()->findNext();
+    }
+
+    public function findBetween(\DateTime $start, \DateTime $end) {
+        return $this->getRepository()->findBetween($start, $end);
+    }
+
     public function findAllByDay(\DateTime $date) {
         return $this->getRepository()->findAllByDay($date);
     }

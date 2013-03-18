@@ -8,6 +8,10 @@ interface EventRepositoryInterface {
 
     public function findAll();
 
+    public function findNext();
+
+    public function findBetween(\DateTime $start, \DateTime $end);
+
     public function findAllByDay(\DateTime $date);
 
     public function findAllByWeek(\DateTime $date);

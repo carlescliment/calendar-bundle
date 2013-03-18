@@ -101,7 +101,7 @@ class EventController extends Controller {
      */
     public function listAction()
     {
-        $events = $this->getCalendar()->findAll();
+        $events = $this->getCalendar()->findNext();
         $collection = new EventCollection($events);
         return array(
             'events' => $collection
