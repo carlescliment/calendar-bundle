@@ -69,4 +69,37 @@ class EventCategoryManagerTest extends \PHPUnit_Framework_TestCase {
         // Act
         $this->manager->findAll();
     }
+
+
+    /**
+     * @test
+     */
+    public function itBringsOneByName() {
+        // Arrange
+        $name = 'Search name';
+
+        // Expect
+        $this->repository->expects($this->once())
+            ->method('findOneByName')
+            ->with($name);
+
+        // Act
+        $this->manager->findOneByName($name);
+    }
+
+    /**
+     * @test
+     */
+    public function itBringsOneById() {
+        // Arrange
+        $id = 45;
+
+        // Expect
+        $this->repository->expects($this->once())
+            ->method('find')
+            ->with($id);
+
+        // Act
+        $this->manager->find($id);
+    }
 }

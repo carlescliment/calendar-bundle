@@ -8,6 +8,7 @@ class Event implements EventInterface {
     protected $description = '';
     protected $start;
     protected $end;
+    protected $category;
 
     public function getTitle() {
         return $this->title;
@@ -46,5 +47,15 @@ class Event implements EventInterface {
         $this->end = $end;
         return $this;
     }
+
+    public function getCategory() {
+        return $this->category;
+    }
+
+    public function setCategory(EventCategoryInterface $category = null) {
+        $this->category = $category;
+        return $this;
+    }
+
 
 }

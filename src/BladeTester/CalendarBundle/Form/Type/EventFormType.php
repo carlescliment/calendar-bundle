@@ -24,6 +24,7 @@ class EventFormType extends AbstractType {
             ))
             ->add('start', 'datetime')
             ->add('end', 'datetime')
+            ->add('category', 'calendar_event_category_type')
         ;
     }
 

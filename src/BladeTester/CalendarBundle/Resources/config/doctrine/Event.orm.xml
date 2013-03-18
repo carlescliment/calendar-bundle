@@ -13,6 +13,16 @@
         <field name="start" column="start" type="datetime" />
 
         <field name="end" column="end" type="datetime" />
+
+        <many-to-one field="category"
+                target-entity="BladeTester\CalendarBundle\Entity\EventCategory"
+            >
+            <join-column
+                name="category_id"
+                referenced-column-name="id"
+            />
+        </many-to-one>
+
     </mapped-superclass>
 
 </doctrine-mapping>

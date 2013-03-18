@@ -7,7 +7,7 @@ class EventControllerTest extends BaseTestCase {
 
     public function setUp() {
         parent::setUp();
-        $this->truncateTables(array('events'));
+        $this->truncateTables(array('events', 'event_categories'));
     }
 
     /**
@@ -46,6 +46,28 @@ class EventControllerTest extends BaseTestCase {
         $this->em->refresh($event);
         $this->assertEquals($new_description, $event->getDescription());
     }
+
+
+    /**
+     * @test
+     */
+    public function IShouldAssignACategoryToAnEvent() {
+        // Arrange
+        $category = $this->categoryManager->persist($this->categoryManager->createEventCategory());
+        $event = $this->calendar->persist($this->getEvent());
+
+        $crawler = $this->visit('calendar_event_edit', array('id' => $event->getId()));
+        $form = $crawler->filter('form#event-edit')->form();
+        $form['event[category]'] = $category->getId();
+
+        // Act
+        $this->client->submit($form);
+
+        // Assert
+        $this->em->refresh($event);
+        $this->assertNotNull($event->getCategory());
+    }
+
 
 
     /**

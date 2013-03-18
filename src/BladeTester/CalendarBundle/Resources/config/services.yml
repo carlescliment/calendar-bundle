@@ -11,9 +11,19 @@ services:
         arguments: ["%blade_tester_calendar.classes.category.entity%"]
 
     blade_tester_calendar.calendar:
-        class: "BladeTester\CalendarBundle\Model\Calendar"
+        class: BladeTester\CalendarBundle\Model\Calendar
         arguments: ["@doctrine.orm.entity_manager", "%blade_tester_calendar.classes.event.entity%"]
 
     blade_tester_calendar.event_category_manager:
-        class: "BladeTester\CalendarBundle\Model\EventCategoryManager"
+        class: BladeTester\CalendarBundle\Model\EventCategoryManager
         arguments: ["@doctrine.orm.entity_manager", "%blade_tester_calendar.classes.category.entity%"]
+
+    blade_tester_calendar.forms.category_transformer:
+        class: BladeTester\CalendarBundle\Form\DataTransformer\EventCategoryTransformer
+        arguments: ["@blade_tester_calendar.event_category_manager"]
+
+    form.type.bladetester_calendar_category:
+        class: BladeTester\CalendarBundle\Form\Type\CategoryType
+        arguments: ["@blade_tester_calendar.event_category_manager", "@blade_tester_calendar.forms.category_transformer"]
+        tags:
+            - { name: form.type, alias: calendar_event_category_type }

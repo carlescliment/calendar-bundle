@@ -12,4 +12,23 @@ class EventCategoryRepository Extends EntityRepository implements EventCategoryR
     public function setClass($class) {
         $this->class = $class;
     }
+
+    public function find($id) {
+        $q = $this->getEntityManager()
+                    ->createQuery("SELECT c
+                                   FROM $this->class c
+                                   WHERE c.id = :id")
+                    ->setParameter(':id', $id);
+        return $q->getSingleResult();
+    }
+
+
+    public function findOneByName($name) {
+        $q = $this->getEntityManager()
+                    ->createQuery("SELECT c
+                                   FROM $this->class c
+                                   WHERE c.name = :name")
+                    ->setParameter(':name', $name);
+        return $q->getSingleResult();
+    }
 }

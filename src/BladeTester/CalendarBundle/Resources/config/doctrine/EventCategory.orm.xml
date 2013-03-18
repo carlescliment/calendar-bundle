@@ -4,11 +4,17 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="BladeTester\CalendarBundle\Entity\EventCategory">
+    <mapped-superclass name="BladeTester\CalendarBundle\Entity\EventCategory" table="event_categories">
+
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
 
         <field name="name" column="name" type="string" length="255" />
 
         <field name="color" column="color" type="string" length="255" />
+
 
     </mapped-superclass>
 

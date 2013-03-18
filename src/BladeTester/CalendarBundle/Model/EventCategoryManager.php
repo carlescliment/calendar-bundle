@@ -21,8 +21,16 @@ class EventCategoryManager {
         return new $this->eventCategoryClass();
     }
 
+    public function find($id) {
+        return $this->getRepository()->find($id);
+    }
+
     public function findAll() {
         return $this->getRepository()->findAll();
+    }
+
+    public function findOneByName($name) {
+        return $this->getRepository()->findOneByName($name);
     }
 
     public function persist(EventCategoryInterface $category) {
@@ -31,13 +39,16 @@ class EventCategoryManager {
         return $category;
     }
 
-
     private function getRepository() {
         return $this->om->getRepository($this->eventCategoryClass);
     }
 
     private function setRepositoryClass() {
         $this->getRepository()->setClass($this->eventCategoryClass);
+    }
+
+    public function getClass() {
+        return $this->eventCategoryClass;
     }
 
 }
