@@ -143,8 +143,8 @@ CalendarBundle has been developed using the TDD technique, so it contains unitar
 
 ## Credits
 
-* Author: [Carles Climent][carlescliment]
-* Author: [Marcos Calatayud][marcosc]
+* Author: [Carles Climent][carlescliment] (programming)
+* Author: [Marcos Calatayud][marcosc] (markup and design)
 
 
 ## Contribute and feedback
