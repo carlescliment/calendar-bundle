@@ -1,5 +1,7 @@
-<ul class="calendar-group-appointments">
-    {% for event in events %}
-        <li class="appointment">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
-    {% endfor %}
-</ul>
+{% if events %}
+    <ul class="calendar-group-appointments">
+        {% for event in events %}
+            <li class="appointment">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
+        {% endfor %}
+    </ul>
+{% endif %}

@@ -3,6 +3,7 @@
 {% block body %}
 <form id="event-add" method="POST" action="{{ url('calendar_event_add') }}?destination={{ app.request.get('destination') }}" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <input type="submit" value="{{ 'bladetester_calendar.label.event.add'|trans }}" />
+    <input type="submit" value="{{ 'bladetester_calendar.label.event.add'|trans }}" /> 
+    {% include 'BladeTesterCalendarBundle:Event:cancel.html.twig' %}
 </form>
 {% endblock %}

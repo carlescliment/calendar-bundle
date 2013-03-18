@@ -48,7 +48,7 @@ class EventController extends Controller {
         $month = $request->get('month') ? $request->get('month') : $date->format('m');
         $day = $request->get('day') ? $request->get('day') : $date->format('d');
         $date->setDate($year, $month ,$day);
-        $hour = $request->get('hour') ? $request->get('hour') : '09';
+        $hour = is_null($request->get('hour')) ? '09' : $request->get('hour');
         $minute = $request->get('minute') ? $request->get('minute') : '00';
         $date->setTime($hour, $minute);
         return $date;

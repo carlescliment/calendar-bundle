@@ -1,0 +1,8 @@
+{{ "or"|trans }} <a href="
+{% if (app.request.get('destination') and
+    path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) != app.request.get('destination')) %}
+    {{ app.request.get('destination') }}
+{% else %}
+    {{ path('calendar_event_list') }}
+{% endif %}
+">{{ "bladetester_calendar.label.cancel"|trans }}</a>
