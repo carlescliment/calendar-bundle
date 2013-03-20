@@ -18,9 +18,10 @@ bladetester_calendar.title.category.edit: Editar categoría
 bladetester_calendar.label.category.delete: Borrar
 bladetester_calendar.title.category.list: Listado de categorías
 
-
 bladetester_calendar.list.no_events: Aún no hay eventos
 bladetester_calendar.list.no_categories: Aún no hay categorías
+
+
 
 
 %month% of %year%: %month% de %year%
