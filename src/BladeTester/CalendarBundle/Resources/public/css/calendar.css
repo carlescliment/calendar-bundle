@@ -70,6 +70,11 @@ margin-right: 10px;
 
 z-index: 100;
 }
+    
+        .appointment-issue {
+        margin: 0;
+        }
+
     .appointment-black   { border-color: #000000; } /*.event-color-black   { background-color: #000000; }*/
     .appointment-red     { border-color: #FF0000; } /*.event-color-red     { background-color: #FF0000; }*/
     .appointment-green   { border-color: #00FF00; } /*.event-color-green   { background-color: #00FF00; }*/
@@ -83,14 +88,17 @@ z-index: 100;
 
 
 /*calendar style updates*/
+.calendar-view-week .appointment,
 .calendar-view-month .appointment {
     padding: 0 0 0 2px;
     font-size: 12px;
     width: 94%;
 }
+.calendar-view-week .appointment-issue, 
 .calendar-view-month .appointment-issue {
     white-space: nowrap;
     margin: 0;
+    overflow: hidden;
 }
 /*calendar event categories */
 [class*="event-color-"]:before {
