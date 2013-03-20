@@ -68,6 +68,16 @@ class CategoryController extends Controller {
     }
 
 
+    public function deleteAction($id, Request $request)
+    {
+        $manager = $this->getCategoryManager();
+        $category = $manager->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($category);
+        $em->flush();
+        return $this->redirectFromRequest($request);
+    }
+
 
     private function getCategoryManager()
     {

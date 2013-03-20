@@ -65,4 +65,19 @@ class CategoryControllerTest extends BaseTestCase {
         $this->assertEquals('Changed', $category->getName());
     }
 
+    /**
+     * @test
+     */
+    public function IShouldDeleteAnExistingCategory() {
+        // Arrange
+        $category = $this->categoryManager->persist($this->categoryManager->createEventCategory());
+
+        // Act
+        $crawler = $this->visit('calendar_category_delete', array('id' => $category->getId()));
+
+        // Assert
+        $categories = $this->categoryManager->findAll();
+        $this->assertCount(0, $categories);
+    }
+
 }

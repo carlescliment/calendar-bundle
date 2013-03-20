@@ -39,6 +39,10 @@ calendar_category_edit:
     pattern: /calendar/category/{id}/edit
     defaults: { _controller: BladeTesterCalendarBundle:Category:edit }
 
+calendar_category_delete:
+    pattern: /calendar/category/{id}/delete
+    defaults: { _controller: BladeTesterCalendarBundle:Category:delete }
+
 calendar_category_add:
     pattern: /calendar/category/add
     defaults: { _controller: BladeTesterCalendarBundle:Category:add }

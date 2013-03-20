@@ -70,15 +70,15 @@ margin-right: 10px;
 
 z-index: 100;
 }
-    .appointment-black   { border-color: #000000; } .event-color-black   { background-color: #000000; }
-    .appointment-red     { border-color: #FF0000; } .event-color-red     { background-color: #FF0000; }
-    .appointment-green   { border-color: #00FF00; } .event-color-green   { background-color: #00FF00; }
-    .appointment-blue    { border-color: #0000FF; } .event-color-blue    { background-color: #0000FF; }
-    .appointment-yellow  { border-color: #FFFF00; } .event-color-yellow  { background-color: #FFFF00; }
-    .appointment-cyan    { border-color: #00FFFF; } .event-color-cyan    { background-color: #00FFFF; }
-    .appointment-magenta { border-color: #FF00FF; } .event-color-magenta { background-color: #FF00FF; }
-    .appointment-gray    { border-color: #C0C0C0; } .event-color-gray    { background-color: #C0C0C0; }
-    .appointment-white   { border-color: #9d0; }    .event-color-white   { background-color: #9d0; }
+    .appointment-black   { border-color: #000000; } /*.event-color-black   { background-color: #000000; }*/
+    .appointment-red     { border-color: #FF0000; } /*.event-color-red     { background-color: #FF0000; }*/
+    .appointment-green   { border-color: #00FF00; } /*.event-color-green   { background-color: #00FF00; }*/
+    .appointment-blue    { border-color: #0000FF; } /*.event-color-blue    { background-color: #0000FF; }*/
+    .appointment-yellow  { border-color: #FFFF00; } /*.event-color-yellow  { background-color: #FFFF00; }*/
+    .appointment-cyan    { border-color: #00FFFF; } /*.event-color-cyan    { background-color: #00FFFF; }*/
+    .appointment-magenta { border-color: #FF00FF; } /*.event-color-magenta { background-color: #FF00FF; }*/
+    .appointment-gray    { border-color: #C0C0C0; } /*.event-color-gray    { background-color: #C0C0C0; }*/
+    .appointment-white   { border-color: #9d0; }    /*.event-color-white   { background-color: #9d0; }   */
     .appointment-date    {}
 
 
@@ -141,11 +141,10 @@ z-index: 100;
     display: inline-block;
     cursor: pointer;
 }
-
-.calendar-color.active {
+/*.calendar-color.active {
     width: 25px;
     height: 25px;
-}
+}*/
 
 .full-link {
 position: absolute;

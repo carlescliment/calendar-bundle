@@ -2,6 +2,7 @@ bladetester_calendar.label.event.add: Add event
 bladetester_calendar.label.event.update: Update event
 bladetester_calendar.label.event.delete: Delete
 bladetester_calendar.label.event.delete_warning: Do you really want to remove this event?
+bladetester_calendar.label.event_category.delete_warning: Do you really want to remove this category?
 bladetester_calendar.label.agenda: Agenda
 bladetester_calendar.label.day: Day
 bladetester_calendar.label.week: Week
@@ -14,8 +15,9 @@ bladetester_calendar.label.category.add: Add category
 bladetester_calendar.title.category.add: Add new category
 bladetester_calendar.label.category.edit: Update
 bladetester_calendar.title.category.edit: Edit category
-
+bladetester_calendar.label.category.delete: Delete
 bladetester_calendar.title.category.list: Category list
+
 
 bladetester_calendar.list.no_events: No events found
 bladetester_calendar.list.no_categories: No categories found
