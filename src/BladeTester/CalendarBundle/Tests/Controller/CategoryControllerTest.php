@@ -47,4 +47,22 @@ class CategoryControllerTest extends BaseTestCase {
         $this->assertEquals(3, $categories);
     }
 
+    /**
+     * @test
+     */
+    public function IShouldEditAnExistingCategory() {
+        // Arrange
+        $category = $this->categoryManager->persist($this->categoryManager->createEventCategory());
+        $crawler = $this->visit('calendar_category_edit', array('id' => $category->getId()));
+        $form = $crawler->filter('form#category-edit')->form();
+        $form['category[name]'] = 'Changed';
+
+        // Act
+        $this->client->submit($form);
+
+        // Assert
+        $this->em->refresh($category);
+        $this->assertEquals('Changed', $category->getName());
+    }
+
 }

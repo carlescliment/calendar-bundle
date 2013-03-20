@@ -12,6 +12,8 @@ bladetester_calendar.label.cancel: Cancelar
 
 bladetester_calendar.label.category.add: Crear categoría
 bladetester_calendar.title.category.add: Crear nueva categoría
+bladetester_calendar.label.category.edit: Actualizar
+bladetester_calendar.title.category.edit: Editar categoría
 
 bladetester_calendar.title.category.list: Listado de categorías
 

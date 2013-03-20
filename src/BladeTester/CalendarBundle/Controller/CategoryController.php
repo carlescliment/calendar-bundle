@@ -13,12 +13,23 @@ class CategoryController extends Controller {
     /**
      * @Template()
      */
+    public function listAction()
+    {
+        $manager = $this->getCategoryManager();
+        return array(
+            'categories' => $manager->findAll(),
+            );
+    }
+
+
+    /**
+     * @Template()
+     */
     public function addAction(Request $request)
     {
         $manager = $this->getCategoryManager();
         $category = $manager->createEventCategory();
-        $form_instance = $this->get('blade_tester_calendar.forms.category');
-        $form = $this->createForm($form_instance, $category);
+        $form = $this->getFormForCategory($category);
         if ($request->getMethod() == 'POST') {
             $form->bind($request);
             if ($form->isValid()) {
@@ -37,18 +48,36 @@ class CategoryController extends Controller {
     /**
      * @Template()
      */
-    public function listAction()
+    public function editAction($id, Request $request)
     {
         $manager = $this->getCategoryManager();
+        $category = $manager->find($id);
+        $form = $this->getFormForCategory($category);
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectFromRequest($request);
+            }
+        }
         return array(
-            'categories' => $manager->findAll(),
+            'form' => $form->createView(),
+            'colors' => Color::getAll(),
+            'category' => $category,
             );
     }
+
 
 
     private function getCategoryManager()
     {
         return $this->get('blade_tester_calendar.event_category_manager');
+    }
+
+
+    private function getFormForCategory($category) {
+        $form_instance = $this->get('blade_tester_calendar.forms.category');
+        return $this->createForm($form_instance, $category);
     }
 
     private function redirectFromRequest(Request $request) {

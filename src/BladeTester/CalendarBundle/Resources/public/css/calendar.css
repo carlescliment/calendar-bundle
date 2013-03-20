@@ -70,16 +70,62 @@ margin-right: 10px;
 
 z-index: 100;
 }
-    .appointment-black { border-color: #000000; } .event-color-black { background-color: #000000; }
-    .appointment-red { border-color: #FF0000; } .event-color-red { background-color: #FF0000; }
-    .appointment-green { border-color: #00FF00; } .event-color-green { background-color: #00FF00; }
-    .appointment-blue { border-color: #0000FF; } .event-color-blue { background-color: #0000FF; }
-    .appointment-yellow { border-color: #FFFF00; } .event-color-yellow { background-color: #FFFF00; }
-    .appointment-cyan { border-color: #00FFFF; } .event-color-cyan { background-color: #00FFFF; }
+    .appointment-black   { border-color: #000000; } .event-color-black   { background-color: #000000; }
+    .appointment-red     { border-color: #FF0000; } .event-color-red     { background-color: #FF0000; }
+    .appointment-green   { border-color: #00FF00; } .event-color-green   { background-color: #00FF00; }
+    .appointment-blue    { border-color: #0000FF; } .event-color-blue    { background-color: #0000FF; }
+    .appointment-yellow  { border-color: #FFFF00; } .event-color-yellow  { background-color: #FFFF00; }
+    .appointment-cyan    { border-color: #00FFFF; } .event-color-cyan    { background-color: #00FFFF; }
     .appointment-magenta { border-color: #FF00FF; } .event-color-magenta { background-color: #FF00FF; }
-    .appointment-gray { border-color: #C0C0C0; } .event-color-gray { background-color: #C0C0C0; }
-    .appointment-white { border-color: #9d0; } .event-color-white { background-color: #9d0; }
-    .appointment-date {}
+    .appointment-gray    { border-color: #C0C0C0; } .event-color-gray    { background-color: #C0C0C0; }
+    .appointment-white   { border-color: #9d0; }    .event-color-white   { background-color: #9d0; }
+    .appointment-date    {}
+
+
+/*calendar style updates*/
+.calendar-view-month .appointment {
+    padding: 0 0 0 2px;
+    font-size: 12px;
+    width: 94%;
+}
+.calendar-view-month .appointment-issue {
+    white-space: nowrap;
+    margin: 0;
+}
+/*calendar event categories */
+[class*="event-color-"]:before {
+    background: #ff0;
+    display: inline-block;
+    content: '';
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
+    margin-right: 5px;
+    border: 1px solid #aaa;
+}
+[class*="event-color-black"]:before   { background: #222222; }
+[class*="event-color-red"]:before     { background: #f33d3f; }
+[class*="event-color-green"]:before   { background: #a7db63; }
+[class*="event-color-blue"]:before    { background: #6499d7; }
+[class*="event-color-yellow"]:before  { background: #ecdc3c; }
+[class*="event-color-cyan"]:before    { background: #43efda; }
+[class*="event-color-magenta"]:before { background: #ea5dc9; }
+[class*="event-color-gray"]:before    { background: #cccccc; }
+[class*="event-color-white"]:before   { background: #fafafa; }
+
+.calendar-color.active:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    border: 5px solid #000;
+    border-color: transparent transparent #000 transparent;
+    left: 50%;
+    margin-left: -5px;
+}
+
+.event-category {
+    margin: 5px 0;
+}
 
 
     .calendar-view-day   .appointment,

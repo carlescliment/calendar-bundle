@@ -6,7 +6,7 @@
     {% if categories %}
         <ul>
             {% for category in categories %}
-                <li class="event-category event-color-{{ category.color }}">{{ category.name }}</li>
+                <li class="event-category event-color-{{ category.color }}"><a href="{{ path('calendar_category_edit', {'id': category.id}) }}">{{ category.name }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
