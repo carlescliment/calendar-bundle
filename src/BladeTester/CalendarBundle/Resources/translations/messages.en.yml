@@ -11,10 +11,12 @@ bladetester_calendar.label.configure: Configure
 bladetester_calendar.label.cancel: Cancel
 
 bladetester_calendar.label.category.add: Add category
+bladetester_calendar.title.category.add: Add new category
 
+bladetester_calendar.title.category.list: Category list
 
-bladetester_calendar.list.no_events: No events found.
-
+bladetester_calendar.list.no_events: No events found
+bladetester_calendar.list.no_categories: No categories found
 
 bladetester_calendar.abbr.monday: Mon
 bladetester_calendar.abbr.tuesday: Tue

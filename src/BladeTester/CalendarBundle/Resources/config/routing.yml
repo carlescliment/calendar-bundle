@@ -31,6 +31,10 @@ calendar_mini_calendar:
     defaults: { _controller: BladeTesterCalendarBundle:Calendar:showMini }
 
 
+calendar_category_list:
+    pattern: /calendar/category
+    defaults: { _controller: BladeTesterCalendarBundle:Category:list }
+
 calendar_category_add:
     pattern: /calendar/category/add
     defaults: { _controller: BladeTesterCalendarBundle:Category:add }

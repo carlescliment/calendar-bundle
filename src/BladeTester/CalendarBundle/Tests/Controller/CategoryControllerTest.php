@@ -30,4 +30,21 @@ class CategoryControllerTest extends BaseTestCase {
         $this->assertCount(1, $categories);
     }
 
+    /**
+     * @test
+     */
+    public function IShouldSeeExistingCategories() {
+        // Arrange
+        $this->categoryManager->persist($this->categoryManager->createEventCategory());
+        $this->categoryManager->persist($this->categoryManager->createEventCategory());
+        $this->categoryManager->persist($this->categoryManager->createEventCategory());
+
+        // Act
+        $crawler = $this->visit('calendar_category_list');
+
+        // Assert
+        $categories = $crawler->filter('.event-category')->count();
+        $this->assertEquals(3, $categories);
+    }
+
 }

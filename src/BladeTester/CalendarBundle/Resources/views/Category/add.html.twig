@@ -1,6 +1,8 @@
 {% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
 
 {% block body %}
+<h1>{{ "bladetester_calendar.title.category.add"|trans }}</h1>
+
 <form id="category-add" method="POST" action="{{ url('calendar_category_add') }}?destination={{ app.request.get('destination') }}" {{ form_enctype(form) }}>
     <ul>
         <li>

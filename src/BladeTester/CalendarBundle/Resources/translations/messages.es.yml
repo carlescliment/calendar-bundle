@@ -11,8 +11,12 @@ bladetester_calendar.label.configure: Configurar
 bladetester_calendar.label.cancel: Cancelar
 
 bladetester_calendar.label.category.add: Crear categoría
+bladetester_calendar.title.category.add: Crear nueva categoría
 
-bladetester_calendar.list.no_events: Aún no hay eventos.
+bladetester_calendar.title.category.list: Listado de categorías
+
+bladetester_calendar.list.no_events: Aún no hay eventos
+bladetester_calendar.list.no_categories: Aún no hay categorías
 
 
 %month% of %year%: %month% de %year%

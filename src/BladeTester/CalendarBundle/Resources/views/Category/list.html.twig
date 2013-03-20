@@ -1,0 +1,17 @@
+{% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
+
+{% block body %}
+    <h1>{{ "bladetester_calendar.title.category.list"|trans }}</h1>
+
+    {% if categories %}
+        <ul>
+            {% for category in categories %}
+                <li class="event-category event-color-{{ category.color }}">{{ category.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>{{ "bladetester_calendar.list.no_categories"|trans }}</p>
+    {% endif %}
+
+    <a href="{{ path('calendar_category_add') }}?destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">{{ 'bladetester_calendar.label.category.add'|trans }}</a>
+{% endblock %}

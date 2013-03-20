@@ -34,6 +34,18 @@ class CategoryController extends Controller {
     }
 
 
+    /**
+     * @Template()
+     */
+    public function listAction()
+    {
+        $manager = $this->getCategoryManager();
+        return array(
+            'categories' => $manager->findAll(),
+            );
+    }
+
+
     private function getCategoryManager()
     {
         return $this->get('blade_tester_calendar.event_category_manager');
