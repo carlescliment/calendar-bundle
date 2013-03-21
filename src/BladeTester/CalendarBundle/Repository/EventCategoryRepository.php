@@ -19,7 +19,7 @@ class EventCategoryRepository Extends EntityRepository implements EventCategoryR
                                    FROM $this->class c
                                    WHERE c.id = :id")
                     ->setParameter(':id', $id);
-        return $q->getSingleResult();
+        return $q->getOneOrNullResult();
     }
 
 

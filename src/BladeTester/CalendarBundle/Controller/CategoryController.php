@@ -2,13 +2,12 @@
 
 namespace BladeTester\CalendarBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
 use BladeTester\CalendarBundle\Model\Color;
 
-class CategoryController extends Controller {
+class CategoryController extends BaseController {
 
     /**
      * @Template()
@@ -34,6 +33,7 @@ class CategoryController extends Controller {
             $form->bind($request);
             if ($form->isValid()) {
                 $manager->persist($category);
+                $this->addFlashMessage('bladetester_calendar.flash.category_added', array('%name%' => $category->getName()));
                 return $this->redirectFromRequest($request);
             }
         }
@@ -50,13 +50,13 @@ class CategoryController extends Controller {
      */
     public function editAction($id, Request $request)
     {
-        $manager = $this->getCategoryManager();
-        $category = $manager->find($id);
+        $category = $this->loadCategoryOr404($id);
         $form = $this->getFormForCategory($category);
         if ($request->getMethod() == 'POST') {
             $form->bind($request);
             if ($form->isValid()) {
                 $this->getDoctrine()->getManager()->flush();
+                $this->addFlashMessage('bladetester_calendar.flash.category_aupdated', array('%name%' => $category->getName()));
                 return $this->redirectFromRequest($request);
             }
         }
@@ -70,11 +70,11 @@ class CategoryController extends Controller {
 
     public function deleteAction($id, Request $request)
     {
-        $manager = $this->getCategoryManager();
-        $category = $manager->find($id);
+        $category = $this->loadCategoryOr404($id);
         $em = $this->getDoctrine()->getManager();
         $em->remove($category);
         $em->flush();
+        $this->addFlashMessage('bladetester_calendar.flash.category_deleted', array('%name%' => $category->getName()));
         return $this->redirectFromRequest($request);
     }
 
@@ -90,11 +90,13 @@ class CategoryController extends Controller {
         return $this->createForm($form_instance, $category);
     }
 
-    private function redirectFromRequest(Request $request) {
-        $redirect = $request->server->get("HTTP_REFERER");
-        if ($request->get('destination')) {
-            $redirect = $request->get('destination');
+    private function loadCategoryOr404($id) {
+        $manager = $this->getCategoryManager();
+        $category = $manager->find($id);
+        if (!$category) {
+            $message = $this->trans('bladetester_calendar.exception.category_not_found', array('%id%' => $id));
+            throw $this->createNotFoundException($message);
         }
-        return $this->redirect($redirect);
+        return $category;
     }
 }

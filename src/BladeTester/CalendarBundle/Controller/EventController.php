@@ -3,13 +3,12 @@
 namespace BladeTester\CalendarBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use BladeTester\CalendarBundle\Model\EventCollection,
     BladeTester\CalendarBundle\Model\DatesTransformer;
 
-class EventController extends Controller {
+class EventController extends BaseController {
 
     /**
      * @Template()
@@ -25,6 +24,7 @@ class EventController extends Controller {
             $form->bind($request);
             if ($form->isValid()) {
                 $calendar->persist($event);
+                $this->addFlashMessage('bladetester_calendar.flash.event_added', array('%title%' => $event->getTitle()));
                 return $this->redirectFromRequest($request);
             }
         }
@@ -55,15 +55,6 @@ class EventController extends Controller {
     }
 
 
-    private function redirectFromRequest(Request $request) {
-        $redirect = $request->server->get("HTTP_REFERER");
-        if ($request->get('destination')) {
-            $redirect = $request->get('destination');
-        }
-        return $this->redirect($redirect);
-    }
-
-
     /**
      * @Template()
      */
@@ -77,6 +68,7 @@ class EventController extends Controller {
             $form->bind($request);
             if ($form->isValid()) {
                 $this->getDoctrine()->getManager()->flush();
+                $this->addFlashMessage('bladetester_calendar.flash.event_updated', array('%title%' => $event->getTitle()));
                 return $this->redirectFromRequest($request);
             }
         }
@@ -92,6 +84,7 @@ class EventController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $em->remove($event);
         $em->flush();
+        $this->addFlashMessage('bladetester_calendar.flash.event_deleted', array('%title%' => $event->getTitle()));
         return $this->redirectFromRequest($request);
     }
 

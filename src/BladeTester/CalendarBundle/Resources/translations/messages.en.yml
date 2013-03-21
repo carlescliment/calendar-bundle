@@ -21,6 +21,15 @@ bladetester_calendar.title.category.list: Category list
 bladetester_calendar.list.no_events: No events found
 bladetester_calendar.list.no_categories: No categories found
 
+bladetester_calendar.flash.event_added: The new event "%title%" has been created
+bladetester_calendar.flash.event_updated: The event "%title%" has been updated
+bladetester_calendar.flash.event_deleted: The event "%title%" has been deleted
+bladetester_calendar.flash.category_added: A new category with name %name% has been added
+bladetester_calendar.flash.category_updated: The category %name% has been updated
+bladetester_calendar.flash.category_deleted: The category %name% has been deleted
+
+bladetester_calendar.exception.category_not_found: Category with id %id% not found
+
 bladetester_calendar.abbr.monday: Mon
 bladetester_calendar.abbr.tuesday: Tue
 bladetester_calendar.abbr.wednesday: Wed

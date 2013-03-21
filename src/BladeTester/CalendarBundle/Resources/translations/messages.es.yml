@@ -21,6 +21,14 @@ bladetester_calendar.title.category.list: Listado de categorías
 bladetester_calendar.list.no_events: Aún no hay eventos
 bladetester_calendar.list.no_categories: Aún no hay categorías
 
+bladetester_calendar.flash.event_added: Se ha creado un nuevo evento de título "%title%"
+bladetester_calendar.flash.event_updated: El evento "%title%" ha sido actualizado
+bladetester_calendar.flash.event_deleted: El evento "%title%" ha sido eliminado
+bladetester_calendar.flash.category_added: Se ha creado una nueva categoría de nombre %name%
+bladetester_calendar.flash.category_updated: La categoría %name% ha sido actualizada
+bladetester_calendar.flash.category_deleted: La categoría %name% ha sido eliminada
+
+bladetester_calendar.exception.category_not_found: No se encontró ninguna categoría con id %id%
 
 
 
