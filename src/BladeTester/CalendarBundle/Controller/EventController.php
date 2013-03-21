@@ -60,8 +60,7 @@ class EventController extends BaseController {
      */
     public function editAction($id, Request $request)
     {
-        $calendar = $this->getCalendar();
-        $event = $calendar->find($id);
+        $event = $this->loadEventOr404($id);
         $form_instance = $this->get('blade_tester_calendar.forms.event');
         $form = $this->createForm($form_instance, $event);
         if ($request->getMethod() == 'POST') {
@@ -79,8 +78,7 @@ class EventController extends BaseController {
     }
 
     public function deleteAction($id, Request $request) {
-        $calendar = $this->getCalendar();
-        $event = $calendar->find($id);
+        $event = $this->loadEventOr404($id);
         $em = $this->getDoctrine()->getManager();
         $em->remove($event);
         $em->flush();
@@ -154,5 +152,15 @@ class EventController extends BaseController {
         return $this->get('blade_tester_calendar.calendar');
     }
 
+
+    private function loadEventOr404($id) {
+        $manager = $this->getCalendar();
+        $category = $manager->find($id);
+        if (!$category) {
+            $message = $this->trans('bladetester_calendar.exception.event_not_found', array('%id%' => $id));
+            throw $this->createNotFoundException($message);
+        }
+        return $category;
+    }
 
 }

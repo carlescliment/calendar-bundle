@@ -28,6 +28,7 @@ bladetester_calendar.flash.category_added: A new category with name %name% has b
 bladetester_calendar.flash.category_updated: The category %name% has been updated
 bladetester_calendar.flash.category_deleted: The category %name% has been deleted
 
+bladetester_calendar.exception.event_not_found: Event with id %id% not found
 bladetester_calendar.exception.category_not_found: Category with id %id% not found
 
 bladetester_calendar.abbr.monday: Mon
