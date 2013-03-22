@@ -9,7 +9,7 @@
                         <p class="day-link"><a href="{{ path('calendar_event_list_by_day', {'year' : date|date('Y'), 'month' : date|date('m'), 'day' : date|date('d')}) }}"><time datetime="{{ date|date('Y-m-d H:i') }}">{{ date|date('l, d') }} de {{ date|date('F') }}</time></a></p>
                         <ul class="calendar-group-appointments">
                             {% for event in events.allByDate(date) %}
-                                <li class="appointment {% if event.category %}appointment-{{ event.category.color }}{% endif %}">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
+                                {% include 'BladeTesterCalendarBundle:Event:listItem.html.twig' with { 'event' : event } %}
                             {% endfor %}
                         </ul>
                     </li>

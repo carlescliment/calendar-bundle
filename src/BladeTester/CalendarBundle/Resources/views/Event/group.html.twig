@@ -1,7 +1,7 @@
 {% if events %}
     <ul class="calendar-group-appointments">
         {% for event in events %}
-            <li class="appointment {% if event.category %}appointment-{{ event.category.color }}{% endif %}">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
+            {% include 'BladeTesterCalendarBundle:Event:listItem.html.twig' with { 'event' : event } %}
         {% endfor %}
     </ul>
 {% endif %}
