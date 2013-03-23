@@ -16,7 +16,7 @@ class DatesTransformer {
         if ($givenday == self::MONDAY) {
             return $date;
         }
-        if ($givenday == SELF::SUNDAY) {
+        if ($givenday == self::SUNDAY) {
             $givenday = self::LATIN_SUNDAY;
         }
         $days_to_remove = $givenday - 1;
