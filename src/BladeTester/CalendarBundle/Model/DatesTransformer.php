@@ -67,7 +67,7 @@ class DatesTransformer {
     }
 
     public static function nextMonth(\DateTime $date) {
-        if (self::isFebruaryVulnerable($date)) {
+        if (self::wouldJumpFebruary($date)) {
             return new \DateTime($date->format('Y-02-28'));
         }
         if (self::isLastMonthDay($date)) {
@@ -120,7 +120,7 @@ class DatesTransformer {
     }
 
 
-    private static function isFebruaryVulnerable(\DateTime $date) {
+    private static function wouldJumpFebruary(\DateTime $date) {
         return $date >= new \DateTime($date->format('Y-01-29 00:00')) &&
                $date <= new \DateTime($date->format('Y-01-31 23:59'));
     }
