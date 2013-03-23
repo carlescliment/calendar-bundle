@@ -6,8 +6,10 @@ use BladeTester\CalendarBundle\Exception\InvalidDateRangeException;
 
 class DatesTransformer {
 
-    const SUNDAY = 0;
     const MONDAY = 1;
+    const SUNDAY = 0;
+    const LATIN_SUNDAY = 7;
+    const MARCH = 3;
 
     public static function toMonday(\DateTime $date) {
         $givenday = self::getWeekDay($date);
@@ -15,7 +17,7 @@ class DatesTransformer {
             return $date;
         }
         if ($givenday == SELF::SUNDAY) {
-            $givenday = 7;
+            $givenday = self::LATIN_SUNDAY;
         }
         $days_to_remove = $givenday - 1;
         $new_date = clone($date);
@@ -27,7 +29,7 @@ class DatesTransformer {
         if ($givenday == self::MONDAY) {
             return $date;
         }
-        $days_to_add = 7 - $givenday;
+        $days_to_add = self::LATIN_SUNDAY - $givenday;
         $new_date = clone($date);
         return $new_date->add(date_interval_create_from_date_string("$days_to_add days"));
     }
@@ -83,7 +85,7 @@ class DatesTransformer {
 
     public static function previousMonth(\DateTime $date) {
         $previous_month_date = new \DateTime($date->format('Y-m-d'));
-        if ($previous_month_date->format('m') == 3) {
+        if ($previous_month_date->format('m') == self::MARCH) {
             return new \DateTime($previous_month_date->format('Y-02-01'));
         }
         if ($previous_month_date->format('d') == 31) {
