@@ -78,6 +78,11 @@ class DatesTransformer {
         return $next_month_date->add($interval);
     }
 
+    private static function wouldJumpFebruary(\DateTime $date) {
+        return $date >= new \DateTime($date->format('Y-01-29 00:00')) &&
+               $date <= new \DateTime($date->format('Y-01-31 23:59'));
+    }
+
     private static function isLastMonthDay(\DateTime $date) {
         $last_month_date = self::toLastMonthDay($date);
         return $date->format('Y-m-d') == $last_month_date->format('Y-m-d');
@@ -117,11 +122,5 @@ class DatesTransformer {
         $previous_day_date = new \DateTime($date->format('Y-m-d'));
         $interval = \DateInterval::createFromDateString('1 day');
         return $previous_day_date->sub($interval);
-    }
-
-
-    private static function wouldJumpFebruary(\DateTime $date) {
-        return $date >= new \DateTime($date->format('Y-01-29 00:00')) &&
-               $date <= new \DateTime($date->format('Y-01-31 23:59'));
     }
 }
