@@ -6,12 +6,15 @@ use BladeTester\CalendarBundle\Exception\InvalidDateRangeException;
 
 class DatesTransformer {
 
+    const SUNDAY = 0;
+    const MONDAY = 1;
+
     public static function toMonday(\DateTime $date) {
         $givenday = self::getWeekDay($date);
-        if ($givenday == 1) {
+        if ($givenday == self::MONDAY) {
             return $date;
         }
-        if ($givenday == 0) {
+        if ($givenday == SELF::SUNDAY) {
             $givenday = 7;
         }
         $days_to_remove = $givenday - 1;
@@ -21,7 +24,7 @@ class DatesTransformer {
 
     public static function toSunday(\DateTime $date) {
         $givenday = self::getWeekDay($date);
-        if ($givenday == 0) {
+        if ($givenday == self::MONDAY) {
             return $date;
         }
         $days_to_add = 7 - $givenday;
