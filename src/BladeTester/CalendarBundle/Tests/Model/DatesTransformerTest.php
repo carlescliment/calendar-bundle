@@ -137,13 +137,13 @@ class DatesTransformerTest extends \PHPUnit_Framework_TestCase {
      */
     public function itBringsTheLastMonthDayFromTheFirstMonthDay() {
         // Arrange
-        $reference_date = '2013-03-01';
+        $reference_date = '2013-03-01 00:00:00';
 
         // Act
-        $first_month_day = DatesTransformer::toLastMonthDay(new \DateTime($reference_date));
+        $last_month_day = DatesTransformer::toLastMonthDay(new \DateTime($reference_date));
 
         // Expect
-        $this->assertEquals('2013-03-31', $first_month_day->format('Y-m-d'));
+        $this->assertEquals('2013-03-31', $last_month_day->format('Y-m-d'));
     }
 
     /**
@@ -154,10 +154,10 @@ class DatesTransformerTest extends \PHPUnit_Framework_TestCase {
         $reference_date = '2013-03-31';
 
         // Act
-        $first_month_day = DatesTransformer::toLastMonthDay(new \DateTime($reference_date));
+        $last_month_day = DatesTransformer::toLastMonthDay(new \DateTime($reference_date));
 
         // Expect
-        $this->assertEquals('2013-03-31', $first_month_day->format('Y-m-d'));
+        $this->assertEquals('2013-03-31', $last_month_day->format('Y-m-d'));
     }
 
     /**
@@ -168,10 +168,10 @@ class DatesTransformerTest extends \PHPUnit_Framework_TestCase {
         $reference_date = '2013-03-15';
 
         // Act
-        $first_month_day = DatesTransformer::toLastMonthDay(new \DateTime($reference_date));
+        $last_month_day = DatesTransformer::toLastMonthDay(new \DateTime($reference_date));
 
         // Expect
-        $this->assertEquals('2013-03-31', $first_month_day->format('Y-m-d'));
+        $this->assertEquals('2013-03-31', $last_month_day->format('Y-m-d'));
     }
 
     /**
