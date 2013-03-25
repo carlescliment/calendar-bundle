@@ -26,7 +26,7 @@ class DatesTransformer {
 
     public static function toSunday(\DateTime $date) {
         $givenday = self::getWeekDay($date);
-        if ($givenday == self::MONDAY) {
+        if ($givenday == self::SUNDAY) {
             return $date;
         }
         $days_to_add = self::LATIN_SUNDAY - $givenday;
