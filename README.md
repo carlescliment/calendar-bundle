@@ -33,8 +33,11 @@ Execute `php composer.phar update carlescliment/calendar-bundle`
         prefix:   /
 
 #### 4. Add the assets to your base template
-     <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar.css') }}" />
-     <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/calendar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/jquery-1.9.1.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar.css') }}" />
+    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/calendar.js') }}"></script>
+
+Note: remove the line including jquery if your template already includes it.
 
 ## Overriding the bundle
 
