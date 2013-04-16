@@ -3,6 +3,8 @@ CalendarBundle
 
 This is a bundle that handles events in the calendar.
 
+NOTE: The markup is not finished yet. You'll have many CSS issues with the base stylesheets provided in this bundle. Hope we'll have an improved version soon.
+
 
 ## Installation
 
