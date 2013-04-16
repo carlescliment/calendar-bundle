@@ -50,3 +50,7 @@ table {
     border-spacing: 0;
 }
 
+
+calendar-sidebar a, section[class*="calendar-view-"] a {
+  z-index: 1;
+}
