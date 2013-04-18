@@ -4,7 +4,6 @@
         <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar.css') }}">
     </head>
     <body>
-        {% block body %}
             <div class="app">
                 <header class="main-header">
                     {% block header %}
@@ -13,53 +12,59 @@
 
 
                 <div class="main-body">
-                    <h1 class="main-title">{{ 'bladetester_calendar.label.agenda'|trans }}</h1>
+                    {% block body %}
+                        <h1 class="main-title">{{ 'bladetester_calendar.label.agenda'|trans }}</h1>
 
-                    <nav>
-                        <ul class="tabs-btn">
-                            <li>
-                                <a href="{{ path('calendar_event_list') }}" class="btn tab-btn tab-first{% if app.request.attributes.get('_route') == 'calendar_event_list' %} active{% endif %}">{{ 'bladetester_calendar.label.agenda'|trans }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('calendar_event_list_by_day', {'year': "now"|date('Y'), 'month': "now"|date('m'), 'day' : "now"|date('d')}) }}" class="btn tab-btn tab-middle{% if app.request.attributes.get('_route') == 'calendar_event_list_by_day' %} active{% endif %}">{{ 'bladetester_calendar.label.day'|trans }}</a></li>
-                            <li>
-                                <a href="{{ path('calendar_event_list_by_week', {'year': "now"|date('Y'), 'month': "now"|date('m'), 'day' : "now"|date('d')}) }}" class="btn tab-btn tab-middle{% if app.request.attributes.get('_route') == 'calendar_event_list_by_week' %} active{% endif %}">{{ 'bladetester_calendar.label.week'|trans }}</a></li>
-                            <li>
-                                <a href="{{ path('calendar_event_list_by_month', {'year': "now"|date('Y'), 'month': "now"|date('m')}) }}" class="btn tab-btn tab-last{% if app.request.attributes.get('_route') == 'calendar_event_list_by_month' %} active{% endif %}">{{ 'bladetester_calendar.label.month'|trans }}</a></li>
-                        </ul>
-                    </nav>
+                        <nav>
+                            <ul class="tabs-btn">
+                                <li>
+                                    <a href="{{ path('calendar_event_list') }}" class="btn tab-btn tab-first{% if app.request.attributes.get('_route') == 'calendar_event_list' %} active{% endif %}">{{ 'bladetester_calendar.label.agenda'|trans }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('calendar_event_list_by_day', {'year': "now"|date('Y'), 'month': "now"|date('m'), 'day' : "now"|date('d')}) }}" class="btn tab-btn tab-middle{% if app.request.attributes.get('_route') == 'calendar_event_list_by_day' %} active{% endif %}">{{ 'bladetester_calendar.label.day'|trans }}</a></li>
+                                <li>
+                                    <a href="{{ path('calendar_event_list_by_week', {'year': "now"|date('Y'), 'month': "now"|date('m'), 'day' : "now"|date('d')}) }}" class="btn tab-btn tab-middle{% if app.request.attributes.get('_route') == 'calendar_event_list_by_week' %} active{% endif %}">{{ 'bladetester_calendar.label.week'|trans }}</a></li>
+                                <li>
+                                    <a href="{{ path('calendar_event_list_by_month', {'year': "now"|date('Y'), 'month': "now"|date('m')}) }}" class="btn tab-btn tab-last{% if app.request.attributes.get('_route') == 'calendar_event_list_by_month' %} active{% endif %}">{{ 'bladetester_calendar.label.month'|trans }}</a></li>
+                            </ul>
+                        </nav>
 
-                    <nav class="list-options">
-                        <ul class="list-inline column w-20">
-                            <li>
-                                <a href="{{ path('calendar_event_add') }}?destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="btn btn-primary">{{ 'bladetester_calendar.label.event.add'|trans }}</a>
-                            </li>
-                        </ul>
-                        <ul class="list-inline column w-80 t-align-right">
-                            <li><a class="btn" href="#" onclick="window.print();return false;">Imprimir</a></li>
-                            <li><a class="btn" href="{{ path('calendar_category_list') }}">Configurar</a></li>
-                        </ul>
-                    </nav>
+                        <nav class="list-options">
+                            <ul class="list-inline column w-20">
+                                <li>
+                                    <a href="{{ path('calendar_event_add') }}?destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="btn btn-primary">{{ 'bladetester_calendar.label.event.add'|trans }}</a>
+                                </li>
+                            </ul>
+                            <ul class="list-inline column w-80 t-align-right">
+                                <li><a class="btn" href="#" onclick="window.print();return false;">Imprimir</a></li>
+                                <li><a class="btn" href="{{ path('calendar_category_list') }}">Configurar</a></li>
+                            </ul>
+                        </nav>
 
-                    <section class="main-content">
-                        <div class="schedule">
-                            <section class="schedule-nav">
-                                {% block calendar_date_selector %}
+                        <section class="main-content">
+                            <div class="schedule">
+                                <section class="schedule-nav">
+                                    {% block calendar_date_selector %}
+                                    {% endblock %}
+                                    {% block calendar_sidebar %}
+                                        {% render 'BladeTesterCalendarBundle:Calendar:showMini' with { year : "now"|date('Y'), month: "now"|date('m') } %}
+                                    {% endblock %}
+                                </section>
+
+                                {% block calendar_body %}
                                 {% endblock %}
-                                {% block calendar_sidebar %}
-                                    {% render 'BladeTesterCalendarBundle:Calendar:showMini' with { year : "now"|date('Y'), month: "now"|date('m') } %}
-                                {% endblock %}
-                            </section>
-
-                            {% block calendar_body %}
-                            {% endblock %}
-                        </div>
-                    </section>
+                            </div>
+                        </section>
+                    {% endblock %}
                 </div>
 
+                <footer class="main-footer">
+                    {% block footer %}
+                        <p>Opensourced by <a href="#">&reg;Vetaminic</a></p>
+                    {% endblock %}
+                </footer>
             </div>
 
-        {% endblock %}
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/jquery-1.9.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/calendar.js') }}"></script>

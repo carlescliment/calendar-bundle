@@ -19,11 +19,11 @@
 {% endblock %}
 
 {% block calendar_body %}
-    <section class="calendar-view-day">
+    <section class="schedule-content schedule-view-day">
         <ul class="timetable">
             {% for hour in 0..23 %}
             <li class="timetable-hour-block">
-                <time datetime="" class="timetable-hour">{{ hour }}:00</time>
+                <time datetime="{{ current|date('Y-m-d') }} {{ hour }}:00" class="timetable-hour">{{ hour }}:00</time>
                 {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDateAndTime(current, hour)} %}
                 <a href="{{ path('calendar_event_add') }}?year={{ current|date('Y')}}&month={{ current|date('m') }}&day={{ current|date('d') }}&hour={{ hour }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>
             </li>

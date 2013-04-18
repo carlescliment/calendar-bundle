@@ -21,25 +21,25 @@
 
 
 {% block calendar_body %}
-    <section class="calendar-view-month">
+    <section class="schedule-content schedule-view-month">
 
-        <ul class="timetable-table">
-            <li class="timetable-table-days">
-                <ul>
-                    <li scope="col" class="day"><abbr title="{{ 'monday'|trans }}">{{ 'bladetester_calendar.abbr.monday'|trans }}</abbr></li>
-                    <li scope="col" class="day"><abbr title="{{ 'tuesday'|trans }}">{{ 'bladetester_calendar.abbr.tuesday'|trans }}</abbr></li>
-                    <li scope="col" class="day"><abbr title="{{ 'wednesday'|trans }}">{{ 'bladetester_calendar.abbr.wednesday'|trans }}</abbr></li>
-                    <li scope="col" class="day"><abbr title="{{ 'thursday'|trans }}">{{ 'bladetester_calendar.abbr.thursday'|trans }}</abbr></li>
-                    <li scope="col" class="day"><abbr title="{{ 'friday'|trans }}">{{ 'bladetester_calendar.abbr.friday'|trans }}</abbr></li>
-                    <li scope="col" class="day"><abbr title="{{ 'saturday'|trans }}">{{ 'bladetester_calendar.abbr.saturday'|trans }}</abbr></li>
-                    <li scope="col" class="day"><abbr title="{{ 'sunday'|trans }}">{{ 'bladetester_calendar.abbr.sunday'|trans }}</abbr></li>
+        <ul class="list-table">
+            <li class="list-table-header">
+                <ul class="list-table-row">
+                    <li class="list-table-header-cell"><abbr title="{{ 'monday'|trans }}">{{ 'bladetester_calendar.abbr.monday'|trans }}</abbr></li>
+                    <li class="list-table-header-cell"><abbr title="{{ 'tuesday'|trans }}">{{ 'bladetester_calendar.abbr.tuesday'|trans }}</abbr></li>
+                    <li class="list-table-header-cell"><abbr title="{{ 'wednesday'|trans }}">{{ 'bladetester_calendar.abbr.wednesday'|trans }}</abbr></li>
+                    <li class="list-table-header-cell"><abbr title="{{ 'thursday'|trans }}">{{ 'bladetester_calendar.abbr.thursday'|trans }}</abbr></li>
+                    <li class="list-table-header-cell"><abbr title="{{ 'friday'|trans }}">{{ 'bladetester_calendar.abbr.friday'|trans }}</abbr></li>
+                    <li class="list-table-header-cell"><abbr title="{{ 'saturday'|trans }}">{{ 'bladetester_calendar.abbr.saturday'|trans }}</abbr></li>
+                    <li class="list-table-header-cell"><abbr title="{{ 'sunday'|trans }}">{{ 'bladetester_calendar.abbr.sunday'|trans }}</abbr></li>
                 </ul>
             </li>
-            <li class="timetable-table-hours">
+            <li class="list-table-body">
                 {% for date in dates %}
-                    {% if loop.index0%7 == 0 %}<ul class="timetable-table-row">{% endif %}
-                        <li scope="row" class="day cell{% if date|date('Y-m-d') == "today"|date('Y-m-d') %} today{% endif %}{% if date|date('m') != current|date('m') %} day-other-month{% endif %}">
-                            <time class="day-number" datetime="">{{ date|date('d') }}</time>
+                    {% if loop.index0%7 == 0 %}<ul class="list-table-row">{% endif %}
+                        <li class="list-table-cell{% if date|date('Y-m-d') == "today"|date('Y-m-d') %} today{% endif %}{% if date|date('m') != current|date('m') %} day-other-month{% endif %}">
+                            <time class="day-number" datetime="{{ date|date('Y-m-d H:i') }}">{{ date|date('d') }}</time>
                             {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDate(date)} %}
                             <a href="{{ path('calendar_event_add') }}?year={{ date|date('Y')}}&month={{ date|date('m') }}&day={{ date|date('d') }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>
                         </li>

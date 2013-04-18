@@ -38,6 +38,7 @@ padding: 0;
 p,
 li {
 line-height: 20px;
+list-style-type: none;
 }
 
 .btn,
@@ -211,7 +212,7 @@ vertical-align: top;
 
 
 
-.btn {
+input[type="submit"], .btn {
 display: inline-block;
 border-radius: .3em;
 box-shadow: 0 3px 3px -3px rgba(60,60,60,.6);
@@ -229,6 +230,10 @@ background: #dadada;
     background:   linear-gradient(to bottom,  #fff, #ccc);
 border: 1px solid #999;
 text-shadow: 0 1px #fff;
+}
+
+input[type="submit"] {
+    margin-top: 15px;
 }
     .btn:active,
     .tabs-btn .tab-active {

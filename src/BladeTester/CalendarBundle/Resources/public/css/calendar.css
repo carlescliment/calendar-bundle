@@ -167,3 +167,59 @@ width: 14.28%;
     .schedule-view-month .day-other-month {
     background: #f7f7f7;
     }
+
+/*calendar event categories */
+[class*="event-color-"]:before {
+    background: #ff0;
+    display: inline-block;
+    content: '';
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
+    margin-right: 5px;
+    border: 1px solid #aaa;
+}
+[class*="event-color-black"]:before   { background: #222222; }
+[class*="event-color-red"]:before     { background: #f33d3f; }
+[class*="event-color-green"]:before   { background: #a7db63; }
+[class*="event-color-blue"]:before    { background: #6499d7; }
+[class*="event-color-yellow"]:before  { background: #ecdc3c; }
+[class*="event-color-cyan"]:before    { background: #43efda; }
+[class*="event-color-magenta"]:before { background: #ea5dc9; }
+[class*="event-color-gray"]:before    { background: #cccccc; }
+[class*="event-color-white"]:before   { background: #fafafa; }
+
+.calendar-color.active:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    border: 5px solid #000;
+    border-color: transparent transparent #000 transparent;
+    left: 50%;
+    margin-left: -5px;
+}
+
+.event-category {
+    margin: 5px 0;
+}
+
+
+    .calendar-view-day   .appointment,
+    .calendar-view-week  .appointment,
+    .calendar-view-month .appointment {
+    max-width: 250px;
+    display: inline-block;
+    }
+
+.calendar-color {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.today {
+border-color: #333;
+border: 1px solid;
+box-shadow: inset 0 0 0 2px #adf;
+}

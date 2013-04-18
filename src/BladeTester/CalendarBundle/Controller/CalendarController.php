@@ -10,8 +10,11 @@ class CalendarController extends Controller {
     /**
      * @Template()
      */
-    public function showMiniAction($year, $month)
+    public function showMiniAction($year, $month = null)
     {
+        if (!$month) {
+            $month = strftime('%m');
+        }
         $day = new \DateTime("$year-$month-01");
         return array(
             'dates' => $this->getCalendar()->getMonthSheetDays($day),
