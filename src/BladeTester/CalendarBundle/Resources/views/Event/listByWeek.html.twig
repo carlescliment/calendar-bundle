@@ -1,20 +1,32 @@
 {% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
 
 {% block calendar_date_selector %}
-    <span class="calendar-date-current-date">{{ 'Week from %from_day%, %from_month% of %from_year% to %to_day%, %to_month% of %to_year%'|trans({'%from_day%': dates[0]|date('d'), '%from_month%': dates[0]|date('F')|trans, '%from_year%': dates[0]|date('Y'),
-     '%to_day%': dates[dates|length - 1]|date('d'), '%to_month%': dates[dates|length - 1]|date('F')|trans, '%to_year%': dates[dates|length - 1]|date('Y')}) }}</span>
-    <a href="{{ path('calendar_event_list_by_week', {'year': previous|date('Y'), 'month': previous|date('m'), 'day':previous|date('d')}) }}" class="btn">&lt;</a>
-    <a href="{{ path('calendar_event_list_by_week', {'year': next|date('Y'), 'month': next|date('m'), 'day':next|date('d')}) }}" class="btn">&gt;</a>
+    <table class="dp-monthtable" role="presentation">
+        <tbody>
+        <tr id="dp_0_header" class="monthtableHeader">
+            <td colspan="5" id="dp_0_cur" class="dp-cell dp-sb-cur">
+                <span class="calendar-date-current-date">
+                    {{ 'Week from %from_day%, %from_month% of %from_year% to %to_day%, %to_month% of %to_year%'|trans({'%from_day%': dates[0]|date('d'), '%from_month%': dates[0]|date('F')|trans, '%from_year%': dates[0]|date('Y'),
+     '%to_day%': dates[dates|length - 1]|date('d'), '%to_month%': dates[dates|length - 1]|date('F')|trans, '%to_year%': dates[dates|length - 1]|date('Y')}) }}
+                </span>
+            </td>
+            <td colspan="2" class="dp-cell dp-sb-nav">
+                <a href="{{ path('calendar_event_list_by_week', {'year': previous|date('Y'), 'month': previous|date('m'), 'day':previous|date('d')}) }}" class="btn">&lt;</a>
+                <a href="{{ path('calendar_event_list_by_week', {'year': next|date('Y'), 'month': next|date('m'), 'day':next|date('d')}) }}" class="btn">&gt;</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 {% endblock %}
 
 {% block calendar_body %}
-    <section class="calendar-view-week">
-        <ul class="timetable-table">
-            <li class="timetable-table-days">
-                <ul>
-                    <li scope="col" class="timetable-table-hour"></li>
+    <section class="schedule-content schedule-view-week">
+        <ul class="list-table">
+            <li class="list-table-header list-table-days">
+                <ul class="list-table-row">
+                    <li class="list-table-header-cell"></li>
                     {% for date in dates %}
-                        <li scope="col">
+                        <li class="list-table-header-cell">
                             <abbr title="{{ date|date('l')|trans }}">{{ date|date('D')|trans }}</abbr>
                             <time datetime="{{ date|date('Y-m-d')}}">{{ '%month%-%day%'|trans({'%day%': date|date('d'), '%month%': date|date('m')}) }}</time>
                         </li>
@@ -22,12 +34,12 @@
                 </ul>
             </li>
 
-            <li class="timetable-table-hours">
+            <li class="list-table-body list-table-hours">
                 {% for hour in 0..23 %}
-                    <ul class="timetable-table-row">
-                        <li scope="row" class="timetable-table-hour">{{ hour }}:00</li>
+                    <ul class="list-table-row">
+                        <li class="list-table-cell list-table-hour">{{ hour }}:00</li>
                         {% for date in dates %}
-                            <li scope="row" class="cell">
+                            <li class="list-table-cell">
                                 {% include 'BladeTesterCalendarBundle:Event:group.html.twig' with {'events': events.allByDateAndTime(date, hour)} %}
                                 <a href="{{ path('calendar_event_add') }}?year={{ date|date('Y')}}&month={{ date|date('m') }}&day={{ date|date('d') }}&hour={{ hour }}&destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="full-link"></a>
                             </li>
@@ -38,16 +50,4 @@
         </ul>
     </section>
 
-
-
-
-    {% if events %}
-        <ul class="events">
-            {% for event in events %}
-                <li class="event">{% include 'BladeTesterCalendarBundle:Event:event.html.twig' with { 'event' : event } %}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        {{ 'bladetester_calendar.list.no_events'}}
-    {% endif %}
 {% endblock %}

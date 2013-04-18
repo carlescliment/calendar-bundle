@@ -1,11 +1,21 @@
 {% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
 
 {% block calendar_date_selector %}
-    <span class="calendar-date-current-date">
-        {{ '%week_day%, %month% %day%th of %year%'|trans({'%week_day%': current|date('l')|trans, '%day%': current|date('d'), '%month%': current|date('F')|trans, '%year%': current|date('Y')}) }}
-    </span>
-    <a href="{{ path('calendar_event_list_by_day', {'year': previous|date('Y'), 'month': previous|date('m'), 'day':previous|date('d')}) }}" class="btn">&lt;</a>
-    <a href="{{ path('calendar_event_list_by_day', {'year': next|date('Y'), 'month': next|date('m'), 'day':next|date('d')}) }}" class="btn">&gt;</a>
+    <table class="dp-monthtable" role="presentation">
+        <tbody>
+        <tr id="dp_0_header" class="monthtableHeader">
+            <td colspan="5" id="dp_0_cur" class="dp-cell dp-sb-cur">
+                <span class="calHeaderSpace">
+                    {{ '%week_day%, %month% %day%th of %year%'|trans({'%week_day%': current|date('l')|trans, '%day%': current|date('d'), '%month%': current|date('F')|trans, '%year%': current|date('Y')}) }}
+                </span>
+            </td>
+            <td colspan="2" class="dp-cell dp-sb-nav">
+                <a href="{{ path('calendar_event_list_by_day', {'year': previous|date('Y'), 'month': previous|date('m'), 'day':previous|date('d')}) }}" class="btn">&lt;</a>
+                <a href="{{ path('calendar_event_list_by_day', {'year': next|date('Y'), 'month': next|date('m'), 'day':next|date('d')}) }}" class="btn">&gt;</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 {% endblock %}
 
 {% block calendar_body %}

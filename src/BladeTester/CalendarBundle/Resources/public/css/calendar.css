@@ -1,379 +1,169 @@
-time { color: #666; }
-
-.tabs-btn {
-overflow: hidden;
-}
-    .tabs-btn li {}
-        .tab-btn {
-        background: #eee;
-            background: -webkit-linear-gradient(top,  #fafafa, #ddd);
-            background:    -moz-linear-gradient(top,  #fafafa, #ddd);
-            background:     -ms-linear-gradient(top,  #fafafa, #ddd);
-            background:      -o-linear-gradient(top,  #fafafa, #ddd);
-            background:   linear-gradient(to bottom,  #fafafa, #ddd);
-        border: 1px solid #aaa;
-        border-right: 0;
-        color: #333;
-        text-shadow: none;
-        display: block;
-        float: left;
-        }
-            .tab-btn.active {
-            background: #ddd;
-            }
-        .tab-first {
-        border-radius: .3em 0 0 .3em;
-        }
-        .tab-last {
-        border-radius: 0 .3em .3em 0;
-        border-right: 1px solid #aaa;
-        } 
-
-
-.timetable {
-border-top: 1px solid #ddd;
-}
-
-    .timetable-hour-block {
-    /*
-    background: #1e5799;
-        background: -webkit-linear-gradient(top, transparent, transparent 50%, rgba(0,0,0,.1) 50.2%, transparent 50%, transparent);
-        background:    -moz-linear-gradient(top, transparent, transparent 50%, rgba(0,0,0,.1) 50.2%, transparent 50%, transparent);
-        background:     -ms-linear-gradient(top, transparent, transparent 50%, rgba(0,0,0,.1) 50.2%, transparent 50%, transparent);
-        background:      -o-linear-gradient(top, transparent, transparent 50%, rgba(0,0,0,.1) 50.2%, transparent 50%, transparent);
-        background:   linear-gradient(to bottom, transparent, transparent 50%, rgba(0,0,0,.1) 50.2%, transparent 50%, transparent);
-    */
-    border-bottom: 1px solid #ddd;
-    padding: .3em 0 .3em 70px;
-    min-height: 40px;
-    }
-        .timetable-hour {
-        border-right: 1px solid #ddd;
-        position: absolute;
-        width: 60px;
-        left: 0;
-        z-index: 100;
-        text-align: right;
-        height: 40px;
-        line-height: 40px;
-        padding-right: 10px;
-        top: 50%;
-        margin-top: -20px;
-        }
-
-.appointment {
-background: #eee;
-border-left: 6px solid;
-padding: .5em;
-border-radius: .3em;
-margin-right: 10px;
-
-z-index: 100;
-}
-    
-        .appointment-issue {
-        margin: 0;
-        }
-
-    .appointment-black   { border-color: #000000; } /*.event-color-black   { background-color: #000000; }*/
-    .appointment-red     { border-color: #FF0000; } /*.event-color-red     { background-color: #FF0000; }*/
-    .appointment-green   { border-color: #00FF00; } /*.event-color-green   { background-color: #00FF00; }*/
-    .appointment-blue    { border-color: #0000FF; } /*.event-color-blue    { background-color: #0000FF; }*/
-    .appointment-yellow  { border-color: #FFFF00; } /*.event-color-yellow  { background-color: #FFFF00; }*/
-    .appointment-cyan    { border-color: #00FFFF; } /*.event-color-cyan    { background-color: #00FFFF; }*/
-    .appointment-magenta { border-color: #FF00FF; } /*.event-color-magenta { background-color: #FF00FF; }*/
-    .appointment-gray    { border-color: #C0C0C0; } /*.event-color-gray    { background-color: #C0C0C0; }*/
-    .appointment-white   { border-color: #9d0; }    /*.event-color-white   { background-color: #9d0; }   */
-    .appointment-date    {}
-
-
-/*calendar style updates*/
-.calendar-view-week .appointment,
-.calendar-view-month .appointment {
-    padding: 0 0 0 2px;
-    font-size: 12px;
-    width: 94%;
-}
-.calendar-view-week .appointment-issue, 
-.calendar-view-month .appointment-issue {
-    white-space: nowrap;
-    margin: 0;
-    overflow: hidden;
-}
-/*calendar event categories */
-[class*="event-color-"]:before {
-    background: #ff0;
+/*
+ * SCHEDULE
+ */
+.schedule {}
+    .schedule-nav {
     display: inline-block;
-    content: '';
-    width: 20px;
-    height: 20px;
+    width: 30%;
+    margin-right: -5px;
     vertical-align: top;
-    margin-right: 5px;
-    border: 1px solid #aaa;
-}
-[class*="event-color-black"]:before   { background: #222222; }
-[class*="event-color-red"]:before     { background: #f33d3f; }
-[class*="event-color-green"]:before   { background: #a7db63; }
-[class*="event-color-blue"]:before    { background: #6499d7; }
-[class*="event-color-yellow"]:before  { background: #ecdc3c; }
-[class*="event-color-cyan"]:before    { background: #43efda; }
-[class*="event-color-magenta"]:before { background: #ea5dc9; }
-[class*="event-color-gray"]:before    { background: #cccccc; }
-[class*="event-color-white"]:before   { background: #fafafa; }
-
-.calendar-color.active:after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    border: 5px solid #000;
-    border-color: transparent transparent #000 transparent;
-    left: 50%;
-    margin-left: -5px;
-}
-
-.event-category {
-    margin: 5px 0;
-}
-
-
-    .calendar-view-day   .appointment,
-    .calendar-view-week  .appointment,
-    .calendar-view-month .appointment {
-    max-width: 250px;
+    }
+    .schedule-content {
     display: inline-block;
-    }
-
-.calendar-color {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    cursor: pointer;
-}
-/*.calendar-color.active {
-    width: 25px;
-    height: 25px;
-}*/
-
-.full-link {
-position: absolute;
-left: 0;
-top: 0;
-right: 0;
-bottom: 0;
-text-indent: -999em;
-overflow: hidden;
-}
-    .full-link:hover,
-    .full-link:active {
-    background: rgba(255,0,0,.5);
-    }
-
-
-
-.timetable-table {
-border-bottom: 1px solid #ddd;
-margin: 2em 0;
-
-overflow: hidden;
-}
-    .timetable-table ul {
-    overflow: hidden;
-    }
-    .timetable-table > li > ul > li {
-    border-left: 1px solid #ddd;
-    width: 12.5%;
-    display: block;
-    float: left;
-    min-height: 40px;
-    }
-        .timetable-table-days li[scope] {
-        background: none;
-        border: 0;
-        font-size: 14px;
-        text-align: center;
-        line-height: 40px;
-        }
-    .timetable-table-hour {
-    width: 60px;
-    text-align: center;
-    line-height: 40px;
-    }
-    
-    .timetable-table-hours > ul {
-    border-top: 1px solid #ddd;
-    }
-    
-    .timetable-table .appointment ~ .appointment {
-    margin-top: -70px;
-    box-shadow: 0 -2px 1px -1px rgba(0,0,0,.3) ;
-    }
-
-
-.calendar-view-month .day {
-width: 14.28%;
-}
-    .day-other-month {
-    background: #f7f7f7;
-    }
-    .day-past {
-    background: #fdfdfd;
-    }
-    .day-today {
-    box-shadow: inset 0 0 0 2px #adf;
-    }
-    .calendar-view-month .day-number {
-    padding: 10px;
-    display: block;
-    margin: 0 0 -10px;
-    color: #888;
-    }
-    .calendar-view-month .appointment-patient {
-    display: none;
-    }
-    
-.calendar-view-schedule .appointment-date,
-.calendar-view-schedule .appointment-issue,
-.calendar-view-schedule .appointment-patient,
-.calendar-view-schedule .veterinary {
-display: inline-block;
-margin-right: 20px;
-}
-.calendar-view-schedule .appointment {
-margin-bottom: .5em;
-}
-
-.calendar-view-schedule .day-link {
-padding: .5em 0;
-}
-.calendar-view-schedule .calendar-group-appointments {
-margin-bottom: 2em;
-}
-
-.nav-zone {
-outline: 1px solid red;
-width: 100%;
-display: block;
-background: #def;
-}
-    .tabs-btn {
-    }
-    .calendar-list-options,
-    .calendar-date-selector {
-    position: absolute;
-    right: 0;
-    top: 0;
-    }
-        .calendar-date-selector {
-        top: 10px;
-        }
-
-.calendar-container {
-overflow: hidden;
-}
-    .calendar-sidebar {
-    float: left;
-    width: 20%;
-    }
-    .calendar-view {
-    padding-top: 50px;
-    float: right;
-    min-width: 80%;
+    width: 70%;
     padding-left: 20px;
     }
+        
+        .schedule table {
+        width: 100%;
+        }
+            .schedule-nav th {
+            border: 1px solid #ccc;
+            text-align: center;
+            }
+            .schedule-nav td {
+            border: 1px solid #ccc;
+            padding: 0;
+            text-align: center;
+            }
+                .schedule-nav .monthtableBody a {
+                color: #444;
+                padding: 10px;
+                display: block;
+                }
+                .schedule-nav .monthtableHeader td {
+                padding: 10px 0;
+                text-align: left;
+                }
+                .schedule-nav .monthtableHeader .dp-sb-nav {
+                text-align: right;
+                }
+            
+            .offmonth a {
+            color: #aaa;
+            }
+            
+            .schedule-nav table:first-child td {
+            border: 0;
+            padding: 10px;
+            }
+        
+        .list-schedule-events {}
+            .list-schedule-events li {
+            list-style: none;
+            }
+            
+                .schedule-content .day {}
+                    .schedule-content .day ~ .day {
+                    margin: 20px 0 0;
+                    }
+                    .day h2 {
+                    margin: 0;
+                    }
+                .appointment {
+                padding: 10px;
+                background: #fafafa;
+                border: 1px solid #ccc;
+                border-left: 6px solid;
+                margin: 10px 0;
+                border-radius: .3em;
+                font-size: .875em;
+                z-index: 100;
+                }
+                    .appointment p {
+                    margin: 0;
+                    }
+                    
+    .appointment p {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
 
-input[type="checkbox"],
-input[type="checkbox"] + label {
-display: inline-block;
-vertical-align: middle;
+.timetable li {
+list-style: none;
 }
-    input[type="checkbox"] {
-    margin-right: 3px;
+.timetable-hour-block {
+border: 1px solid #ddd;
+padding: 10px 10px 10px 60px;
+min-height: 40px;
 }
-
-
-/* @marcoscalatayud :: quick and dirty fixes/hacks */
-
-[id*="event_start_"],
-[id*="event_end_"] {
+    .timetable-hour-block ~ .timetable-hour-block {
+    border-top: 0;
+    }
+    .timetable-hour {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    margin-top: -10px;
+    }
+    .timetable-hour-block .appointment {
     display: inline-block;
-    margin: 0;
-}
-[id*="time_hour"] {
- margin-left: 20px;   
-}
-#mini-calendar td {
-padding: 10px;
-}
-.calendar-view-month .timetable-table-hours .day {
-min-height: 90px;
-}
-
-.calendar-date-current-date {
-font-size: 14px;
-}
-section[class*="calendar-view-"] {
-margin-left: -20px;
-}
-.calendar-sidebar {
-margin-right: 20px;
-}
-.timetable-table-hours>ul {
-border-right: 1px solid #ddd;
-}
+    margin: 0 10px 0 0;
+    width: 30%;
+    vertical-align: top;
+    }
+        .timetable-hour-block .appointment:nth-child(n+4) {
+        margin-top: 10px;
+        }
 
 
-.tab-btn:hover {
-background: #ddd;
+.list-table {
+list-style: none;
 }
-.tab-btn:active {
-background: #ddd;
-background: -webkit-linear-gradient(top,  #ddd, #fafafa);
-background:    -moz-linear-gradient(top,  #ddd, #fafafa);
-background:     -ms-linear-gradient(top,  #ddd, #fafafa);
-background:      -o-linear-gradient(top,  #ddd, #fafafa);
-background:   linear-gradient(to bottom,  #ddd, #fafafa);
+    .list-table-row {
+    border: 1px solid #ccc;
+    border-top: 0;
+    }
+        .list-table-row:first-child {
+        border-top: 1px solid #ccc;
+        }
+        .list-table-header-cell,
+        .list-table-cell {
+        display: inline-block;
+        margin-right: -4px;
+        min-height: 40px;
+        border-left: 0;
+        vertical-align: top;
+        }
+            .list-table-header-cell ~ .list-table-header-cell,
+            .list-table-cell ~ .list-table-cell {
+            border-left: 1px solid #ccc;
+            }
+            .list-table-header-cell {
+            font-size: .875em;
+            text-align: center;
+            line-height: 40px;
+            }
+            .list-table-header .list-table-row,
+            .list-table-header .list-table-header-cell {
+            border: 0;
+            }
+/* SCHEDULE VIEW :: WEEK */
+.schedule-view-week .list-table-header-cell,
+.schedule-view-week .list-table-cell {
+width: 12.5%;
 }
+    .list-table-hour {
+    line-height: 40px;
+    text-align: center;
+    }
+    .schedule-view-week .appointment,
+    .schedule-view-month .appointment {
+    font-size: .75em;
+    padding: 2px 0 2px 4px;
+    }
 
-/* IE9 */
-.calendar-sidebar + div > .tabs-btn {
-width: 250px;
+/* SCHEDULE VIEW :: MONTH */
+.schedule-view-month .list-table-header-cell,
+.schedule-view-month .list-table-cell {
+width: 14.28%;
 }
-
-
-/* Custom */
-.calendar-sidebar {
-position: static;
-float: left!important;
-width: 25%!important;
-}
-
-section[class*="calendar-view-"] {
-float: left!important;
-padding-left: 20px!important;
-width: 75%!important;
-}
-
-.calendar-sidebar .day a {
-color: #222;
-}
-
-.calendar-sidebar .day.today {
-border-color: #333;
-border: 1px solid;
-}
-
-.calendar-sidebar .day.offmonth a {
-color: #999;
-}
-
-.nav-zone {
-    padding-top: 30px;
-}
-
-.calendar-date-selector {
-    position: relative;
-    top: 0px;
-    float:right;
-    clear:both;
-}
-
+    .schedule-view-month .list-table-cell {
+    min-height: 90px;
+    padding: 4px;
+    }
+    .schedule-view-month .day-other-month {
+    background: #f7f7f7;
+    }
