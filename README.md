@@ -1,9 +1,7 @@
 CalendarBundle
 ==================
 
-This is a bundle that handles events in the calendar.
-
-NOTE: The markup is not finished yet. You'll have many CSS issues with the base stylesheets provided in this bundle. Hope we'll have an improved version soon.
+This is a bundle that handles events in the calendar. It provides four different default views; agenda, by day, by week and by month. You can also use this bunbdle as a simple calendar API.
 
 
 ## Installation
