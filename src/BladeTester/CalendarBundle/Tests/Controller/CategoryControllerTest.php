@@ -40,7 +40,7 @@ class CategoryControllerTest extends BaseTestCase {
         $this->categoryManager->persist($this->categoryManager->createEventCategory());
 
         // Act
-        $crawler = $this->visit('calendar_category_list');
+        $crawler = $this->visit('calendar_settings');
 
         // Assert
         $categories = $crawler->filter('.event-category')->count();
