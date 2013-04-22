@@ -48,6 +48,7 @@ class CategoryType extends AbstractType {
         $resolver->setDefaults(array(
             'required' => false,
             'choices' => $choices,
+            'empty_value' => 'bladetester_calendar.label.event.category.none'
         ));
     }
 }

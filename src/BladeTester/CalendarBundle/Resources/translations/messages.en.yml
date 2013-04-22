@@ -3,6 +3,7 @@ bladetester_calendar.label.event.update: Update event
 bladetester_calendar.label.event.delete: Delete
 bladetester_calendar.label.event.delete_warning: Do you really want to remove this event?
 bladetester_calendar.label.event_category.delete_warning: Do you really want to remove this category?
+bladetester_calendar.label.event.category.none: Uncategorized
 bladetester_calendar.label.agenda: Agenda
 bladetester_calendar.label.day: Day
 bladetester_calendar.label.week: Week
