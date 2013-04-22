@@ -119,7 +119,8 @@ class EventController extends BaseController {
         $events = $this->getCalendar()->findNext();
         $collection = new EventCollection($events);
         return array(
-            'events' => $collection
+            'events' => $collection,
+            'current' => new \DateTime,
         );
     }
 

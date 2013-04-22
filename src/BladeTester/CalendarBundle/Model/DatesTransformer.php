@@ -52,7 +52,7 @@ class DatesTransformer {
     public static function getAllDaysBetween(\DateTime $start, \DateTime $end) {
         self::assertValidRange($start, $end);
         $dates = array();
-        $current = $start;
+        $current = clone($start);
         while ($current <= $end) {
             $dates[] = clone($current);
             $current->add(date_interval_create_from_date_string('1 day'));
