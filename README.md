@@ -23,24 +23,16 @@ Execute `php composer.phar update carlescliment/calendar-bundle`
     );
 
 
-#### 3. Update your routing:
+### 3. Update your routing:
     // ...
 
     BladeTesterCalendarBundle:
         resource: "@BladeTesterCalendarBundle/Resources/config/routing.yml"
         prefix:   /
 
-#### 4. Add the assets to your base template
-    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/jquery-1.9.1.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar.css') }}" />
-    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/calendar.js') }}"></script>
-
-Note: remove the line including jquery if your template already includes it.
-
-## Overriding the bundle
 
 
-### 1. Create your calendar bundle
+### 4. Create your calendar bundle
 
 Create a new bundle extending BladeTesterCalendarBundle
 
@@ -59,7 +51,7 @@ Create a new bundle extending BladeTesterCalendarBundle
 
 WARNING: If your bundle includes its own routing file, remember to delete it or completely override the parent bundle paths.
 
-### 2. Map event class
+### 5. Map event class
 
 Create an entity and inherit the base Event class. The only mandatory field you have to add is "id" to map your entity properly.
 
@@ -94,7 +86,7 @@ NOTE: At the moment it works only with Doctrine. Contribution to provide other d
 
 
 
-### 3. Modify your `app/config/config.yml`
+### 6. Modify your `app/config/config.yml`
 
     blade_tester_calendar:
         driver: doctrine/orm
@@ -105,12 +97,25 @@ NOTE: At the moment it works only with Doctrine. Contribution to provide other d
             category:
                 entity: BladeTester\CalendarBundle\Entity\EventCategory
 
-### 4. Override the default base template
-Copy the template in `Resources/views/Event/base.html.twig` into your own bundle and modify it to extend your base template.
-
 
 ## Using the calendar
 Go to http://yourapp.com/calendar and enjoy :)
+
+
+
+## Customizing the bundle
+If you want to override the bundle default views to use your design and markup, please follow the next steps.
+
+### 1. Override the default base template
+Copy the template in `Resources/views/Base/base.html.twig` into your own bundle and modify it to extend your base template.
+
+### 2. Add the assets to your base template
+    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/jquery-1.9.1.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar.css') }}" />
+    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/calendar.js') }}"></script>
+
+Note: remove the line including jquery if your template already includes it.
+
 
 
 ## Testing
