@@ -15,10 +15,10 @@ class SettingsType extends AbstractType {
         $builder
             ->add('defaultView', 'choice', array(
                 'choices' => array(
-                    CalendarViews::MONTH => 'bladetester_calendar.label.month',
-                    CalendarViews::WEEK => 'bladetester_calendar.label.week',
-                    CalendarViews::DAY => 'bladetester_calendar.label.day',
                     CalendarViews::AGENDA => 'bladetester_calendar.label.agenda',
+                    CalendarViews::DAY => 'bladetester_calendar.label.day',
+                    CalendarViews::WEEK => 'bladetester_calendar.label.week',
+                    CalendarViews::MONTH => 'bladetester_calendar.label.month',
                     ),
                 'label' => 'bladetester_calendar.label.settings.default_view'));
     }

@@ -11,6 +11,7 @@ bladetester_calendar.label.print: Print
 bladetester_calendar.label.settings: Settings
 bladetester_calendar.label.cancel: Cancel
 bladetester_calendar.label.configuration_parameters: Configuration parameters
+bladetester_calendar.label.back_to_calendar: go back to calendar
 
 bladetester_calendar.label.category.add: Add category
 bladetester_calendar.title.category.add: Add new category

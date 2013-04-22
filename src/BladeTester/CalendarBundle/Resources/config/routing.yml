@@ -1,5 +1,9 @@
-calendar_event_list:
+calendar_index:
     pattern:  /calendar
+    defaults: { _controller: BladeTesterCalendarBundle:Event:index }
+
+calendar_event_list:
+    pattern:  /calendar/list
     defaults: { _controller: BladeTesterCalendarBundle:Event:list }
 
 calendar_event_list_by_day:

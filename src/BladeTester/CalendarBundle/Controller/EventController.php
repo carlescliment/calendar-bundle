@@ -6,9 +6,33 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use BladeTester\CalendarBundle\Model\EventCollection,
-    BladeTester\CalendarBundle\Model\DatesTransformer;
+    BladeTester\CalendarBundle\Model\DatesTransformer,
+    BladeTester\CalendarBundle\Model\CalendarViews;
 
 class EventController extends BaseController {
+
+    public function indexAction(Request $request)
+    {
+        $calendar = $this->getCalendar();
+        $default_view = $calendar->getDefaultView();
+        return $this->redirect($this->createRouteForDefaultView($default_view));
+    }
+
+    private function createRouteForDefaultView($default_view) {
+        $year = strftime('%Y');
+        $month = strftime('%m');
+        $day = strftime('%m');
+        switch ($default_view) {
+            case CalendarViews::MONTH:
+                return $this->generateUrl('calendar_event_list_by_month', array('year' => $year, 'month' => $month));
+            case CalendarViews::WEEK:
+                return $this->generateUrl('calendar_event_list_by_week', array('year' => $year, 'month' => $month, 'day' => $day));
+            case CalendarViews::DAY:
+                return $this->generateUrl('calendar_event_list_by_day', array('year' => $year, 'month' => $month, 'day' => $day));
+        }
+        return $this->generateUrl('calendar_event_list');
+    }
+
 
     /**
      * @Template()

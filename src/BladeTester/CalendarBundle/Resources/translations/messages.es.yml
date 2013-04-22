@@ -11,6 +11,7 @@ bladetester_calendar.label.print: Imprimir
 bladetester_calendar.label.settings: Configurar
 bladetester_calendar.label.cancel: Cancelar
 bladetester_calendar.label.configuration_parameters: Parámetros de configuración
+bladetester_calendar.label.back_to_calendar: volver al calendario
 
 bladetester_calendar.label.category.add: Crear categoría
 bladetester_calendar.title.category.add: Crear nueva categoría
@@ -83,3 +84,5 @@ Thu: jue
 Fri: vie
 Sat: sáb
 Sun: dom
+
+or: o
