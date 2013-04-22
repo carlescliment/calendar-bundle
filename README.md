@@ -53,7 +53,7 @@ WARNING: If your bundle includes its own routing file, remember to delete it or 
 
 ### 5. Map event class
 
-Create an entity and inherit the base Event class. The only mandatory field you have to add is "id" to map your entity properly.
+Create an entity and inherit the base Event class. The only mandatory field you have to add is "id" to map your entity properly. Don't forget to update your database schema.
 
 NOTE: At the moment it works only with Doctrine. Contribution to provide other drivers will be very appreciated.
 
