@@ -1,24 +1,24 @@
 {% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
 
 {% block calendar_body %}
+    <section class="schedule-content schedule-view-schedule">
     {% if events.count > 0 %}
-        <section class="schedule-content schedule-view-schedule">
-            <ul class="list-schedule-events">
-                {% for date in events.dates %}
-                    <li class="day">
-                        <h2 class="day-day"><a href="{{ path('calendar_event_list_by_day', {'year' : date|date('Y'), 'month' : date|date('m'), 'day' : date|date('d')}) }}"><time datetime="{{ date|date('Y-m-d H:i') }}">{{ date|date('l')|trans }}, {{ date|date('d') }} {{ date|date('F')|trans }}</time></a></h2>
-                        <ul class="schedule-group-appointments">
-                            {% for event in events.allByDate(date) %}
-                                {% include 'BladeTesterCalendarBundle:Event:listItem.html.twig' with { 'event' : event } %}
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% endfor %}
-            </ul>
-        </section>
+        <ul class="list-schedule-events">
+            {% for date in events.dates %}
+                <li class="day">
+                    <h2 class="day-day"><a href="{{ path('calendar_event_list_by_day', {'year' : date|date('Y'), 'month' : date|date('m'), 'day' : date|date('d')}) }}"><time datetime="{{ date|date('Y-m-d H:i') }}">{{ date|date('l')|trans }}, {{ date|date('d') }} {{ date|date('F')|trans }}</time></a></h2>
+                    <ul class="schedule-group-appointments">
+                        {% for event in events.allByDate(date) %}
+                            {% include 'BladeTesterCalendarBundle:Event:listItem.html.twig' with { 'event' : event } %}
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
     {% else %}
         <p>
             {{ 'bladetester_calendar.list.no_events'|trans }}
         </p>
     {% endif %}
+    </section>
 {% endblock %}
