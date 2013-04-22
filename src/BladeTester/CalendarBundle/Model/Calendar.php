@@ -22,6 +22,10 @@ class Calendar implements CalendarInterface {
         return $this->om->getRepository('BladeTesterCalendarBundle:Setting')->getSettings();
     }
 
+    public function updateSettings(Settings $settings) {
+        return $this->om->getRepository('BladeTesterCalendarBundle:Setting')->updateSettings($settings);
+    }
+
     public function getDefaultView() {
         return $this->getSettings()->getDefaultView();
     }

@@ -3,7 +3,9 @@
 namespace BladeTester\CalendarBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use BladeTester\CalendarBundle\Model\Settings;
+
+use BladeTester\CalendarBundle\Model\Settings,
+    BladeTester\CalendarBundle\Entity\Setting;
 
 class SettingRepository Extends EntityRepository {
 
@@ -14,5 +16,17 @@ class SettingRepository Extends EntityRepository {
             $settings_class->set($setting->getName(), $setting->getValue());
         }
         return $settings_class;
+    }
+
+    public function updateSettings(Settings $settings) {
+        $em = $this->getEntityManager();
+        $default_view = $this->findOneByName('default_view');
+        if (!$default_view) {
+            $default_view = new Setting();
+            $default_view->setName('default_view');
+            $em->persist($default_view);
+        }
+        $default_view->setValue($settings->getDefaultView());
+        $em->flush();
     }
 }

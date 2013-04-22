@@ -8,7 +8,7 @@
 
 
     <h3>{{ 'bladetester_calendar.label.configuration_parameters'|trans }}</h3>
-    <form method="POST" id="calendar-settings" {{ form_enctype(form) }}>
+    <form method="POST" action="{{ path('calendar_settings_update') }}" id="calendar-settings" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <input type="submit" value="{{ 'bladetester_calendar.label.settings.update'|trans }}" />
     </form>

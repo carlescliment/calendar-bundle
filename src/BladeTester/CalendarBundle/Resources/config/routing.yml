@@ -44,6 +44,14 @@ calendar_category_add:
     defaults: { _controller: BladeTesterCalendarBundle:Category:add }
 
 
+calendar_settings_update:
+    pattern: /calendar/settings/update
+    defaults: { _controller: BladeTesterCalendarBundle:Settings:update }
+    requirements:
+        _method:  POST
+
 calendar_settings:
     pattern: /calendar/settings
     defaults: { _controller: BladeTesterCalendarBundle:Settings:index }
+    requirements:
+        _method:  GET
