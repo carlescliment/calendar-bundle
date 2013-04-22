@@ -46,3 +46,8 @@ calendar_category_delete:
 calendar_category_add:
     pattern: /calendar/category/add
     defaults: { _controller: BladeTesterCalendarBundle:Category:add }
+
+
+calendar_settings:
+    pattern: /calendar/settings
+    defaults: { _controller: BladeTesterCalendarBundle:Settings:index }

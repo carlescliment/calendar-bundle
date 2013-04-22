@@ -10,6 +10,7 @@ bladetester_calendar.label.month: Month
 bladetester_calendar.label.print: Print
 bladetester_calendar.label.configure: Configure
 bladetester_calendar.label.cancel: Cancel
+bladetester_calendar.label.settings: Configuración
 
 bladetester_calendar.label.category.add: Add category
 bladetester_calendar.title.category.add: Add new category
