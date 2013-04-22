@@ -27,4 +27,3 @@ services:
         arguments: ["@blade_tester_calendar.event_category_manager", "@blade_tester_calendar.forms.category_transformer"]
         tags:
             - { name: form.type, alias: calendar_event_category_type }
-
