@@ -1,5 +1,16 @@
 {% extends 'BladeTesterCalendarBundle:Base:base.html.twig' %}
 
 {% block body %}
-    {{ 'bladetester_calendar.label.settings'|trans }}
+    <h1>{{ 'bladetester_calendar.label.settings'|trans }}</h1>
+
+
+    {% render 'BladeTesterCalendarBundle:Category:list' %}
+
+
+    <h3>{{ 'bladetester_calendar.label.configuration_parameters'|trans }}</h3>
+    <form method="POST" id="calendar-settings" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" value="{{ 'bladetester_calendar.label.settings.update'|trans }}" />
+    </form>
+
 {% endblock %}

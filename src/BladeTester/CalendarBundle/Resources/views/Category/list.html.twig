@@ -1,20 +1,16 @@
-{% extends 'BladeTesterCalendarBundle:Base:base.html.twig' %}
+<h2>{{ "bladetester_calendar.title.category.list"|trans }}</h2>
 
-{% block body %}
-    <h1>{{ "bladetester_calendar.title.category.list"|trans }}</h1>
+{% if categories %}
+    <ul>
+        {% for category in categories %}
+            <li class="event-category event-color-{{ category.color }}">
+                <a href="{{ path('calendar_category_edit', {'id': category.id}) }}">{{ category.name }}</a>
+                (<a class="alert" href="{{ path('calendar_category_delete', {'id': category.id}) }}" onclick="return confirm('{{ 'bladetester_calendar.label.event_category.delete_warning'|trans }}');">{{ 'bladetester_calendar.label.category.delete'|trans }}</a>)
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>{{ "bladetester_calendar.list.no_categories"|trans }}</p>
+{% endif %}
 
-    {% if categories %}
-        <ul>
-            {% for category in categories %}
-                <li class="event-category event-color-{{ category.color }}">
-                    <a href="{{ path('calendar_category_edit', {'id': category.id}) }}?destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">{{ category.name }}</a>
-                    (<a class="alert" href="{{ path('calendar_category_delete', {'id': category.id}) }}" onclick="return confirm('{{ 'bladetester_calendar.label.event_category.delete_warning'|trans }}');">{{ 'bladetester_calendar.label.category.delete'|trans }}</a>)
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>{{ "bladetester_calendar.list.no_categories"|trans }}</p>
-    {% endif %}
-
-    <a href="{{ path('calendar_category_add') }}?destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">{{ 'bladetester_calendar.label.category.add'|trans }}</a>
-{% endblock %}
+<a href="{{ path('calendar_category_add') }}">{{ 'bladetester_calendar.label.category.add'|trans }}</a>

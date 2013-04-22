@@ -10,11 +10,20 @@ class Calendar implements CalendarInterface {
 
     private $eventClass;
     private $om;
+    private $settings;
 
     public function __construct(ObjectManager $om, $event_class) {
         $this->om = $om;
         $this->eventClass = $event_class;
         $this->setRepositoryClass();
+    }
+
+    public function getSettings() {
+        return $this->om->getRepository('BladeTesterCalendarBundle:Setting')->getSettings();
+    }
+
+    public function getDefaultView() {
+        return $this->getSettings()->getDefaultView();
     }
 
     public function createEvent() {
