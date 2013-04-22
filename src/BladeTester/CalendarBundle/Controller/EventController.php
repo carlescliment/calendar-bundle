@@ -149,6 +149,7 @@ class EventController extends BaseController {
         $collection = new EventCollection($events);
         return array(
             'events' => $collection,
+            'current' => $day,
             'dates' => $this->getCalendar()->getWeekSheetDays($day),
             'next' => DatesTransformer::nextWeek($day),
             'previous' => DatesTransformer::previousWeek($day),

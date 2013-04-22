@@ -20,12 +20,12 @@
     <nav class="list-options">
         <ul class="list-inline column w-20">
             <li>
-                <a href="{{ path('calendar_event_add') }}?destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" class="btn btn-primary">{{ 'bladetester_calendar.label.event.add'|trans }}</a>
+                <a href="{{ path('calendar_event_add') }}?destination={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}&year={{ current|date('Y') }}&month={{ current|date('m') }}&day={{ current|date('d') }}" class="btn btn-primary">{{ 'bladetester_calendar.label.event.add'|trans }}</a>
             </li>
         </ul>
         <ul class="list-inline column w-80 t-align-right">
             <li><a class="btn" href="#" onclick="window.print();return false;">{{ 'bladetester_calendar.label.print'|trans }}</a></li>
-            <li><a class="btn" href="{{ path('calendar_category_list') }}">{{ 'bladetester_calendar.label.configure'|trans }}</a></li>
+            <li><a class="btn" href="{{ path('calendar_settings') }}">{{ 'bladetester_calendar.label.settings'|trans }}</a></li>
         </ul>
     </nav>
 
