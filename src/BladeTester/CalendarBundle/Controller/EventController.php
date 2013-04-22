@@ -21,7 +21,7 @@ class EventController extends BaseController {
     private function createRouteForDefaultView($default_view) {
         $year = strftime('%Y');
         $month = strftime('%m');
-        $day = strftime('%m');
+        $day = strftime('%d');
         switch ($default_view) {
             case CalendarViews::MONTH:
                 return $this->generateUrl('calendar_event_list_by_month', array('year' => $year, 'month' => $month));
