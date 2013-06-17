@@ -35,7 +35,7 @@
                 {% block calendar_date_selector %}
                 {% endblock %}
                 {% block calendar_sidebar %}
-                    {% render 'BladeTesterCalendarBundle:Calendar:showMini' with { year : "now"|date('Y'), month: "now"|date('m') } %}
+                    {% render(controller('BladeTesterCalendarBundle:Calendar:showMini', { year : "now"|date('Y'), month: "now"|date('m') })) %}
                 {% endblock %}
             </section>
 

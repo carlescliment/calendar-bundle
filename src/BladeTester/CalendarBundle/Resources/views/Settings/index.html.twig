@@ -4,7 +4,7 @@
     <h1>{{ 'bladetester_calendar.label.settings'|trans }}</h1>
 
 
-    {% render 'BladeTesterCalendarBundle:Category:list' %}
+    {% render(controller('BladeTesterCalendarBundle:Category:list'))  %}
 
 
     <h3>{{ 'bladetester_calendar.label.configuration_parameters'|trans }}</h3>
