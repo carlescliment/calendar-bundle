@@ -62,7 +62,7 @@ class Event implements EventInterface {
     public function isValid(ExecutionContext $context) {
         $is_valid = $this->start <= $this->end;
         if (!$is_valid) {
-            $context->addViolationAtSubPath('end', 'bladetester_calendar.validation.event_dates', array(), null);
+            $context->addViolationAt('end', 'bladetester_calendar.validation.event_dates', array(), null);
         }
     }
 }

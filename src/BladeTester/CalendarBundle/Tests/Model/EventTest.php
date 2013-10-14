@@ -28,7 +28,7 @@ class ContainsValidDatesValidatorTest extends \PHPUnit_Framework_TestCase {
 
         // Expect
         $this->context->expects($this->once())
-            ->method('addViolationAtSubPath');
+            ->method('addViolationAt');
 
         // Act
         $is_valid = $this->event->isValid($this->context);
@@ -46,7 +46,7 @@ class ContainsValidDatesValidatorTest extends \PHPUnit_Framework_TestCase {
 
         // Expect
         $this->context->expects($this->never())
-            ->method('addViolationAtSubPath');
+            ->method('addViolationAt');
 
         // Act
         $is_valid = $this->event->isValid($this->context);
