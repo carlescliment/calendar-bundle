@@ -1,6 +1,7 @@
 {
     "name": "carlescliment/calendar-bundle",
     "type": "symfony-bundle",
+    "version": "2.1.0",
     "description": "A bundle for handling events in calendar",
     "keywords": ["calendar", "events"],
     "homepage": "https://github.com/carlescliment/calendar-bundle",
