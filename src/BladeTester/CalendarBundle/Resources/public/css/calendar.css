@@ -13,7 +13,7 @@
     width: 70%;
     padding-left: 20px;
     }
-        
+
         .schedule table {
         width: 100%;
         }
@@ -38,21 +38,21 @@
                 .schedule-nav .monthtableHeader .dp-sb-nav {
                 text-align: right;
                 }
-            
+
             .offmonth a {
             color: #aaa;
             }
-            
+
             .schedule-nav table:first-child td {
             border: 0;
             padding: 10px;
             }
-        
+
         .list-schedule-events {}
             .list-schedule-events li {
             list-style: none;
             }
-            
+
                 .schedule-content .day {}
                     .schedule-content .day ~ .day {
                     margin: 20px 0 0;
@@ -70,10 +70,34 @@
                 font-size: .875em;
                 z-index: 100;
                 }
+                    .appointment.appointment-magenta {
+                        border-color: #ea5dc9;
+                    }
+                    .appointment.appointment-red {
+                        border-color: #f33d3f;
+                    }
+                    .appointment.appointment-green {
+                        border-color: #a7db63;
+                    }
+                    .appointment.appointment-blue {
+                        border-color: #6499d7;
+                    }
+                    .appointment.appointment-yellow {
+                        border-color: #ecdc3c;
+                    }
+                    .appointment.appointment-cyan {
+                        border-color: #43efda;
+                    }
+                    .appointment.appointment-gray {
+                        border-color: #ccc;
+                    }
+                    .appointment.appointment-white {
+                        border-color: #fafafa;
+                    }
                     .appointment p {
                     margin: 0;
                     }
-                    
+
     .appointment p {
     display: block;
     white-space: nowrap;
