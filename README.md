@@ -111,13 +111,19 @@ If you want to override the bundle default views to use your design and markup, 
 Copy the template in `Resources/views/Base/base.html.twig` into your own bundle and modify it to extend your base template.
 
 ### 2. Add the assets to your base template
-    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/jquery-1.9.1.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar.css') }}" />
-    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/calendar.js') }}"></script>
+```
+<script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/jquery-1.9.1.min.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar.css') }}" />
+<script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/calendar.js') }}"></script>
+```
 
 Note: remove the line including jquery if your template already includes it.
 
+### 3. Install the assets
 
+```
+php app/console assets:install
+```
 
 ## Testing
 CalendarBundle has been developed using the TDD technique, so it contains unitary and functional tests. If you want to check your installation, run the tests once you have properly configured it.
