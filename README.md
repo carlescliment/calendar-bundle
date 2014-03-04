@@ -99,6 +99,13 @@ NOTE: At the moment it works only with Doctrine. Contribution to provide other d
                 entity: BladeTester\CalendarBundle\Entity\EventCategory
 
 
+### 7. Install the assets
+
+```
+php app/console assets:install
+```
+
+
 ## Using the calendar
 Go to http://yourapp.com/calendar and enjoy :)
 
@@ -118,12 +125,6 @@ Copy the template in `Resources/views/Base/base.html.twig` into your own bundle 
 ```
 
 Note: remove the line including jquery if your template already includes it.
-
-### 3. Install the assets
-
-```
-php app/console assets:install
-```
 
 ## Testing
 CalendarBundle has been developed using the TDD technique, so it contains unitary and functional tests. If you want to check your installation, run the tests once you have properly configured it.
