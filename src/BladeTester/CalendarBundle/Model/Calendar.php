@@ -18,6 +18,12 @@ class Calendar implements CalendarInterface {
         $this->setRepositoryClass();
     }
 
+    public function __call($method_name, $arguments)
+    {
+        $repository = $this->getRepository();
+        return call_user_func_array(array(&$repository, $method_name), $arguments);
+    }
+
     public function getSettings() {
         return $this->om->getRepository('BladeTesterCalendarBundle:Setting')->getSettings();
     }
@@ -36,34 +42,6 @@ class Calendar implements CalendarInterface {
         $event->setStart($now);
         $event->setEnd($now);
         return $event;
-    }
-
-    public function find($id) {
-        return $this->getRepository()->find($id);
-    }
-
-    public function findAll() {
-        return $this->getRepository()->findAll();
-    }
-
-    public function findNext() {
-        return $this->getRepository()->findNext();
-    }
-
-    public function findBetween(\DateTime $start, \DateTime $end) {
-        return $this->getRepository()->findBetween($start, $end);
-    }
-
-    public function findAllByDay(\DateTime $date) {
-        return $this->getRepository()->findAllByDay($date);
-    }
-
-    public function findAllByWeek(\DateTime $date) {
-        return $this->getRepository()->findAllByWeek($date);
-    }
-
-    public function findAllByMonth(\DateTime $date) {
-        return $this->getRepository()->findAllByMonth($date);
     }
 
     public function persist(EventInterface $event) {

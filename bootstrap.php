@@ -1,6 +1,8 @@
 <?php
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
 
-include_once('AutoLoader.php');
-// Register the directory to your include files
-AutoLoader::registerDirectory('./src');
+$loader = require_once(__DIR__.'/vendor/autoload.php');
+
+AnnotationRegistry::registerFile(__DIR__."/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Driver/DoctrineAnnotations.php");
+AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
