@@ -29,6 +29,7 @@ class FakeEvent implements EventInterface {
 class CalendarTest extends \PHPUnit_Framework_TestCase {
 
     private $om;
+    private $dispatcher;
     private $calendar;
     private $repository;
 
@@ -37,10 +38,11 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $this->repository = $this->getMock('BladeTester\CalendarBundle\Model\EventRepositoryInterface',
 		array('findAll', 'findNext', 'findBetween', 'findAllByDay', 'findAllByWeek', 'findAllByMonth', 'getId', 'setClass', 'find',
                 'getSettings', 'updateSettings'));
+        $this->dispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
         $this->om->expects($this->any())
             ->method('getRepository')
             ->will($this->returnValue($this->repository));
-        $this->calendar = new Calendar($this->om, 'BladeTester\CalendarBundle\Tests\Model\FakeEvent');
+        $this->calendar = new Calendar($this->om, $this->dispatcher, 'BladeTester\CalendarBundle\Tests\Model\FakeEvent');
     }
 
     /**
@@ -210,6 +212,23 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $this->om->expects($this->once())
             ->method('persist')
             ->with($event);
+
+        // Act
+        $this->calendar->persist($event);
+    }
+
+
+    /**
+     * @test
+     */
+    public function itDispatchesAnEventBeforePersisting() {
+        // Arrange
+        $event = $this->calendar->createEvent();
+
+        // Expect
+        $this->dispatcher->expects($this->once())
+            ->method('dispatch')
+            ->with('calendar.pre-persist', $this->isInstanceOf('BladeTester\CalendarBundle\Event\CalendarEvent'));
 
         // Act
         $this->calendar->persist($event);

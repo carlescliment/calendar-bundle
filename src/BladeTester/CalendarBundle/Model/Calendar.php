@@ -3,17 +3,21 @@
 namespace BladeTester\CalendarBundle\Model;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use BladeTester\CalendarBundle\Event\CalendarEvent,
+    BladeTester\CalendarBundle\Event\CalendarEvents;
 
 class Calendar implements CalendarInterface {
 
 
-    private $eventClass;
     private $om;
+    private $dispatcher;
+    private $eventClass;
     private $settings;
 
-    public function __construct(ObjectManager $om, $event_class) {
+    public function __construct(ObjectManager $om, EventDispatcherInterface $dispatcher, $event_class) {
         $this->om = $om;
+        $this->dispatcher = $dispatcher;
         $this->eventClass = $event_class;
         $this->setRepositoryClass();
     }
@@ -45,6 +49,7 @@ class Calendar implements CalendarInterface {
     }
 
     public function persist(EventInterface $event) {
+        $this->dispatcher->dispatch(CalendarEvents::PRE_PERSIST, new CalendarEvent($event));
         $this->om->persist($event);
         $this->om->flush();
         return $event;
