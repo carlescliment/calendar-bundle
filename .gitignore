@@ -12,4 +12,5 @@ web/bundles/*
 app/config/parameters.ini
 app/config/parameters.yml
 
-src/BladeTester/CalendarBundle/Tests/App/parameters.ini
+src/BladeTester/CalendarBundle/Tests/App/cache
+src/BladeTester/CalendarBundle/Tests/App/logs
