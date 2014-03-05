@@ -1,0 +1,3 @@
+BladeTesterCalendarBundle:
+    resource: "@BladeTesterCalendarBundle/Resources/config/routing.yml"
+    prefix:   /

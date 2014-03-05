@@ -2,6 +2,7 @@
 namespace BladeTester\CalendarBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use BladeTester\CalendarBundle\Tests\App\AppKernel;
 
 
 class BaseTestCase extends WebTestCase {
@@ -19,6 +20,11 @@ class BaseTestCase extends WebTestCase {
         $this->em = $container->get('doctrine.orm.entity_manager');
         $this->calendar = $container->get('blade_tester_calendar.calendar');
         $this->categoryManager = $container->get('blade_tester_calendar.event_category_manager');
+    }
+
+    protected static function createKernel(array $options = array())
+    {
+        return new AppKernel('test', true);
     }
 
     protected function visit($route_name, array $arguments = array(), array $get = array(), $async = false) {

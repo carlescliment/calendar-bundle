@@ -1,6 +1,8 @@
 CalendarBundle
 ==================
 
+[![Build Status](https://travis-ci.org/carlescliment/calendar-bundle.png)](https://travis-ci.org/carlescliment/calendar-bundle)
+
 This is a bundle that handles events in the calendar. It provides four different default views; agenda, by day, by week and by month. You can also use this bundle as a simple calendar API.
 
 **Note** The master branch of this repo is compatible with Symfony 2.2 and 2.3. You can find a 2.1 branch also.
@@ -125,6 +127,35 @@ Copy the template in `Resources/views/Base/base.html.twig` into your own bundle 
 ```
 
 Note: remove the line including jquery if your template already includes it.
+
+## Extending the behaviour
+
+It is easy to extend the behaviour of this bundle by using inheritance in your models and entities. If it is not enough, you can register listeners to the calendar events.
+
+### Pre-persist event
+
+```
+    your_own_calendar_listener:
+        class: Your\OwnCalendarBundle\Event\CalendarListener
+        tags:
+          - { name: kernel.event_listener, event: calendar.pre-persist, method: onPrePersist }
+```
+
+```php
+
+namespace Your\OwnCalendarBundle\Event;
+
+use BladeTester\CalendarBundle\Event\CalendarEvent;
+
+class CalendarListener {
+
+    public function onPrePersist(CalendarEvent $event) {
+        $event_model = $event->getEvent();
+        // do whatever with the object before persisting it.
+    }
+}
+
+```
 
 ## Testing
 CalendarBundle has been developed using the TDD technique, so it contains unitary and functional tests. If you want to check your installation, run the tests once you have properly configured it.

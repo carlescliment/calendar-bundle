@@ -1,0 +1,45 @@
+imports:
+    - { resource: parameters.ini }
+
+framework:
+    secret: test
+    test:   ~
+    session:
+        storage_id: session.storage.filesystem
+    form:            true
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    csrf_protection: false
+    validation:
+        enabled: true
+    router:
+        resource: %kernel.root_dir%/routing.yml
+    profiler: { only_exceptions: false }
+
+blade_tester_calendar:
+    driver: doctrine/orm
+    engine: twig
+    classes:
+        event:
+            entity: BladeTester\CalendarBundle\Tests\App\Entity\Event
+        category:
+            entity: BladeTester\CalendarBundle\Entity\EventCategory
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  utf8
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+        mappings:
+            calendar_test:
+                type: annotation
+                prefix: BladeTester\CalendarBundle\Tests\App\Entity
+                dir: "%kernel.root_dir%/Entity"
+                is_bundle: false
