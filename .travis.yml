@@ -9,9 +9,9 @@ before_script:
     - composer install -n
     - mysql -e "DROP DATABASE IF EXISTS calendar_test;"
     - mysql -e "CREATE DATABASE calendar_test;"
-    - mysql -e "CREATE TABLE calendar_settings (id int(11) NOT NULL AUTO_INCREMENT,name varchar(255) COLLATE utf8_unicode_ci NOT NULL,value varchar(255) COLLATE utf8_unicode_ci NOT NULL,PRIMARY KEY (id)) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;" -e test
-    - mysql -e "CREATE TABLE event_categories (id int(11) NOT NULL AUTO_INCREMENT,name varchar(255) NOT NULL,color varchar(255) NOT NULL,PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=latin1;" -e test
-    - mysql -e "CREATE TABLE events (id int(11) NOT NULL AUTO_INCREMENT,title varchar(255) NOT NULL,description longtext NOT NULL,start datetime NOT NULL,end datetime NOT NULL,category_id int(11) DEFAULT NULL,PRIMARY KEY (id)) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;" -e test
+    - mysql -e "CREATE TABLE calendar_test.calendar_settings (id int(11) NOT NULL AUTO_INCREMENT,name varchar(255) COLLATE utf8_unicode_ci NOT NULL,value varchar(255) COLLATE utf8_unicode_ci NOT NULL,PRIMARY KEY (id)) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;"
+    - mysql -e "CREATE TABLE calendar_test.event_categories (id int(11) NOT NULL AUTO_INCREMENT,name varchar(255) NOT NULL,color varchar(255) NOT NULL,PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=latin1;"
+    - mysql -e "CREATE TABLE calendar_test.events (id int(11) NOT NULL AUTO_INCREMENT,title varchar(255) NOT NULL,description longtext NOT NULL,start datetime NOT NULL,end datetime NOT NULL,category_id int(11) DEFAULT NULL,PRIMARY KEY (id)) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;"
 
 script: phpunit src
 
