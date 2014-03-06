@@ -5,7 +5,7 @@
     "description": "A bundle for handling events in calendar",
     "keywords": ["calendar", "events"],
     "homepage": "https://github.com/carlescliment/calendar-bundle",
-    "license": "Apache2",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Carles Climent Granell",
