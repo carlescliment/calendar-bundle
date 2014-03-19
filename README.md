@@ -5,7 +5,6 @@ CalendarBundle
 
 This is a bundle that handles events in the calendar. It provides four different default views; agenda, by day, by week and by month. You can also use this bundle as a simple calendar API.
 
-**Note** The master branch of this repo is compatible with Symfony 2.2 and 2.3. You can find a 2.1 branch also.
 
 ## Installation
 
@@ -18,6 +17,9 @@ Add this line to your `composer.json`
     }
 
 Execute `php composer.phar update carlescliment/calendar-bundle`
+
+> **Note** If your version of Symfony is < 2.4.*, then you should reference the version 2.3.0.
+
 
 ### 2. Load the bundle in `app/AppKernel.php`
     $bundles = array(
@@ -52,7 +54,15 @@ Create a new bundle extending BladeTesterCalendarBundle
         }
     }
 
-WARNING: If your bundle includes its own routing file, remember to delete it or completely override the parent bundle paths.
+> WARNING: If your bundle includes its own routing file, remember to delete it or completely override the parent bundle paths.
+
+Add it to AppKernel.
+```
+    $bundles = array(
+        // ...
+        new Your\OwnCalendarBundle\YourOwnCalendarBundle(),
+    );
+```
 
 ### 5. Map event class
 
@@ -101,7 +111,13 @@ NOTE: At the moment it works only with Doctrine. Contribution to provide other d
                 entity: BladeTester\CalendarBundle\Entity\EventCategory
 
 
-### 7. Install the assets
+### 7. Update the schema
+
+```
+php app/console doctrine:schema:update --force
+```
+
+### 8. Install the assets
 
 ```
 php app/console assets:install
@@ -158,10 +174,12 @@ class CalendarListener {
 ```
 
 ## Testing
-CalendarBundle has been developed using the TDD technique, so it contains unitary and functional tests. If you want to check your installation, run the tests once you have properly configured it.
+CalendarBundle contains unitary and functional tests. Download the bundle, create the database according to the `travis.yml` file and configure the access settings in `src/BladeTester/CalendarBundle/Tests/App/parameters.ini`. Run the following command:
 
-    app/console doctrine:schema:update -e test --force
-    phpunit -c app/ vendor/carlescliment/calendar-bundle/src/BladeTester/CalendarBundle/Tests/
+```
+php vendor/bin/phpunit
+```
+
 
 ## Credits
 
