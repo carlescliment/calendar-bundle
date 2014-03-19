@@ -18,7 +18,7 @@ Add this line to your `composer.json`
 
 Execute `php composer.phar update carlescliment/calendar-bundle`
 
-> **Note** If your version of Symfony is < 2.4.*, then you should reference the version 2.3.0.
+> **Note** If your version of Symfony is < 2.4.*, then you should reference the version 2.3.0 of the bundle.
 
 
 ### 2. Load the bundle in `app/AppKernel.php`
