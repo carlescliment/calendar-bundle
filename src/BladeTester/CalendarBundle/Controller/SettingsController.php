@@ -27,7 +27,7 @@ class SettingsController extends BaseController {
         $settings = $calendar->getSettings();
         $settings_form = new SettingsType;
         $form = $this->createForm($settings_form, $settings);
-        $form->bind($request);
+        $form->handleRequest($request);
         $calendar->updateSettings($settings);
         $this->addFlashMessage('bladetester_calendar.flash.settings_updated');
         return $this->redirect($this->generateUrl('calendar_settings'));

@@ -29,13 +29,11 @@ class CategoryController extends BaseController {
         $manager = $this->getCategoryManager();
         $category = $manager->createEventCategory();
         $form = $this->getFormForCategory($category);
-        if ($request->getMethod() == 'POST') {
-            $form->bind($request);
-            if ($form->isValid()) {
-                $manager->persist($category);
-                $this->addFlashMessage('bladetester_calendar.flash.category_added', array('%name%' => $category->getName()));
-                return $this->redirectFromRequest($request);
-            }
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $manager->persist($category);
+            $this->addFlashMessage('bladetester_calendar.flash.category_added', array('%name%' => $category->getName()));
+            return $this->redirectFromRequest($request);
         }
         return array(
             'form' => $form->createView(),
@@ -52,13 +50,11 @@ class CategoryController extends BaseController {
     {
         $category = $this->loadCategoryOr404($id);
         $form = $this->getFormForCategory($category);
-        if ($request->getMethod() == 'POST') {
-            $form->bind($request);
-            if ($form->isValid()) {
-                $this->getDoctrine()->getManager()->flush();
-                $this->addFlashMessage('bladetester_calendar.flash.category_aupdated', array('%name%' => $category->getName()));
-                return $this->redirectFromRequest($request);
-            }
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            $this->addFlashMessage('bladetester_calendar.flash.category_aupdated', array('%name%' => $category->getName()));
+            return $this->redirectFromRequest($request);
         }
         return array(
             'form' => $form->createView(),

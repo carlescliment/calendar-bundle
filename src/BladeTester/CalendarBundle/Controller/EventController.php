@@ -44,13 +44,11 @@ class EventController extends BaseController {
         $this->setDefaultDatesFromRequest($event, $request);
         $form_instance = $this->get('blade_tester_calendar.forms.event');
         $form = $this->createForm($form_instance, $event);
-        if ($request->getMethod() == 'POST') {
-            $form->bind($request);
-            if ($form->isValid()) {
-                $calendar->persist($event);
-                $this->addFlashMessage('bladetester_calendar.flash.event_added', array('%title%' => $event->getTitle()));
-                return $this->redirectFromRequest($request);
-            }
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $calendar->persist($event);
+            $this->addFlashMessage('bladetester_calendar.flash.event_added', array('%title%' => $event->getTitle()));
+            return $this->redirectFromRequest($request);
         }
         return array(
             'form' => $form->createView()
@@ -87,13 +85,11 @@ class EventController extends BaseController {
         $event = $this->loadEventOr404($id);
         $form_instance = $this->get('blade_tester_calendar.forms.event');
         $form = $this->createForm($form_instance, $event);
-        if ($request->getMethod() == 'POST') {
-            $form->bind($request);
-            if ($form->isValid()) {
-                $this->getDoctrine()->getManager()->flush();
-                $this->addFlashMessage('bladetester_calendar.flash.event_updated', array('%title%' => $event->getTitle()));
-                return $this->redirectFromRequest($request);
-            }
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            $this->addFlashMessage('bladetester_calendar.flash.event_updated', array('%title%' => $event->getTitle()));
+            return $this->redirectFromRequest($request);
         }
         return array(
             'form' => $form->createView(),
