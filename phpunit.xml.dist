@@ -1,0 +1,19 @@
+<phpunit
+    backupGlobals               = "false"
+    backupStaticAttributes      = "false"
+    colors                      = "true"
+    convertErrorsToExceptions   = "true"
+    convertNoticesToExceptions  = "true"
+    convertWarningsToExceptions = "true"
+    processIsolation            = "false"
+    stopOnFailure               = "true"
+    syntaxCheck                 = "false"
+    bootstrap="vendor/autoload.php">
+
+    <testsuites>
+        <testsuite name="CalendarBundle Test Suite">
+            <directory>src/BladeTester/CalendarBundle/Tests</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>
