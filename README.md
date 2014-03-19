@@ -158,10 +158,12 @@ class CalendarListener {
 ```
 
 ## Testing
-CalendarBundle has been developed using the TDD technique, so it contains unitary and functional tests. If you want to check your installation, run the tests once you have properly configured it.
+CalendarBundle contains unitary and functional tests. Download the bundle, create the database according to the `travis.yml` file and configure the access settings in `src/BladeTester/CalendarBundle/Tests/App/parameters.ini`. Run the following command:
 
-    app/console doctrine:schema:update -e test --force
-    phpunit -c app/ vendor/carlescliment/calendar-bundle/src/BladeTester/CalendarBundle/Tests/
+```
+php vendor/bin/phpunit
+```
+
 
 ## Credits
 

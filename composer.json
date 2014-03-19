@@ -19,7 +19,8 @@
     },
     "require-dev": {
         "doctrine/orm":     "2.3.*",
-        "doctrine/doctrine-bundle": "*"
+        "doctrine/doctrine-bundle": "*",
+        "phpunit/phpunit":  "*"
     },
     "autoload": {
         "psr-0": { "BladeTester\\CalendarBundle": "src" }
