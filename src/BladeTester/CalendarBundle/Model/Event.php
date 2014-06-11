@@ -2,7 +2,7 @@
 
 namespace BladeTester\CalendarBundle\Model;
 
-use Symfony\Component\Validator\ExecutionContext;
+use Symfony\Component\Validator\ExecutionContextInterface;
 
 class Event implements EventInterface {
 
@@ -59,7 +59,7 @@ class Event implements EventInterface {
         return $this;
     }
 
-    public function isValid(ExecutionContext $context) {
+    public function isValid(ExecutionContextInterface $context) {
         $is_valid = $this->start <= $this->end;
         if (!$is_valid) {
             $context->addViolationAt('end', 'bladetester_calendar.validation.event_dates', array(), null);

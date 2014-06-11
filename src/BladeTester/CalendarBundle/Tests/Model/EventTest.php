@@ -13,9 +13,7 @@ class ContainsValidDatesValidatorTest extends \PHPUnit_Framework_TestCase {
 
     public function setUp() {
         $this->event = new Event;
-        $this->context = $this->getMockBuilder('Symfony\Component\Validator\ExecutionContext')
-                     ->disableOriginalConstructor()
-                     ->getMock();
+        $this->context = $this->getMock('Symfony\Component\Validator\ExecutionContextInterface');
     }
 
     /**
