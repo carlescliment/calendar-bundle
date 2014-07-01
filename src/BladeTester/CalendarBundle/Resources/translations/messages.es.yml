@@ -14,6 +14,12 @@ bladetester_calendar.label.cancel: Cancelar
 bladetester_calendar.label.configuration_parameters: Parámetros de configuración
 bladetester_calendar.label.back_to_calendar: volver al calendario
 
+bladetester_calendar.label.event.title: Título
+bladetester_calendar.label.event.description: Descripción
+bladetester_calendar.label.event.start: Inicio
+bladetester_calendar.label.event.end: Fin
+bladetester_calendar.label.event.category: Categoría
+
 bladetester_calendar.label.category.add: Crear categoría
 bladetester_calendar.title.category.add: Crear nueva categoría
 bladetester_calendar.label.category.edit: Actualizar
