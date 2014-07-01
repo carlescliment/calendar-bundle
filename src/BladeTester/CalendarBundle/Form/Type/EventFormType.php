@@ -18,13 +18,22 @@ class EventFormType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text')
+            ->add('title', 'text', array(
+                'label' => 'bladetester_calendar.label.event.title',
+            ))
             ->add('description', 'textarea', array(
                 'required' => false,
+                'label' => 'bladetester_calendar.label.event.description',
             ))
-            ->add('start', 'datetime')
-            ->add('end', 'datetime')
-            ->add('category', 'calendar_event_category_type')
+            ->add('start', 'datetime', array(
+                'label' => 'bladetester_calendar.label.event.start',
+            ))
+            ->add('end', 'datetime', array(
+                'label' => 'bladetester_calendar.label.event.end',
+            ))
+            ->add('category', 'calendar_event_category_type', array(
+                'label' => 'bladetester_calendar.label.event.category',
+            ))
         ;
     }
 
