@@ -177,6 +177,8 @@ class CalendarListener {
 CalendarBundle contains unitary and functional tests. Download the bundle, create the database according to the `travis.yml` file and configure the access settings in `src/BladeTester/CalendarBundle/Tests/App/parameters.ini`. Run the following command:
 
 ```
+cd /path/to/calendar-bundle
+composer update
 php vendor/bin/phpunit
 ```
 
