@@ -25,12 +25,6 @@ class AppKernel extends Kernel
      */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        AnnotationRegistry::registerAutoloadNamespace(
-            'Doctrine\ORM\Mapping',
-            __DIR__ . "/../../../../../vendor/doctrine/orm/lib");
-        AnnotationRegistry::registerAutoloadNamespace(
-            'Sensio\Bundle\FrameworkExtraBundle',
-            __DIR__ . "/../../../../../vendor/sensio/framework-extra-bundle");
         $loader->load(__DIR__.'/config.yml');
     }
 }

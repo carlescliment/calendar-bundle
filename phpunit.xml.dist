@@ -8,7 +8,7 @@
     processIsolation            = "false"
     stopOnFailure               = "true"
     syntaxCheck                 = "false"
-    bootstrap="vendor/autoload.php">
+    bootstrap="./bootstrap.php">
 
     <testsuites>
         <testsuite name="CalendarBundle Test Suite">
