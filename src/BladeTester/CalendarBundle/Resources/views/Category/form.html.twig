@@ -1,0 +1,21 @@
+<ul>
+    <li>
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+    </li>
+    <li>
+        <ul class="calendar-colors">
+            {% for color in colors %}
+                <li id="{{ color }}" class="calendar-color event-color-{{ color }}{% if category.color == color %} active{% endif %}"></li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li style="display:none">
+        {{ form_label(form.color) }}
+        {{ form_errors(form.color) }}
+        {{ form_widget(form.color) }}
+    </li>
+</ul>
+{{ form_widget(form) }}
+
