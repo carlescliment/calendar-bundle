@@ -30,13 +30,10 @@ class EventControllerTest extends BaseTestCase {
     {
         // Arrange
         $event = $this->calendar->persist($this->getEvent());
-        $crawler = $this->visit('calendar_event_edit', array('id' => $event->getId()));
-        $form = $crawler->filter('form#event-edit')->form();
         $new_description = 'I have changed the description';
-        $form['event[description]'] = $new_description;
 
         // Act
-        $this->client->submit($form);
+        $this->updateAnEventTroughTheUi($event, array('event[description]' => $new_description));
 
         // Assert
         $this->em->refresh($event);
@@ -190,6 +187,19 @@ class EventControllerTest extends BaseTestCase {
         $this->assertTrue($listener->hasBeenCalled());
     }
 
+    /**
+     * @test
+     */
+    public function itDispatchesAnEventWhenUpdatingARecordFromTheCalendar()
+    {
+        // Act
+        $this->addAnEventThroughTheUI();
+
+        // Expect
+        $listener = $this->client->getKernel()->getContainer()->get('calendar_test.post_add_listener');
+        $this->assertTrue($listener->hasBeenCalled());
+    }
+
     private function getEvent(array $data = array()) {
         $event = $this->calendar->createEvent();
         $event->setTitle('Some title');
@@ -209,6 +219,16 @@ class EventControllerTest extends BaseTestCase {
         $end_date = $start_date->add(date_interval_create_from_date_string('1 hour'));
         $form = $crawler->filter('form#event-add')->form();
         $form['event[title]'] = 'This is a test creating an event';
+        $this->client->submit($form);
+    }
+
+    private function updateAnEventTroughTheUi($event, array $fields_changed = array())
+    {
+        $crawler = $this->visit('calendar_event_edit', array('id' => $event->getId()));
+        $form = $crawler->filter('form#event-edit')->form();
+        foreach ($fields_changed as $key => $value) {
+            $form[$key] = $value;
+        }
         $this->client->submit($form);
     }
 }
