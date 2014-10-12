@@ -87,7 +87,7 @@ class EventController extends BaseController {
         $form = $this->createForm($form_instance, $event);
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->getCalendar()->update($event);
             $this->addFlashMessage('bladetester_calendar.flash.event_updated', array('%title%' => $event->getTitle()));
             return $this->redirectFromRequest($request);
         }

@@ -150,11 +150,36 @@ It is easy to extend the behaviour of this bundle by using inheritance in your m
 
 ### Pre-persist event
 
+Dispatched whenever an item is about to be created in the database.
+
 ```
     your_own_calendar_listener:
         class: Your\OwnCalendarBundle\Event\CalendarListener
         tags:
           - { name: kernel.event_listener, event: calendar.pre-persist, method: onPrePersist }
+```
+
+
+### Post-add event
+
+Dispatched after an item is added to the database.
+
+```
+    your_own_calendar_listener:
+        class: Your\OwnCalendarBundle\Event\CalendarListener
+        tags:
+          - { name: kernel.event_listener, event: calendar.post-add, method: onPostAdd }
+```
+
+### Post-update event
+
+Dispatched after an item is updated.
+
+```
+    your_own_calendar_listener:
+        class: Your\OwnCalendarBundle\Event\CalendarListener
+        tags:
+          - { name: kernel.event_listener, event: calendar.post-update, method: onPostUpdate }
 ```
 
 ```php

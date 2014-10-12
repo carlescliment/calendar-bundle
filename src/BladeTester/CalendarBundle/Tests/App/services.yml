@@ -1,0 +1,5 @@
+services:
+  calendar_test.post_add_listener:
+    class: BladeTester\CalendarBundle\Tests\App\EventDispatcher\Listener\PostAddListener
+    tags:
+      - { name: kernel.event_listener, event: calendar.post-add, method: onEventPostAdd }
