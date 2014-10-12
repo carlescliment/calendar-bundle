@@ -176,6 +176,7 @@ class EventControllerTest extends BaseTestCase {
 
     private function getEvent(array $data = array()) {
         $event = $this->calendar->createEvent();
+        $event->setTitle('Some title');
         if (isset($data['start'])) {
             $event->setStart($data['start']);
         }
