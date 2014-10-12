@@ -5,7 +5,8 @@ namespace BladeTester\CalendarBundle\Tests\Controller;
 
 class EventControllerTest extends BaseTestCase {
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
         $this->truncateTables(array('events', 'event_categories'));
     }
@@ -13,16 +14,10 @@ class EventControllerTest extends BaseTestCase {
     /**
      * @test
      */
-    public function IShouldCreateAnEvent() {
-        // Arrange
-        $crawler = $this->visit('calendar_event_add');
-        $start_date = new \DateTime();
-        $end_date = $start_date->add(date_interval_create_from_date_string('1 hour'));
-        $form = $crawler->filter('form#event-add')->form();
-        $form['event[title]'] = 'This is a test creating an event';
-
+    public function IShouldCreateAnEvent()
+    {
         // Act
-        $this->client->submit($form);
+        $this->addAnEventThroughTheUI();
 
         // Assert
         $this->assertCount(1, $this->calendar->findAll());
@@ -31,7 +26,8 @@ class EventControllerTest extends BaseTestCase {
     /**
      * @test
      */
-    public function IShouldEditAnEvent() {
+    public function IShouldEditAnEvent()
+    {
         // Arrange
         $event = $this->calendar->persist($this->getEvent());
         $crawler = $this->visit('calendar_event_edit', array('id' => $event->getId()));
@@ -51,7 +47,8 @@ class EventControllerTest extends BaseTestCase {
     /**
      * @test
      */
-    public function IShouldAssignACategoryToAnEvent() {
+    public function IShouldAssignACategoryToAnEvent()
+    {
         // Arrange
         $category = $this->categoryManager->persist($this->categoryManager->createEventCategory());
         $event = $this->calendar->persist($this->getEvent());
@@ -73,7 +70,8 @@ class EventControllerTest extends BaseTestCase {
     /**
      * @test
      */
-    public function IShouldDeleteAnEvent() {
+    public function IShouldDeleteAnEvent()
+    {
         // Arrange
         $event = $this->calendar->persist($this->getEvent());
 
@@ -88,7 +86,8 @@ class EventControllerTest extends BaseTestCase {
     /**
      * @test
      */
-    public function IShouldSeeTheEventsList() {
+    public function IShouldSeeTheEventsList()
+    {
         // Arrange
         $this->calendar->persist($this->getEvent());
         $this->calendar->persist($this->getEvent());
@@ -104,7 +103,8 @@ class EventControllerTest extends BaseTestCase {
     /**
      * @test
      */
-    public function IShouldNotSeePreviousEventsInTheEventsList() {
+    public function IShouldNotSeePreviousEventsInTheEventsList()
+    {
         // Arrange
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2001-02-02'),
                                                        'end' => new \DateTime('2001-02-03'))));
@@ -122,7 +122,8 @@ class EventControllerTest extends BaseTestCase {
     /**
      * @test
      */
-    public function IShouldSeeTheEventsInADay() {
+    public function IShouldSeeTheEventsInADay()
+    {
         // Arrange
         $today = new \DateTime();
         $this->calendar->persist($this->getEvent(array('start' => $today)));
@@ -141,7 +142,8 @@ class EventControllerTest extends BaseTestCase {
     /**
      * @test
      */
-    public function IShouldSeeTheEventsInAWeek() {
+    public function IShouldSeeTheEventsInAWeek()
+    {
         // Arrange
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-03-11'))));
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-03-17'))));
@@ -159,7 +161,8 @@ class EventControllerTest extends BaseTestCase {
     /**
      * @test
      */
-    public function IShouldSeeTheEventsInAMonth() {
+    public function IShouldSeeTheEventsInAMonth()
+    {
         // Arrange
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-03-11'))));
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-03-17'))));
@@ -174,6 +177,19 @@ class EventControllerTest extends BaseTestCase {
         $this->assertEquals(2, $crawler->filter('.appointment')->count());
     }
 
+    /**
+     * @test
+     */
+    public function itDispatchesAnEventWhenAddingARecordInTheCalendar()
+    {
+        // Act
+        $this->addAnEventThroughTheUI();
+
+        // Expect
+        $listener = $this->client->getKernel()->getContainer()->get('calendar_test.post_add_listener');
+        $this->assertTrue($listener->hasBeenCalled());
+    }
+
     private function getEvent(array $data = array()) {
         $event = $this->calendar->createEvent();
         $event->setTitle('Some title');
@@ -184,5 +200,15 @@ class EventControllerTest extends BaseTestCase {
             $event->setEnd($data['end']);
         }
         return $event;
+    }
+
+    private function addAnEventThroughTheUI()
+    {
+        $crawler = $this->visit('calendar_event_add');
+        $start_date = new \DateTime();
+        $end_date = $start_date->add(date_interval_create_from_date_string('1 hour'));
+        $form = $crawler->filter('form#event-add')->form();
+        $form['event[title]'] = 'This is a test creating an event';
+        $this->client->submit($form);
     }
 }
