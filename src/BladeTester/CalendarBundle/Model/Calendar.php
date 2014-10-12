@@ -56,6 +56,12 @@ class Calendar implements CalendarInterface {
         return $event;
     }
 
+    public function update(EventInterface $event) {
+        $this->dispatcher->dispatch(CalendarEvents::POST_UPDATE, new CalendarEvent($event));
+        $this->om->flush();
+        return $event;
+    }
+    
     public function getMonthSheetDays(\DateTime $date) {
         $first_day = DatesTransformer::toMonday(DatesTransformer::toFirstMonthDay($date));
         $last_day = DatesTransformer::toSunday(DatesTransformer::toLastMonthDay($date));
