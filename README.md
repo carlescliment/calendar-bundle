@@ -159,6 +159,22 @@ Dispatched whenever an item is about to be created in the database.
           - { name: kernel.event_listener, event: calendar.pre-persist, method: onPrePersist }
 ```
 
+```php
+
+namespace Your\OwnCalendarBundle\Event;
+
+use BladeTester\CalendarBundle\Event\CalendarEvent;
+
+class CalendarListener {
+
+    public function onPrePersist(CalendarEvent $event) {
+        $event_model = $event->getEvent();
+        // do whatever with the object before persisting it.
+    }
+}
+
+```
+
 
 ### Post-add event
 
@@ -180,22 +196,6 @@ Dispatched after an item is updated.
         class: Your\OwnCalendarBundle\Event\CalendarListener
         tags:
           - { name: kernel.event_listener, event: calendar.post-update, method: onPostUpdate }
-```
-
-```php
-
-namespace Your\OwnCalendarBundle\Event;
-
-use BladeTester\CalendarBundle\Event\CalendarEvent;
-
-class CalendarListener {
-
-    public function onPrePersist(CalendarEvent $event) {
-        $event_model = $event->getEvent();
-        // do whatever with the object before persisting it.
-    }
-}
-
 ```
 
 ## Testing
