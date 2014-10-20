@@ -25,53 +25,74 @@ class Calendar implements CalendarInterface {
     public function __call($method_name, $arguments)
     {
         $repository = $this->getRepository();
+
         return call_user_func_array(array(&$repository, $method_name), $arguments);
     }
 
-    public function getSettings() {
+    public function getSettings()
+    {
         return $this->om->getRepository('BladeTesterCalendarBundle:Setting')->getSettings();
     }
 
-    public function updateSettings(Settings $settings) {
+    public function updateSettings(Settings $settings)
+    {
         return $this->om->getRepository('BladeTesterCalendarBundle:Setting')->updateSettings($settings);
     }
 
-    public function getDefaultView() {
+    public function getDefaultView()
+    {
         return $this->getSettings()->getDefaultView();
     }
 
-    public function createEvent() {
+    public function createEvent()
+    {
         $event = new $this->eventClass();
         $now = new \DateTime;
         $event->setStart($now);
         $event->setEnd($now);
+
         return $event;
     }
 
-    public function persist(EventInterface $event) {
+    public function persist(EventInterface $event)
+    {
         $this->dispatcher->dispatch(CalendarEvents::PRE_PERSIST, new CalendarEvent($event));
         $this->om->persist($event);
         $this->om->flush();
+
         return $event;
     }
 
-    public function getMonthSheetDays(\DateTime $date) {
+    public function getMonthSheetDays(\DateTime $date)
+    {
         $first_day = DatesTransformer::toMonday(DatesTransformer::toFirstMonthDay($date));
         $last_day = DatesTransformer::toSunday(DatesTransformer::toLastMonthDay($date));
+
         return DatesTransformer::getAllDaysBetween($first_day, $last_day);
     }
 
-    public function getWeekSheetDays(\DateTime $date) {
+    public function getWeekSheetDays(\DateTime $date)
+    {
         $first_day = DatesTransformer::toMonday($date);
         $last_day = DatesTransformer::toSunday($date);
+
         return DatesTransformer::getAllDaysBetween($first_day, $last_day);
     }
 
-    private function getRepository() {
+    protected function getEventClass()
+    {
+        return $this->eventClass;
+    }
+
+    private function getRepository()
+    {
         return $this->om->getRepository($this->eventClass);
     }
 
-    private function setRepositoryClass() {
+    private function setRepositoryClass()
+    {
         $this->getRepository()->setClass($this->eventClass);
+
+        return $this;
     }
 }
