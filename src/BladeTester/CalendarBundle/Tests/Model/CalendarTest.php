@@ -226,7 +226,7 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $event = $this->calendar->createEvent();
 
         // Expect
-        $this->dispatcher->expects($this->once())
+        $this->dispatcher->expects($this->at(0))
             ->method('dispatch')
             ->with('calendar.pre-persist', $this->isInstanceOf('BladeTester\CalendarBundle\Event\CalendarEvent'));
 
@@ -234,6 +234,37 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $this->calendar->persist($event);
     }
 
+    /**
+     * @test
+     */
+    public function itDispatchesAnEventAfterPersisting() {
+        // Arrange
+        $event = $this->calendar->createEvent();
+
+        // Expect
+        $this->dispatcher->expects($this->at(1))
+            ->method('dispatch')
+            ->with('calendar.post-add', $this->isInstanceOf('BladeTester\CalendarBundle\Event\CalendarEvent'));
+
+        // Act
+        $this->calendar->persist($event);
+    }
+
+    /**
+     * @test
+     */
+    public function itDispatchesAnEventAfterUpdating() {
+        // Arrange
+        $event = $this->calendar->createEvent();
+
+        // Expect
+        $this->dispatcher->expects($this->once())
+            ->method('dispatch')
+            ->with('calendar.post-update', $this->isInstanceOf('BladeTester\CalendarBundle\Event\CalendarEvent'));
+
+        // Act
+        $this->calendar->update($event);
+    }
 
     /**
      * @test
