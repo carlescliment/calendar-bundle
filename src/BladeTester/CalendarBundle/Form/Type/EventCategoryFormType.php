@@ -21,10 +21,10 @@ class EventCategoryFormType extends AbstractType {
     {
         $builder
             ->add('name', 'text', array(
-                'label' => 'bladetester_calendar.label.name',
+                'label' => 'bladetester_calendar.label.category.name',
             ))
             ->add('color', 'choice', array(
-                'label' => 'bladetester_calendar.label.color',
+                'label' => 'bladetester_calendar.label.category.color',
                 'choices' => array(
                     Color::BLACK => 'Black',
                     Color::RED => 'Red',
