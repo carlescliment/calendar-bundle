@@ -26,6 +26,8 @@ bladetester_calendar.label.category.edit: Update
 bladetester_calendar.title.category.edit: Edit category
 bladetester_calendar.label.category.delete: Delete
 bladetester_calendar.title.category.list: Category list
+bladetester_calendar.label.category.name: Name
+bladetester_calendar.label.category.color: Color
 
 bladetester_calendar.label.settings.update: Save
 bladetester_calendar.label.settings.default_view: Default view

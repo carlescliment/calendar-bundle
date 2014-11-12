@@ -20,8 +20,11 @@ class EventCategoryFormType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text')
+            ->add('name', 'text', array(
+                'label' => 'bladetester_calendar.label.name',
+            ))
             ->add('color', 'choice', array(
+                'label' => 'bladetester_calendar.label.color',
                 'choices' => array(
                     Color::BLACK => 'Black',
                     Color::RED => 'Red',
