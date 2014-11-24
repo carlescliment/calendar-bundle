@@ -1,0 +1,97 @@
+bladetester_calendar.label.event.add: Afegir event
+bladetester_calendar.label.event.update: Actualitzar event
+bladetester_calendar.label.event.delete: Eliminar
+bladetester_calendar.label.event.delete_warning: Segur que vols eliminar aquest event?
+bladetester_calendar.label.event_category.delete_warning: Segur que vols eliminar aquesta categoria?
+bladetester_calendar.label.event.category.none: Sense categoria
+bladetester_calendar.label.agenda: Agenda
+bladetester_calendar.label.day: Dia
+bladetester_calendar.label.week: Setmana
+bladetester_calendar.label.month: Mes
+bladetester_calendar.label.print: Imprimir
+bladetester_calendar.label.settings: Configurar
+bladetester_calendar.label.cancel: Cancel·lar
+bladetester_calendar.label.configuration_parameters: Paràmetres de configuració
+bladetester_calendar.label.back_to_calendar: tornar al calendari
+
+bladetester_calendar.label.event.title: Títol
+bladetester_calendar.label.event.description: Descripció
+bladetester_calendar.label.event.start: Inici
+bladetester_calendar.label.event.end: Fi
+bladetester_calendar.label.event.category: Categoria
+
+bladetester_calendar.label.category.add: Crear categoria
+bladetester_calendar.title.category.add: Crear nova categoría
+bladetester_calendar.label.category.edit: Actualitzar
+bladetester_calendar.title.category.edit: Editar categoria
+bladetester_calendar.label.category.delete: Esborrar
+bladetester_calendar.title.category.list: Llistat de categories
+bladetester_calendar.label.category.name: Nom
+bladetester_calendar.label.category.color: Color
+
+bladetester_calendar.label.settings.update: Desar
+bladetester_calendar.label.settings.default_view: Vista predeterminada
+
+bladetester_calendar.list.no_events: Encara no hi ha events
+bladetester_calendar.list.no_categories: Encara no hi ha categories
+
+bladetester_calendar.flash.event_added: S'ha creat un nou event de títol "%title%"
+bladetester_calendar.flash.event_updated: L'event "%title%" ha sigut actualitzat
+bladetester_calendar.flash.event_deleted: L'event "%title%" ha sigut eliminat
+bladetester_calendar.flash.category_added: S'ha creat una nova categoria de nom %name%
+bladetester_calendar.flash.category_updated: La categoria %name% ha sigut actualitzada
+bladetester_calendar.flash.category_deleted: La categoria %name% ha sigut eliminada
+bladetester_calendar.flash.settings_updated: Configuració del calendari actualitzada
+
+bladetester_calendar.exception.event_not_found: No s'ha trobat cap event amb id %id%
+bladetester_calendar.exception.category_not_found: No s'ha trobat cap categoria amb id %id%
+
+
+
+%month% of %year%: %month% de %year%
+%month%-%day%: %day%/%month%
+Week from %from_day%, %from_month% of %from_year% to %to_day%, %to_month% of %to_year%: Setmana del %from_day% de/d' %from_month% de %from_year% al %to_day% de/d' %to_month% de %to_year%
+%week_day%, %month% %day%th of %year%: %week_day%, %day% de %month% de %year%
+
+
+bladetester_calendar.abbr.monday: dil
+bladetester_calendar.abbr.tuesday: dim
+bladetester_calendar.abbr.wednesday: dix
+bladetester_calendar.abbr.thursday: dij
+bladetester_calendar.abbr.friday: div
+bladetester_calendar.abbr.saturday: dis
+bladetester_calendar.abbr.sunday: diu
+
+
+January: Gener
+February: Febrer
+March: Març
+April: Abril
+May: Maig
+June: Juny
+July: Juliol
+August: Agost
+September: Setembre
+October: Octubre
+November: Novembre
+December: Desembre
+
+
+Monday: dilluns
+Tuesday: dimarts
+Wednesday: dimecres
+Thursday: dijous
+Friday: divendres
+Saturday: dissabte
+Sunday: diumenge
+
+
+Mon: dil
+Tue: dim
+Wed: dix
+Thu: dij
+Fri: div
+Sat: dis
+Sun: diu
+
+or: o
