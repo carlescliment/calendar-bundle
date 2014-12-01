@@ -4,13 +4,13 @@
         <table class="dp-monthtable monthtableBody" summary="Minicalendario - marzo de 2013" cellspacing="0" cellpadding="0" id="dp_0_tbl">
             <tbody>
                 <tr class="dp-days">
-                    <th scope="col" class="dp-cell dp-dayh" title="lunes">L</th>
-                    <th scope="col" class="dp-cell dp-dayh" title="martes">M</th>
-                    <th scope="col" class="dp-cell dp-dayh" title="miércoles">X</th>
-                    <th scope="col" class="dp-cell dp-dayh" title="jueves">J</th>
-                    <th scope="col" class="dp-cell dp-dayh" title="viernes">V</th>
-                    <th scope="col" class="dp-cell dp-dayh dp-cell dp-weekendh" title="sábado">S</th>
-                    <th scope="col" class="dp-cell dp-dayh dp-cell dp-weekendh" title="domingo">D</th>
+                    <th scope="col" class="dp-cell dp-dayh" title="{{ 'Monday'|trans }}">{{ 'bladetester_calendar.abbr.monday'|trans }}</th>
+                    <th scope="col" class="dp-cell dp-dayh" title="{{ 'Tuesday'|trans }}">{{ 'bladetester_calendar.abbr.tuesday'|trans }}</th>
+                    <th scope="col" class="dp-cell dp-dayh" title="{{ 'Wednesday'|trans }}">{{ 'bladetester_calendar.abbr.wednesday'|trans }}</th>
+                    <th scope="col" class="dp-cell dp-dayh" title="{{ 'Thursday'|trans }}">{{ 'bladetester_calendar.abbr.thursday'|trans }}</th>
+                    <th scope="col" class="dp-cell dp-dayh" title="{{ 'Friday'|trans }}">{{ 'bladetester_calendar.abbr.friday'|trans }}</th>
+                    <th scope="col" class="dp-cell dp-dayh dp-cell dp-weekendh" title="{{ 'Saturday'|trans }}">{{ 'bladetester_calendar.abbr.saturday'|trans }}</th>
+                    <th scope="col" class="dp-cell dp-dayh dp-cell dp-weekendh" title="{{ 'Sunday'|trans }}">{{ 'bladetester_calendar.abbr.sunday'|trans }}</th>
                 </tr>
                 {% for day in dates %}
                     {% if loop.index0%7 == 0 %}<tr>{% endif %}
