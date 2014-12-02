@@ -5,8 +5,7 @@ CalendarBundle
 
 This is a bundle that handles events in the calendar. It provides four different default views; agenda, by day, by week and by month. You can also use this bundle as a simple calendar API.
 
-Demo Avaliable here : www.bonnie-doug.co.uk
-
+Have a look at the [demo site](http://www.bonniechef.com/calendar).
 
 ## Installation
 
@@ -214,6 +213,7 @@ php vendor/bin/phpunit
 
 * Author: [Carles Climent][carlescliment] (programming)
 * Author: [Marcos Calatayud][marcosc] (markup and design)
+* Contributor: [Dough Hayward][BonnieDough] (some fixes and demo environment)
 
 
 ## Contribute and feedback
@@ -224,3 +224,4 @@ Please, feel free to provide feedback of this bundle. Contributions will be much
 
 [carlescliment]: https://github.com/carlescliment
 [marcosc]: http://www.linkedin.com/profile/view?id=48458010
+[BonnieDoug]: http://github.com/BonnieDoug
