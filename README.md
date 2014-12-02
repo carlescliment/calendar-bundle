@@ -5,6 +5,8 @@ CalendarBundle
 
 This is a bundle that handles events in the calendar. It provides four different default views; agenda, by day, by week and by month. You can also use this bundle as a simple calendar API.
 
+Demo Avaliable here : www.bonnie-doug.co.uk
+
 
 ## Installation
 
