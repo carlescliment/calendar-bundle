@@ -86,9 +86,13 @@ class EventControllerTest extends BaseTestCase {
     public function IShouldSeeTheEventsList()
     {
         // Arrange
-        $this->calendar->persist($this->getEvent());
-        $this->calendar->persist($this->getEvent());
-        $this->calendar->persist($this->getEvent());
+        $in_ten_minutes = array(
+            'start' => new \DateTime(date('Y-m-d H:i', strtotime('+10 minutes'))),
+            'end' => new \DateTime(date('Y-m-d H:i', strtotime('+15 minutes'))),
+        );
+        $this->calendar->persist($this->getEvent($in_ten_minutes));
+        $this->calendar->persist($this->getEvent($in_ten_minutes));
+        $this->calendar->persist($this->getEvent($in_ten_minutes));
 
         // Act
         $crawler = $this->visit('calendar_event_list');
