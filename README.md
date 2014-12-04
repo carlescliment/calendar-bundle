@@ -216,7 +216,7 @@ php vendor/bin/phpunit
 
 ## Contribute and feedback
 
-Please, feel free to provide feedback of this bundle. Contributions will be much appreciated.
+Any feedback and contribution will be very appreciated.
 
 
 
