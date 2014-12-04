@@ -1,0 +1,96 @@
+bladetester_calendar.label.event.add: Gertaera sortu
+bladetester_calendar.label.event.update: Gertaera eguneratu
+bladetester_calendar.label.event.delete_warning: Honako gertaera ezabatu nahi duzu?
+bladetester_calendar.label.event_category.delete_warning: Honako kategoria ezabatu nahi duzu?
+bladetester_calendar.label.event.category.none: Kategoriak gabe
+bladetester_calendar.label.agenda: Agenda
+bladetester_calendar.label.day: Eguna
+bladetester_calendar.label.week: Astea
+bladetester_calendar.label.month: Hilabetea
+bladetester_calendar.label.print: Inprimatu
+bladetester_calendar.label.settings: Konfiguratu
+bladetester_calendar.label.cancel: Utzi
+bladetester_calendar.label.configuration_parameters: Parametroak konfiguratu
+bladetester_calendar.label.back_to_calendar: egutegira itzuli
+
+bladetester_calendar.label.event.title: Titulua
+bladetester_calendar.label.event.description: Azalpena
+bladetester_calendar.label.event.start: Hasiera
+bladetester_calendar.label.event.end: Amaiera
+bladetester_calendar.label.event.category: Kaegotia
+
+bladetester_calendar.label.category.add: Kategoria sortu
+bladetester_calendar.title.category.add: Kategoria berria sortu
+bladetester_calendar.label.category.edit: Eguneratu
+bladetester_calendar.title.category.edit: Kategoria eguneratu
+bladetester_calendar.label.delete: Ezabatu
+bladetester_calendar.title.category.list: Kategoria zerrenda
+bladetester_calendar.label.category.name: Izena
+bladetester_calendar.label.category.color: Kolorea
+
+bladetester_calendar.label.settings.update: Gorde
+bladetester_calendar.label.settings.default_view: Ikuspegia lehenetsi
+
+bladetester_calendar.list.no_events: Gertaerarik ez dago
+bladetester_calendar.list.no_categories: Kategoriarik ez dago
+
+bladetester_calendar.flash.event_added: %title% titulua duen gertaera sortu da
+bladetester_calendar.flash.event_updated: %title% duen gertaera eguneratu da
+bladetester_calendar.flash.event_deleted: %title% duen gertaera ezabatu da
+bladetester_calendar.flash.category_added: %name% izena duen kategoria sortu da
+bladetester_calendar.flash.category_updated: %name% kategoria eguneratu da
+bladetester_calendar.flash.category_deleted: %name% kategoria ezabatu da
+bladetester_calendar.flash.settings_updated: Egutegiaren konfigurazioa eguneratua
+
+bladetester_calendar.exception.event_not_found: Ez da %id% id duen gertaerarik aurkitu
+bladetester_calendar.exception.category_not_found: Ez da %id% id duen kategoriarik aurkitu
+
+
+
+%month% of %year%: %month% de %year%
+%month%-%day%: %day%/%month%
+Week from %from_day%, %from_month% of %from_year% to %to_day%, %to_month% of %to_year%: %to_year%-(e)ko %from_month%-ren %to_day%-(e)tik %to_year%-(e)ko %from_month%-ren %to_day%-(e)rarteko astea
+%week_day%, %month% %day%th of %year%: %week_day%, %day% de %month% de %year%
+
+
+bladetester_calendar.abbr.monday: al
+bladetester_calendar.abbr.tuesday: ar
+bladetester_calendar.abbr.wednesday: az
+bladetester_calendar.abbr.thursday: og
+bladetester_calendar.abbr.friday: os
+bladetester_calendar.abbr.saturday: la
+bladetester_calendar.abbr.sunday: ig
+
+
+January: Urtarrilla
+February: Otsaila
+March: Martxoa
+April: Apirila
+May: Maiatza
+June: Ekaina
+July: Uztaila
+August: Abuztua
+September: Iraila
+October: Urria
+November: Azaroa
+December: Abendua
+
+
+Monday: astelehena
+Tuesday: asteartea
+Wednesday: asteazkena
+Thursday: osteguan
+Friday: ostirala
+Saturday: larunbata
+Sunday: igandea
+
+
+Mon: al
+Tue: as
+Wed: az
+Thu: og
+Fri: os
+Sat: la
+Sun: ig
+
+or: edo
