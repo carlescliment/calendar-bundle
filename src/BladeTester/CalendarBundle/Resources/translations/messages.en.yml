@@ -1,6 +1,5 @@
 bladetester_calendar.label.event.add: Add event
 bladetester_calendar.label.event.update: Update event
-bladetester_calendar.label.event.delete: Delete
 bladetester_calendar.label.event.delete_warning: Do you really want to remove this event?
 bladetester_calendar.label.event_category.delete_warning: Do you really want to remove this category?
 bladetester_calendar.label.event.category.none: Uncategorized
@@ -24,7 +23,7 @@ bladetester_calendar.label.category.add: Add category
 bladetester_calendar.title.category.add: Add new category
 bladetester_calendar.label.category.edit: Update
 bladetester_calendar.title.category.edit: Edit category
-bladetester_calendar.label.category.delete: Delete
+bladetester_calendar.label.delete: Delete
 bladetester_calendar.title.category.list: Category list
 bladetester_calendar.label.category.name: Name
 bladetester_calendar.label.category.color: Color
@@ -61,3 +60,6 @@ Thursday: Thursday
 Friday: Friday
 Saturday: Saturday
 Sunday: Sunday
+
+
+

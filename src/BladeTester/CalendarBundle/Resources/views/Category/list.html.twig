@@ -5,7 +5,7 @@
         {% for category in categories %}
             <li class="event-category event-color-{{ category.color }}">
                 <a href="{{ path('calendar_category_edit', {'id': category.id}) }}">{{ category.name }}</a>
-                (<a class="alert" href="{{ path('calendar_category_delete', {'id': category.id}) }}" onclick="return confirm('{{ 'bladetester_calendar.label.event_category.delete_warning'|trans }}');">{{ 'bladetester_calendar.label.category.delete'|trans }}</a>)
+                (<a class="alert" href="{{ path('calendar_category_delete', {'id': category.id}) }}" onclick="return confirm('{{ 'bladetester_calendar.label.event_category.delete_warning'|trans }}');">{{ 'bladetester_calendar.label.delete'|trans }}</a>)
             </li>
         {% endfor %}
     </ul>
