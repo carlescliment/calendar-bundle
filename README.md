@@ -213,7 +213,7 @@ php vendor/bin/phpunit
 
 * Author: [Carles Climent][carlescliment] (programming)
 * Author: [Marcos Calatayud][marcosc] (markup and design)
-* Contributor: [Doug Hayward][BonnieDoug] (some fixes and demo environment)
+* Contributor: [Doug Hayward][BonnieDoug] (french translations, fixes and demo environment)
 
 
 ## Contribute and feedback
