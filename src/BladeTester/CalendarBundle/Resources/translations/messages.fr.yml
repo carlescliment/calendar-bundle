@@ -1,6 +1,5 @@
 bladetester_calendar.label.event.add: Ajouter un événement
 bladetester_calendar.label.event.update: Mettre à jour événement
-#bladetester_calendar.label.event.delete: Effacer
 bladetester_calendar.label.event.delete_warning: Voulez-vous vraiment supprimer cet événement?
 bladetester_calendar.label.event_category.delete_warning: Voulez-vous vraiment supprimer cette catégorie?
 bladetester_calendar.label.event.category.none: Non classé
@@ -25,7 +24,6 @@ bladetester_calendar.label.category.add: Ajouter des catégories
 bladetester_calendar.title.category.add: Ajouter nouvelle catégorie
 bladetester_calendar.label.category.edit: Mettre à jour
 bladetester_calendar.title.category.edit: Modifier une catégorie
-#bladetester_calendar.label.category.delete: Delete
 bladetester_calendar.title.category.list: Liste Catégorie
 bladetester_calendar.label.category.name: Nom
 bladetester_calendar.label.category.color: Couleur
