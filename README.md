@@ -3,7 +3,7 @@ CalendarBundle
 
 [![Build Status](https://travis-ci.org/carlescliment/calendar-bundle.png)](https://travis-ci.org/carlescliment/calendar-bundle)
 
-This is a bundle that handles events in the calendar. It provides four different default views; agenda, by day, by week and by month. You can also use this bundle as a simple calendar API.
+The CalendarBundle gives you a built-in calendar for managing events without relying on third-parties like Google. It comes with four different default views; agenda, by day, by week and by month. If you need greater customizations, you can use the bundle as a simple calendar API and build your own logic on it.
 
 Have a look at the [demo site](http://www.bonniechef.com/calendar).
 
@@ -18,8 +18,6 @@ Add this line to your `composer.json`
     }
 
 Execute `php composer.phar update carlescliment/calendar-bundle`
-
-> **Note** If your version of Symfony is < 2.4.*, then you should reference the version 2.3.0 of the bundle.
 
 
 ### 2. Load the bundle in `app/AppKernel.php`
