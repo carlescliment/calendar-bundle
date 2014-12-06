@@ -47,10 +47,10 @@ bladetester_calendar.exception.category_not_found: Ez da %id% id duen kategoriar
 
 
 
-%month% of %year%: %month% de %year%
-%month%-%day%: %day%/%month%
-Week from %from_day%, %from_month% of %from_year% to %to_day%, %to_month% of %to_year%: %to_year%-(e)ko %from_month%-ren %to_day%-(e)tik %to_year%-(e)ko %from_month%-ren %to_day%-(e)rarteko astea
-%week_day%, %month% %day%th of %year%: %week_day%, %day% de %month% de %year%
+%month% of %year%: %year%-(e)ko %month%
+%month%-%day%: %month%/%day%
+Week from %from_day%, %from_month% of %from_year% to %to_day%, %to_month% of %to_year%: %from_year%-(e)ko %from_month%-ren %from_day%-(e)tik %to_year%-(e)ko %to_month%-ren %to_day%-(e)rarteko astea
+%week_day%, %month% %day%th of %year%: %week_day%, %year%(e)ko %month%ren %day%a
 
 
 bladetester_calendar.abbr.monday: al
