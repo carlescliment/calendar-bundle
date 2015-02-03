@@ -5,7 +5,6 @@ CalendarBundle
 
 The CalendarBundle gives you a built-in calendar for managing events without relying on third-parties like Google. It comes with four different default views; agenda, by day, by week and by month. If you need greater customizations, you can use the bundle as a simple calendar API and build your own logic on it.
 
-Have a look at the [demo site](http://www.bonniechef.com/calendar).
 
 ## Installation
 
@@ -211,7 +210,7 @@ php vendor/bin/phpunit
 
 * Author: [Carles Climent][carlescliment] (programming)
 * Author: [Marcos Calatayud][marcosc] (markup and design)
-* Contributor: [Doug Hayward][BonnieDoug] (french translations, fixes and demo environment)
+* Contributor: [Doug Hayward][BonnieDoug] (french translations, fixes)
 * Contributor: [Rubén Egiguren][keopx] (basque translations)
 
 ## Contribute and feedback
