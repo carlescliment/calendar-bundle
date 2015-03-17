@@ -47,19 +47,19 @@ class EventRepository Extends EntityRepository implements EventRepositoryInterfa
 
     public function findAllByDay(\DateTime $date) {
         $start = new \DateTime($date->format('Y-m-d 00:00'));
-        $end = new \DateTime($date->format('Y-m-d 23:59'));
+        $end = new \DateTime($date->format('Y-m-d 23:59:59'));
         return $this->findAllByDates($start, $end);
     }
 
     public function findAllByWeek(\DateTime $date) {
         $monday = DatesTransformer::toMonday($date)->setTime(0, 0);
-        $sunday = DatesTransformer::toSunday($date)->setTime(0, 0);
+        $sunday = DatesTransformer::toSunday($date)->setTime(23, 59, 59);
         return $this->findAllByDates($monday, $sunday);
     }
 
     public function findAllByMonth(\DateTime $date) {
         $start = DatesTransformer::toFirstMonthDay($date)->setTime(0, 0);
-        $end = DatesTransformer::toLastMonthDay($date)->setTime(23, 59);
+        $end = DatesTransformer::toLastMonthDay($date)->setTime(23, 59, 59);
         return $this->findAllByDates($start, $end);
     }
 
