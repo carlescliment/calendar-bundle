@@ -1,0 +1,65 @@
+bladetester_calendar.label.event.add: Dodaj wydarzenie
+bladetester_calendar.label.event.update: Aktualizuj wydarzenie
+bladetester_calendar.label.event.delete_warning: Czy naprawdę chcesz usunąć to wydarzenie?
+bladetester_calendar.label.event_category.delete_warning: Czy naprawdę chcesz usunąć tą kategorię?
+bladetester_calendar.label.event.category.none: Nie skategoryzowane
+bladetester_calendar.label.agenda: Agenda
+bladetester_calendar.label.day: Dzień
+bladetester_calendar.label.week: Tydzień
+bladetester_calendar.label.month: Miesiąc
+bladetester_calendar.label.print: Drukuj
+bladetester_calendar.label.settings: Ustawienia
+bladetester_calendar.label.cancel: Anuluj
+bladetester_calendar.label.configuration_parameters: Parametry konfiguarcji
+bladetester_calendar.label.back_to_calendar: wróć do kalendarza
+
+bladetester_calendar.label.event.title: Tytuł
+bladetester_calendar.label.event.description: Opis
+bladetester_calendar.label.event.start: Start 
+bladetester_calendar.label.event.end: Koniec 
+bladetester_calendar.label.event.category: Kategoria
+
+bladetester_calendar.label.category.add: Dodaj kategorię
+bladetester_calendar.title.category.add: Dodaj nową kategorię
+bladetester_calendar.label.category.edit: Aktualizuj
+bladetester_calendar.title.category.edit: Edytuj kategorię
+bladetester_calendar.label.delete: Usuń
+bladetester_calendar.title.category.list: Lista kategorii
+bladetester_calendar.label.category.name: Nazwa
+bladetester_calendar.label.category.color: Kolor
+
+bladetester_calendar.label.settings.update: Zapisz
+bladetester_calendar.label.settings.default_view: Widok podstawowy
+
+bladetester_calendar.list.no_events: Nie znaleziono wydarzeń
+bladetester_calendar.list.no_categories: Nie znaleziono kategorii
+
+bladetester_calendar.flash.event_added: Wydarzenie "%title%" zostało utworzone.
+bladetester_calendar.flash.event_updated: Wydarzenie "%title%" zostało zaktualizowane.
+bladetester_calendar.flash.event_deleted: Wydarzenie "%title%" zostało usunięte
+bladetester_calendar.flash.category_added: Nowa kategoria %name% została dodana
+bladetester_calendar.flash.category_updated: Kategoria %name% została zaktualizowana
+bladetester_calendar.flash.category_deleted: Kategoria %name% została usunięta
+bladetester_calendar.flash.settings_updated: Ustawienia kalendarza zostały zaktualizowane
+
+bladetester_calendar.exception.event_not_found: Nie znaleziono wydarzenia o ID %id%
+bladetester_calendar.exception.category_not_found: Nie znaleziono kategorii o ID %id%
+
+bladetester_calendar.abbr.monday: Pon
+bladetester_calendar.abbr.tuesday: Wto
+bladetester_calendar.abbr.wednesday: Śro
+bladetester_calendar.abbr.thursday: Czw
+bladetester_calendar.abbr.friday: Pią
+bladetester_calendar.abbr.saturday: Sob
+bladetester_calendar.abbr.sunday: Nie
+
+Monday: Poniedziałek
+Tuesday: Wtorek
+Wednesday: Środa
+Thursday: Czwartek
+Friday: Piątek
+Saturday: Sobota
+Sunday: Niedziela
+
+
+
