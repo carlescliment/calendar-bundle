@@ -212,6 +212,7 @@ php vendor/bin/phpunit
 * Author: [Marcos Calatayud][marcosc] (markup and design)
 * Contributor: [Doug Hayward][BonnieDoug] (french translations, fixes)
 * Contributor: [Rubén Egiguren][keopx] (basque translations)
+* Contributor: [Andrzej Jarzebowski][8draco8] (polish translations)
 
 ## Contribute and feedback
 
@@ -223,3 +224,4 @@ Any feedback and contribution will be very appreciated.
 [marcosc]: http://www.linkedin.com/profile/view?id=48458010
 [BonnieDoug]: http://github.com/BonnieDoug
 [keopx]: https://github.com/keopx
+[8draco8]: https://github.com/8draco8
