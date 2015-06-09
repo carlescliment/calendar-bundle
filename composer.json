@@ -19,7 +19,7 @@
     "require-dev": {
         "symfony/symfony" : "~2.5",
         "doctrine/orm":     "*",
-        "doctrine/doctrine-bundle": "v1.2.0",
+        "doctrine/doctrine-bundle": "v1.5.0",
         "phpunit/phpunit":  "*"
     },
     "autoload": {
