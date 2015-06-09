@@ -1,61 +1,59 @@
 calendar_index:
-    pattern:  /calendar
+    path:  /calendar
     defaults: { _controller: BladeTesterCalendarBundle:Event:index }
 
 calendar_event_list:
-    pattern:  /calendar/list
+    path:  /calendar/list
     defaults: { _controller: BladeTesterCalendarBundle:Event:list }
 
 calendar_event_list_by_day:
-    pattern:  /calendar/by_day/{year}/{month}/{day}
+    path:  /calendar/by_day/{year}/{month}/{day}
     defaults: { _controller: BladeTesterCalendarBundle:Event:listByDay }
 
 calendar_event_list_by_week:
-    pattern:  /calendar/by_week/{year}/{month}/{day}
+    path:  /calendar/by_week/{year}/{month}/{day}
     defaults: { _controller: BladeTesterCalendarBundle:Event:listByWeek }
 
 calendar_event_list_by_month:
-    pattern:  /calendar/by_month/{year}/{month}
+    path:  /calendar/by_month/{year}/{month}
     defaults: { _controller: BladeTesterCalendarBundle:Event:listByMonth }
 
 calendar_event_add:
-    pattern:  /calendar/add
+    path:  /calendar/add
     defaults: { _controller: BladeTesterCalendarBundle:Event:add }
 
 calendar_event_edit:
-    pattern:  /calendar/{id}/edit
+    path:  /calendar/{id}/edit
     defaults: { _controller: BladeTesterCalendarBundle:Event:edit }
 
 calendar_event_delete:
-    pattern:  /calendar/{id}/delete
+    path:  /calendar/{id}/delete
     defaults: { _controller: BladeTesterCalendarBundle:Event:delete }
 
 calendar_mini_calendar:
-    pattern:  /calendar/mini/{year}/{month}
+    path:  /calendar/mini/{year}/{month}
     defaults: { _controller: BladeTesterCalendarBundle:Calendar:showMini }
 
 
 calendar_category_edit:
-    pattern: /calendar/category/{id}/edit
+    path: /calendar/category/{id}/edit
     defaults: { _controller: BladeTesterCalendarBundle:Category:edit }
 
 calendar_category_delete:
-    pattern: /calendar/category/{id}/delete
+    path: /calendar/category/{id}/delete
     defaults: { _controller: BladeTesterCalendarBundle:Category:delete }
 
 calendar_category_add:
-    pattern: /calendar/category/add
+    path: /calendar/category/add
     defaults: { _controller: BladeTesterCalendarBundle:Category:add }
 
 
 calendar_settings_update:
-    pattern: /calendar/settings/update
+    path: /calendar/settings/update
     defaults: { _controller: BladeTesterCalendarBundle:Settings:update }
-    requirements:
-        _method:  POST
+    methods:  [POST]
 
 calendar_settings:
-    pattern: /calendar/settings
+    path: /calendar/settings
     defaults: { _controller: BladeTesterCalendarBundle:Settings:index }
-    requirements:
-        _method:  GET
+    methods:  [GET]
