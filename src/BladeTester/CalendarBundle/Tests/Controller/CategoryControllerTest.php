@@ -61,7 +61,7 @@ class CategoryControllerTest extends BaseTestCase {
         $this->client->submit($form);
 
         // Assert
-        $this->em->refresh($category);
+        $category = $this->categoryManager->find($category->getId());
         $this->assertEquals('Changed', $category->getName());
     }
 

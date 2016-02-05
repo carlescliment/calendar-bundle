@@ -36,7 +36,7 @@ class EventControllerTest extends BaseTestCase {
         $this->updateAnEventTroughTheUi($event, array('event[description]' => $new_description));
 
         // Assert
-        $this->em->refresh($event);
+        $event = $this->calendar->find($event->getId());
         $this->assertEquals($new_description, $event->getDescription());
     }
 
@@ -58,7 +58,7 @@ class EventControllerTest extends BaseTestCase {
         $this->client->submit($form);
 
         // Assert
-        $this->em->refresh($event);
+        $event = $this->calendar->find($event->getId());
         $this->assertNotNull($event->getCategory());
     }
 
