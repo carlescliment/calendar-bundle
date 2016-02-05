@@ -6,6 +6,8 @@ php:
   - 5.5
 
 before_script:
+    - phpenv config-rm xdebug.ini
+    - composer self-update
     - composer install -n
     - mysql -e "DROP DATABASE IF EXISTS calendar_test;"
     - mysql -e "CREATE DATABASE calendar_test;"
