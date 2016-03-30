@@ -4,19 +4,14 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="BladeTester\CalendarBundle\Entity\EventCategory" table="event_categories"
-                    repository-class="BladeTester\CalendarBundle\Repository\EventCategoryRepository">
-
+   <mapped-superclass name="BladeTester\CalendarBundle\Entity\EventCategory"
+                      repository-class="BladeTester\CalendarBundle\Repository\EventCategoryRepository"
+                      table="event_categories">
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
 
-
         <field name="name" column="name" type="string" length="255" />
-
         <field name="color" column="color" type="string" length="255" />
-
-
-    </entity>
-
+    </mapped-superclass>
 </doctrine-mapping>

@@ -2,16 +2,10 @@
 
 namespace BladeTester\CalendarBundle\Model;
 
-class EventCategory implements EventCategoryInterface {
-
-    protected $id;
+class EventCategory implements EventCategoryInterface
+{
     protected $name = '';
     protected $color = Color::BLACK;
-
-
-    public function getId() {
-        return $this->id;
-    }
 
     public function getName() {
         return $this->name;

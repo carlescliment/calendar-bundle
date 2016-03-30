@@ -16,15 +16,6 @@ framework:
         resource: %kernel.root_dir%/routing.yml
     profiler: { only_exceptions: false }
 
-blade_tester_calendar:
-    driver: doctrine/orm
-    engine: twig
-    classes:
-        event:
-            entity: BladeTester\CalendarBundle\Tests\App\Entity\Event
-        category:
-            entity: BladeTester\CalendarBundle\Entity\EventCategory
-
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -39,8 +30,3 @@ doctrine:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
         mappings:
-            calendar_test:
-                type: annotation
-                prefix: BladeTester\CalendarBundle\Tests\App\Entity
-                dir: "%kernel.root_dir%/Entity"
-                is_bundle: false

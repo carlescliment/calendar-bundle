@@ -23,7 +23,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('driver')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('driver')->defaultValue('doctrine')->cannotBeEmpty()->end()
                 ->scalarNode('engine')->defaultValue('twig')->end()
             ->end();
 
@@ -43,18 +43,17 @@ class Configuration implements ConfigurationInterface
         $node
             ->children()
                 ->arrayNode('classes')
-                    ->isRequired()
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->arrayNode('event')
-                            ->isRequired()
+                            ->addDefaultsIfNotSet()
                             ->children()
                                 ->scalarNode('form')->defaultValue('BladeTester\\CalendarBundle\\Form\\Type\\EventFormType')->end()
                                 ->scalarNode('entity')->defaultValue('BladeTester\\CalendarBundle\\Entity\\Event')->end()
                             ->end()
                         ->end()
                         ->arrayNode('category')
-                            ->isRequired()
+                            ->addDefaultsIfNotSet()
                             ->children()
                                 ->scalarNode('form')->defaultValue('BladeTester\\CalendarBundle\\Form\\Type\\EventCategoryFormType')->end()
                                 ->scalarNode('entity')->defaultValue('BladeTester\\CalendarBundle\\Entity\\EventCategory')->end()

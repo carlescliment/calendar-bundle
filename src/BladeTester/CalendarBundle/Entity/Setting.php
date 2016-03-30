@@ -5,9 +5,10 @@ namespace BladeTester\CalendarBundle\Entity;
 use BladeTester\CalendarBundle\Model\Setting as BaseSetting;
 
 
-class Setting extends BaseSetting {
+class Setting extends BaseSetting
+{
 
-    private $id;
+    protected $id;
 
     public function getId() {
         return $this->id;

@@ -62,60 +62,13 @@ Add it to AppKernel.
     );
 ```
 
-### 5. Map event class
-
-Create an entity and inherit the base Event class. The only mandatory field you have to add is "id" to map your entity properly. Don't forget to update your database schema.
-
-NOTE: At the moment it works only with Doctrine. Contribution to provide other drivers will be very appreciated.
-
-
-    namespace Your\OwnCalendarBundle\Entity;
-
-    use Doctrine\ORM\Mapping as ORM;
-    use BladeTester\CalendarBundle\Entity\Event as BaseEvent;
-
-
-    /**
-     * @ORM\Entity(repositoryClass="BladeTester\CalendarBundle\Repository\EventRepository")
-     * @ORM\Table(name="events")
-     */
-    class Event extends BaseEvent {
-
-        /**
-         * @ORM\Column(name="id", type="integer")
-         * @ORM\Id
-         * @ORM\GeneratedValue(strategy="AUTO")
-         */
-        private $id;
-
-
-        public function getId() {
-            return $this->id;
-        }
-    }
-
-
-
-
-### 6. Modify your `app/config/config.yml`
-
-    blade_tester_calendar:
-        driver: doctrine/orm
-        engine: twig
-        classes:
-            event:
-                entity: Your\OwnBundle\Entity\Event
-            category:
-                entity: BladeTester\CalendarBundle\Entity\EventCategory
-
-
-### 7. Update the schema
+### 5. Update the schema
 
 ```
 php app/console doctrine:schema:update --force
 ```
 
-### 8. Install the assets
+### 6. Install the assets
 
 ```
 php app/console assets:install
@@ -141,6 +94,42 @@ Copy the template in `Resources/views/Base/base.html.twig` into your own bundle 
 ```
 
 Note: remove the line including jquery if your template already includes it.
+
+### How to override the default entities
+
+You can define your own entities. First, create your custom entity:
+
+```
+namespace Your\OwnCalendarBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use BladeTester\CalendarBundle\Entity\Event as BaseEvent;
+
+
+/**
+ * @ORM\Entity(repositoryClass="BladeTester\CalendarBundle\Repository\EventRepository")
+ * @ORM\Table(name="events")
+ */
+class Event extends BaseEvent
+{
+  // ... your implementation goes here
+}
+
+```
+
+Then modify your `app/config/config.yml`
+
+```
+    blade_tester_calendar:
+        driver: doctrine/orm
+        engine: twig
+        classes:
+            event:
+                entity: Your\OwnBundle\Entity\Event
+            category:
+                entity: Your\OwnBundle\Entity\EventCategory
+```
+
 
 ## Extending the behaviour
 
