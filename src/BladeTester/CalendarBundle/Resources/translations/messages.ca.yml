@@ -1,4 +1,5 @@
 bladetester_calendar.label.event.add: Afegir event
+bladetester_calendar.label.event.delete: Eliminar
 bladetester_calendar.label.event.update: Actualitzar event
 bladetester_calendar.label.event.delete_warning: Segur que vols eliminar aquest event?
 bladetester_calendar.label.event_category.delete_warning: Segur que vols eliminar aquesta categoria?
