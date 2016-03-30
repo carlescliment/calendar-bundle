@@ -6,19 +6,24 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use BladeTester\CalendarBundle\Event\CalendarEvent,
     BladeTester\CalendarBundle\Event\CalendarEvents;
+use BladeTester\CalendarBundle\Factory\EventFactoryInterface;
 
 class Calendar implements CalendarInterface {
 
 
     private $om;
     private $dispatcher;
-    private $eventClass;
     private $settings;
+    private $eventFactory;
 
-    public function __construct(ObjectManager $om, EventDispatcherInterface $dispatcher, $event_class) {
+    public function __construct(
+        ObjectManager $om,
+        EventDispatcherInterface $dispatcher,
+        EventFactoryInterface $event_factory
+    ) {
         $this->om = $om;
         $this->dispatcher = $dispatcher;
-        $this->eventClass = $event_class;
+        $this->eventFactory = $event_factory;
         $this->setRepositoryClass();
     }
 
@@ -46,12 +51,7 @@ class Calendar implements CalendarInterface {
 
     public function createEvent()
     {
-        $event = new $this->eventClass();
-        $now = new \DateTime;
-        $event->setStart($now);
-        $event->setEnd($now);
-
-        return $event;
+        return $this->eventFactory->build();
     }
 
     public function persist(EventInterface $event)
@@ -86,19 +86,14 @@ class Calendar implements CalendarInterface {
         return DatesTransformer::getAllDaysBetween($first_day, $last_day);
     }
 
-    protected function getEventClass()
-    {
-        return $this->eventClass;
-    }
-
     private function getRepository()
     {
-        return $this->om->getRepository($this->eventClass);
+        return $this->om->getRepository($this->eventFactory->getEventClass());
     }
 
     private function setRepositoryClass()
     {
-        $this->getRepository()->setClass($this->eventClass);
+        $this->getRepository()->setClass($this->eventFactory->getEventClass());
 
         return $this;
     }

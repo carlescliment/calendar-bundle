@@ -4,7 +4,8 @@ namespace BladeTester\CalendarBundle\Tests\Model;
 
 use BladeTester\CalendarBundle\Model\Calendar,
     BladeTester\CalendarBundle\Model\EventInterface,
-    BladeTester\CalendarBundle\Model\EventCategory;
+    BladeTester\CalendarBundle\Model\EventCategory,
+    BladeTester\CalendarBundle\Factory\EventFactory;
 
 class FakeEvent implements EventInterface {
     public function getTitle() {}
@@ -42,7 +43,10 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $this->om->expects($this->any())
             ->method('getRepository')
             ->will($this->returnValue($this->repository));
-        $this->calendar = new Calendar($this->om, $this->dispatcher, 'BladeTester\CalendarBundle\Tests\Model\FakeEvent');
+        $this->calendar = new Calendar(
+            $this->om,
+            $this->dispatcher,
+            new EventFactory('BladeTester\CalendarBundle\Tests\Model\FakeEvent'));
     }
 
     /**

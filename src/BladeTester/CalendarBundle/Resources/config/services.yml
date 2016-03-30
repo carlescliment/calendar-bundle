@@ -10,9 +10,13 @@ services:
         class: "%blade_tester_calendar.form.type.category.class%"
         arguments: ["%blade_tester_calendar.classes.category.entity%"]
 
+    blade_tester_calendar.event_factory:
+        class: BladeTester\CalendarBundle\Factory\EventFactory
+        arguments: ["%blade_tester_calendar.classes.event.entity%"]
+
     blade_tester_calendar.calendar:
         class: BladeTester\CalendarBundle\Model\Calendar
-        arguments: ["@doctrine.orm.entity_manager", "@event_dispatcher", "%blade_tester_calendar.classes.event.entity%"]
+        arguments: ["@doctrine.orm.entity_manager", "@event_dispatcher", "@blade_tester_calendar.event_factory"]
 
     blade_tester_calendar.event_category_manager:
         class: BladeTester\CalendarBundle\Model\EventCategoryManager
