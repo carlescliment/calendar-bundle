@@ -8,15 +8,8 @@ use BladeTester\CalendarBundle\Model\EventRepositoryInterface,
 
 class EventRepository extends EntityRepository implements EventRepositoryInterface
 {
-
-    private $class;
-
-    public function setClass($class) {
-        $this->class = $class;
-    }
-
-
-    public function findAll() {
+    public function findAll()
+    {
         $q = $this->getEntityManager()
                     ->createQuery("SELECT e
                                    FROM {$this->getEntityName()} e
@@ -24,7 +17,8 @@ class EventRepository extends EntityRepository implements EventRepositoryInterfa
         return $q->getResult();
     }
 
-    public function findNext() {
+    public function findNext()
+    {
         $q = $this->getEntityManager()
                     ->createQuery("SELECT e
                                    FROM {$this->getEntityName()} e
@@ -34,7 +28,8 @@ class EventRepository extends EntityRepository implements EventRepositoryInterfa
         return $q->getResult();
     }
 
-    public function findBetween(\DateTime $start, \DateTime $end) {
+    public function findBetween(\DateTime $start, \DateTime $end)
+    {
         $q = $this->getEntityManager()
                     ->createQuery("SELECT e
                                    FROM {$this->getEntityName()} e
@@ -46,25 +41,29 @@ class EventRepository extends EntityRepository implements EventRepositoryInterfa
         return $q->getResult();
     }
 
-    public function findAllByDay(\DateTime $date) {
+    public function findAllByDay(\DateTime $date)
+    {
         $start = new \DateTime($date->format('Y-m-d 00:00'));
         $end = new \DateTime($date->format('Y-m-d 23:59:59'));
         return $this->findAllByDates($start, $end);
     }
 
-    public function findAllByWeek(\DateTime $date) {
+    public function findAllByWeek(\DateTime $date)
+    {
         $monday = DatesTransformer::toMonday($date)->setTime(0, 0);
         $sunday = DatesTransformer::toSunday($date)->setTime(23, 59, 59);
         return $this->findAllByDates($monday, $sunday);
     }
 
-    public function findAllByMonth(\DateTime $date) {
+    public function findAllByMonth(\DateTime $date)
+    {
         $start = DatesTransformer::toFirstMonthDay($date)->setTime(0, 0);
         $end = DatesTransformer::toLastMonthDay($date)->setTime(23, 59, 59);
         return $this->findAllByDates($start, $end);
     }
 
-    public function findAllByDates(\DateTime $start, \DateTime $end) {
+    public function findAllByDates(\DateTime $start, \DateTime $end)
+    {
         $q = $this->getEntityManager()->createQuery("SELECT e
                                      FROM {$this->getEntityName()} e
                                      WHERE e.start >= :start AND e.start <= :end

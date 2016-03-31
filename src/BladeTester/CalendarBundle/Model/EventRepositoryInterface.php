@@ -2,10 +2,8 @@
 
 namespace BladeTester\CalendarBundle\Model;
 
-interface EventRepositoryInterface {
-
-    public function setClass($class);
-
+interface EventRepositoryInterface
+{
     public function findAll();
 
     public function findNext();

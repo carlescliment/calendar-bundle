@@ -21,12 +21,12 @@ class Calendar implements CalendarInterface {
         EventDispatcherInterface $dispatcher,
         EventFactoryInterface $event_factory,
         EventRepositoryInterface $event_repository
-    ) {
+    )
+    {
         $this->om = $om;
         $this->dispatcher = $dispatcher;
         $this->eventFactory = $event_factory;
         $this->eventRepository = $event_repository;
-        $this->setRepositoryClass();
     }
 
     public function __call($method_name, $arguments)
@@ -65,7 +65,8 @@ class Calendar implements CalendarInterface {
         return $event;
     }
 
-    public function update(EventInterface $event) {
+    public function update(EventInterface $event)
+    {
         $this->dispatcher->dispatch(CalendarEvents::POST_UPDATE, new CalendarEvent($event));
         $this->om->flush();
         return $event;
@@ -85,12 +86,5 @@ class Calendar implements CalendarInterface {
         $last_day = DatesTransformer::toSunday($date);
 
         return DatesTransformer::getAllDaysBetween($first_day, $last_day);
-    }
-
-    private function setRepositoryClass()
-    {
-        $this->eventRepository->setClass($this->eventFactory->getEventClass());
-
-        return $this;
     }
 }
