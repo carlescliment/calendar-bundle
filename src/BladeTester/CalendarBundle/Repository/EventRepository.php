@@ -6,7 +6,8 @@ use Doctrine\ORM\EntityRepository;
 use BladeTester\CalendarBundle\Model\EventRepositoryInterface,
     BladeTester\CalendarBundle\Model\DatesTransformer;
 
-class EventRepository Extends EntityRepository implements EventRepositoryInterface {
+class EventRepository extends EntityRepository implements EventRepositoryInterface
+{
 
     private $class;
 
@@ -18,7 +19,7 @@ class EventRepository Extends EntityRepository implements EventRepositoryInterfa
     public function findAll() {
         $q = $this->getEntityManager()
                     ->createQuery("SELECT e
-                                   FROM $this->class e
+                                   FROM {$this->getEntityName()} e
                                    ORDER BY e.start ASC, e.end ASC");
         return $q->getResult();
     }
@@ -26,7 +27,7 @@ class EventRepository Extends EntityRepository implements EventRepositoryInterfa
     public function findNext() {
         $q = $this->getEntityManager()
                     ->createQuery("SELECT e
-                                   FROM $this->class e
+                                   FROM {$this->getEntityName()} e
                                    WHERE e.end >= :now
                                    ORDER BY e.start ASC, e.end ASC")
                     ->setParameter(':now', new \DateTime);
@@ -36,7 +37,7 @@ class EventRepository Extends EntityRepository implements EventRepositoryInterfa
     public function findBetween(\DateTime $start, \DateTime $end) {
         $q = $this->getEntityManager()
                     ->createQuery("SELECT e
-                                   FROM $this->class e
+                                   FROM {$this->getEntityName()} e
                                    WHERE e.start >= :start
                                    AND e.end <= :end
                                    ORDER BY e.start ASC, e.end ASC")
@@ -65,7 +66,7 @@ class EventRepository Extends EntityRepository implements EventRepositoryInterfa
 
     public function findAllByDates(\DateTime $start, \DateTime $end) {
         $q = $this->getEntityManager()->createQuery("SELECT e
-                                     FROM $this->class e
+                                     FROM {$this->getEntityName()} e
                                      WHERE e.start >= :start AND e.start <= :end
                                      ORDER BY e.start ASC, e.end ASC")
                 ->setParameter('start', $start)
