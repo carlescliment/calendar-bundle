@@ -46,7 +46,9 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $this->calendar = new Calendar(
             $this->om,
             $this->dispatcher,
-            new EventFactory('BladeTester\CalendarBundle\Tests\Model\FakeEvent'));
+            new EventFactory('BladeTester\CalendarBundle\Tests\Model\FakeEvent'),
+            $this->repository
+        );
     }
 
     /**

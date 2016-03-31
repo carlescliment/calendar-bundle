@@ -19,19 +19,20 @@ class Calendar implements CalendarInterface {
     public function __construct(
         ObjectManager $om,
         EventDispatcherInterface $dispatcher,
-        EventFactoryInterface $event_factory
+        EventFactoryInterface $event_factory,
+        EventRepositoryInterface $event_repository
     ) {
         $this->om = $om;
         $this->dispatcher = $dispatcher;
         $this->eventFactory = $event_factory;
+        $this->eventRepository = $event_repository;
         $this->setRepositoryClass();
     }
 
     public function __call($method_name, $arguments)
     {
-        $repository = $this->getRepository();
 
-        return call_user_func_array(array(&$repository, $method_name), $arguments);
+        return call_user_func_array(array(&$this->eventRepository, $method_name), $arguments);
     }
 
     public function getSettings()
@@ -86,14 +87,9 @@ class Calendar implements CalendarInterface {
         return DatesTransformer::getAllDaysBetween($first_day, $last_day);
     }
 
-    private function getRepository()
-    {
-        return $this->om->getRepository($this->eventFactory->getEventClass());
-    }
-
     private function setRepositoryClass()
     {
-        $this->getRepository()->setClass($this->eventFactory->getEventClass());
+        $this->eventRepository->setClass($this->eventFactory->getEventClass());
 
         return $this;
     }

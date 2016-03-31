@@ -16,7 +16,7 @@ services:
 
     blade_tester_calendar.calendar:
         class: BladeTester\CalendarBundle\Model\Calendar
-        arguments: ["@doctrine.orm.entity_manager", "@event_dispatcher", "@blade_tester_calendar.event_factory"]
+        arguments: [@doctrine.orm.entity_manager, @event_dispatcher, @blade_tester_calendar.event_factory, @blade_tester_calendar.repository.event]
 
     blade_tester_calendar.event_category_manager:
         class: BladeTester\CalendarBundle\Model\EventCategoryManager
@@ -25,6 +25,12 @@ services:
     blade_tester_calendar.forms.category_transformer:
         class: BladeTester\CalendarBundle\Form\DataTransformer\EventCategoryTransformer
         arguments: ["@blade_tester_calendar.event_category_manager"]
+
+    blade_tester_calendar.repository.event:
+        class: BladeTester\CalendarBundle\Repository\EventRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [BladeTesterCalendarBundle:Event]
 
     form.type.bladetester_calendar_category:
         class: BladeTester\CalendarBundle\Form\Type\CategoryType
