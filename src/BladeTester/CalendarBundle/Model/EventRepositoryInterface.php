@@ -15,4 +15,6 @@ interface EventRepositoryInterface
     public function findAllByWeek(\DateTime $date);
 
     public function findAllByMonth(\DateTime $date);
+
+    public function persist(EventInterface $event);
 }

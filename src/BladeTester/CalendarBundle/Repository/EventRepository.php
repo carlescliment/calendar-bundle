@@ -5,6 +5,7 @@ namespace BladeTester\CalendarBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use BladeTester\CalendarBundle\Model\EventRepositoryInterface,
     BladeTester\CalendarBundle\Model\DatesTransformer;
+use BladeTester\CalendarBundle\Model\EventInterface;
 
 class EventRepository extends EntityRepository implements EventRepositoryInterface
 {
@@ -71,5 +72,10 @@ class EventRepository extends EntityRepository implements EventRepositoryInterfa
                 ->setParameter('start', $start)
                 ->setParameter('end', $end);
         return $q->getResult();
+    }
+
+    public function persist(EventInterface $event)
+    {
+        $this->getEntityManager()->persist($event);
     }
 }
