@@ -3,25 +3,24 @@
 namespace BladeTester\CalendarBundle\Tests\Model;
 
 use BladeTester\CalendarBundle\Model\EventCategoryManager,
-    BladeTester\CalendarBundle\Model\EventCategory;
+    BladeTester\CalendarBundle\Model\EventCategory,
+    BladeTester\CalendarBundle\Factory\EventCategoryFactory;
 
 class FakeEventCategory extends EventCategory {}
 
 
 
-class EventCategoryManagerTest extends \PHPUnit_Framework_TestCase {
-
-    private $om;
+class EventCategoryManagerTest extends \PHPUnit_Framework_TestCase
+{
     private $manager;
     private $repository;
 
     public function setUp() {
-        $this->om = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
         $this->repository = $this->getMock('BladeTester\CalendarBundle\Model\EventCategoryRepositoryInterface');
-        $this->om->expects($this->any())
-            ->method('getRepository')
-            ->will($this->returnValue($this->repository));
-        $this->manager = new EventCategoryManager($this->om, 'BladeTester\CalendarBundle\Tests\Model\FakeEventCategory');
+        $this->manager = new EventCategoryManager(
+            new EventCategoryFactory('BladeTester\CalendarBundle\Tests\Model\FakeEventCategory'),
+            $this->repository
+        );
     }
 
 
@@ -47,7 +46,7 @@ class EventCategoryManagerTest extends \PHPUnit_Framework_TestCase {
         $category = $this->manager->createEventCategory();
 
         // Expect
-        $this->om->expects($this->once())
+        $this->repository->expects($this->once())
             ->method('persist')
             ->with($category);
 
