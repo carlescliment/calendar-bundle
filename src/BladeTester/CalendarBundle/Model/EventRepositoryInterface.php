@@ -17,4 +17,6 @@ interface EventRepositoryInterface
     public function findAllByMonth(\DateTime $date);
 
     public function persist(EventInterface $event);
+
+    public function flush();
 }

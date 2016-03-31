@@ -60,7 +60,7 @@ class Calendar implements CalendarInterface {
         $this->dispatcher->dispatch(CalendarEvents::PRE_PERSIST, new CalendarEvent($event));
         $this->eventRepository->persist($event);
         $this->dispatcher->dispatch(CalendarEvents::POST_ADD, new CalendarEvent($event));
-        $this->om->flush();
+        $this->eventRepository->flush();
 
         return $event;
     }

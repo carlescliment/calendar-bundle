@@ -78,4 +78,9 @@ class EventRepository extends EntityRepository implements EventRepositoryInterfa
     {
         $this->getEntityManager()->persist($event);
     }
+
+    public function flush()
+    {
+        $this->getEntityManager()->flush();
+    }
 }

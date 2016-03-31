@@ -36,9 +36,9 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
 
     public function setUp() {
         $this->om = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
-        $this->repository = $this->getMock('BladeTester\CalendarBundle\Model\EventRepositoryInterface',
-		array('findAll', 'findNext', 'findBetween', 'findAllByDay', 'findAllByWeek', 'findAllByMonth', 'getId', 'persist', 'find',
-                'getSettings', 'updateSettings'));
+        $this->repository = $this->getMock('BladeTester\CalendarBundle\Model\EventRepositoryInterface', [
+            'findAll', 'findNext', 'findBetween', 'findAllByDay', 'findAllByWeek', 'findAllByMonth', 'getId', 'persist', 'find',
+            'flush', 'getSettings', 'updateSettings']);
         $this->dispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
         $this->om->expects($this->any())
             ->method('getRepository')
