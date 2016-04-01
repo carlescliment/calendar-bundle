@@ -32,6 +32,7 @@ class CategoryController extends BaseController {
         $form->handleRequest($request);
         if ($form->isValid()) {
             $manager->persist($category);
+            $this->getDoctrine()->getManager()->flush();
             $this->addFlashMessage('bladetester_calendar.flash.category_added', array('%name%' => $category->getName()));
             return $this->redirectFromRequest($request);
         }

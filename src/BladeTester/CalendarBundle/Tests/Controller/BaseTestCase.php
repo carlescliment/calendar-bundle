@@ -5,7 +5,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use BladeTester\CalendarBundle\Tests\App\AppKernel;
 
 
-class BaseTestCase extends WebTestCase {
+class BaseTestCase extends WebTestCase
+{
 
     protected $em;
     protected $router;
@@ -13,7 +14,8 @@ class BaseTestCase extends WebTestCase {
     protected $calendar;
     protected $categoryManager;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->client = self::createClient(array(), array("PHP_AUTH_USER" => "test", "PHP_AUTH_PW"   => "test",));
         $container = $this->client->getKernel()->getContainer();
         $this->router = $container->get('router');
@@ -27,7 +29,8 @@ class BaseTestCase extends WebTestCase {
         return new AppKernel('test', true);
     }
 
-    protected function visit($route_name, array $arguments = array(), array $get = array(), $async = false) {
+    protected function visit($route_name, array $arguments = array(), array $get = array(), $async = false)
+    {
         $headers = array();
         if ($async) {
             $headers = array('HTTP_X-Requested-With' => 'XMLHttpRequest');
@@ -36,11 +39,13 @@ class BaseTestCase extends WebTestCase {
         return $this->client->request('GET', $route, $get, array(), $headers);
     }
 
-    protected function printContents() {
+    protected function printContents()
+    {
         print $this->client->getResponse()->getContent();
     }
 
-    protected function truncateTables(array $tables) {
+    protected function truncateTables(array $tables)
+    {
         $connection = $this->em->getConnection();
         $platform = $connection->getDatabasePlatform();
         $connection->query("SET foreign_key_checks = 0");
@@ -49,5 +54,4 @@ class BaseTestCase extends WebTestCase {
         }
         $connection->query("SET foreign_key_checks = 1");
     }
-
 }

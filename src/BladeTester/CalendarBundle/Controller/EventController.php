@@ -47,6 +47,7 @@ class EventController extends BaseController {
         $form->handleRequest($request);
         if ($form->isValid()) {
             $calendar->persist($event);
+            $this->getDoctrine()->getManager()->flush();
             $this->addFlashMessage('bladetester_calendar.flash.event_added', array('%title%' => $event->getTitle()));
             return $this->redirectFromRequest($request);
         }
@@ -88,6 +89,7 @@ class EventController extends BaseController {
         $form->handleRequest($request);
         if ($form->isValid()) {
             $this->getCalendar()->update($event);
+            $this->getDoctrine()->getManager()->flush();
             $this->addFlashMessage('bladetester_calendar.flash.event_updated', array('%title%' => $event->getTitle()));
             return $this->redirectFromRequest($request);
         }

@@ -8,5 +8,4 @@ interface EventCategoryRepositoryInterface
     public function findAll();
     public function findOneByName($name);
     public function persist(EventCategoryInterface $event_category);
-    public function flush();
 }

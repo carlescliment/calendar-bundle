@@ -39,7 +39,6 @@ class EventCategoryManager
     public function persist(EventCategoryInterface $category)
     {
         $this->repository->persist($category);
-        $this->repository->flush();
 
         return $category;
     }

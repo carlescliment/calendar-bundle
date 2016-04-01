@@ -38,6 +38,7 @@ class CategoryControllerTest extends BaseTestCase {
         $this->categoryManager->persist($this->categoryManager->createEventCategory());
         $this->categoryManager->persist($this->categoryManager->createEventCategory());
         $this->categoryManager->persist($this->categoryManager->createEventCategory());
+        $this->em->flush();
 
         // Act
         $crawler = $this->visit('calendar_settings');
@@ -53,6 +54,7 @@ class CategoryControllerTest extends BaseTestCase {
     public function IShouldEditAnExistingCategory() {
         // Arrange
         $category = $this->categoryManager->persist($this->categoryManager->createEventCategory());
+        $this->em->flush();
         $crawler = $this->visit('calendar_category_edit', array('id' => $category->getId()));
         $form = $crawler->filter('form#category-edit')->form();
         $form['category[name]'] = 'Changed';
@@ -71,6 +73,7 @@ class CategoryControllerTest extends BaseTestCase {
     public function IShouldDeleteAnExistingCategory() {
         // Arrange
         $category = $this->categoryManager->persist($this->categoryManager->createEventCategory());
+        $this->em->flush();
 
         // Act
         $crawler = $this->visit('calendar_category_delete', array('id' => $category->getId()));
@@ -79,5 +82,4 @@ class CategoryControllerTest extends BaseTestCase {
         $categories = $this->categoryManager->findAll();
         $this->assertCount(0, $categories);
     }
-
 }

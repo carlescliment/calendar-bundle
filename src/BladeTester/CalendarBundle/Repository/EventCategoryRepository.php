@@ -41,9 +41,4 @@ class EventCategoryRepository Extends EntityRepository implements EventCategoryR
     {
         $this->getEntityManager()->persist($event_category);
     }
-
-    public function flush()
-    {
-        $this->getEntityManager()->flush();
-    }
 }

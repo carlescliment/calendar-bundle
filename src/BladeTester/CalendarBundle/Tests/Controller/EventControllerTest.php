@@ -30,6 +30,7 @@ class EventControllerTest extends BaseTestCase {
     {
         // Arrange
         $event = $this->calendar->persist($this->getEvent());
+        $this->em->flush();
         $new_description = 'I have changed the description';
 
         // Act
@@ -49,6 +50,7 @@ class EventControllerTest extends BaseTestCase {
         // Arrange
         $category = $this->categoryManager->persist($this->categoryManager->createEventCategory());
         $event = $this->calendar->persist($this->getEvent());
+        $this->em->flush();
 
         $crawler = $this->visit('calendar_event_edit', array('id' => $event->getId()));
         $form = $crawler->filter('form#event-edit')->form();
@@ -71,6 +73,7 @@ class EventControllerTest extends BaseTestCase {
     {
         // Arrange
         $event = $this->calendar->persist($this->getEvent());
+        $this->em->flush();
 
         // Act
         $this->visit('calendar_event_delete', array('id' => $event->getId()));
@@ -93,6 +96,7 @@ class EventControllerTest extends BaseTestCase {
         $this->calendar->persist($this->getEvent($in_ten_minutes));
         $this->calendar->persist($this->getEvent($in_ten_minutes));
         $this->calendar->persist($this->getEvent($in_ten_minutes));
+        $this->em->flush();
 
         // Act
         $crawler = $this->visit('calendar_event_list');
@@ -111,6 +115,7 @@ class EventControllerTest extends BaseTestCase {
                                                        'end' => new \DateTime('2001-02-03'))));
         $this->calendar->persist($this->getEvent());
         $this->calendar->persist($this->getEvent());
+        $this->em->flush();
 
         // Act
         $crawler = $this->visit('calendar_event_list');
@@ -130,6 +135,7 @@ class EventControllerTest extends BaseTestCase {
         $this->calendar->persist($this->getEvent(array('start' => $today)));
         $this->calendar->persist($this->getEvent(array('start' => $today)));
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2008-01-01'))));
+        $this->em->flush();
 
         // Act
         $crawler = $this->visit('calendar_event_list_by_day', array('year' => $today->format('Y'),
@@ -149,6 +155,7 @@ class EventControllerTest extends BaseTestCase {
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-03-11'))));
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-03-17'))));
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2008-01-01'))));
+        $this->em->flush();
 
         // Act
         $crawler = $this->visit('calendar_event_list_by_week', array('year' => '2013',
@@ -169,6 +176,7 @@ class EventControllerTest extends BaseTestCase {
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-03-17'))));
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2013-04-17'))));
         $this->calendar->persist($this->getEvent(array('start' => new \DateTime('2008-01-01'))));
+        $this->em->flush();
 
         // Act
         $crawler = $this->visit('calendar_event_list_by_month', array('year' => '2013',
