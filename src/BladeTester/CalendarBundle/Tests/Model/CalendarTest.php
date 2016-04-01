@@ -29,25 +29,20 @@ class FakeEvent implements EventInterface {
 
 class CalendarTest extends \PHPUnit_Framework_TestCase {
 
-    private $om;
     private $dispatcher;
     private $calendar;
-    private $repository;
+    private $eventRepository;
+    private $settingRepository;
 
     public function setUp() {
-        $this->om = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
-        $this->repository = $this->getMock('BladeTester\CalendarBundle\Model\EventRepositoryInterface', [
-            'findAll', 'findNext', 'findBetween', 'findAllByDay', 'findAllByWeek', 'findAllByMonth', 'getId', 'persist', 'find',
-            'flush', 'getSettings', 'updateSettings']);
+        $this->eventRepository = $this->getMock('BladeTester\CalendarBundle\Model\EventRepositoryInterface');
+        $this->settingRepository = $this->getMock('BladeTester\CalendarBundle\Repository\SettingRepositoryInterface');
         $this->dispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
-        $this->om->expects($this->any())
-            ->method('getRepository')
-            ->will($this->returnValue($this->repository));
         $this->calendar = new Calendar(
-            $this->om,
             $this->dispatcher,
             new EventFactory('BladeTester\CalendarBundle\Tests\Model\FakeEvent'),
-            $this->repository
+            $this->eventRepository,
+            $this->settingRepository
         );
     }
 
@@ -58,7 +53,7 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         // Arrange
 
         // Expect
-        $this->repository->expects($this->once())
+        $this->settingRepository->expects($this->once())
             ->method('getSettings');
 
         // Act
@@ -70,10 +65,10 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
      */
     public function itUpdatesSettings() {
         // Arrange
-        $settings = $this->getMock('BladeTester\CalendarBundle\Model\Settings');
+        $settings = new \BladeTester\CalendarBundle\Model\Settings;
 
         // Expect
-        $this->repository->expects($this->once())
+        $this->settingRepository->expects($this->once())
             ->method('updateSettings');
 
         // Act
@@ -102,7 +97,7 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $event_id = 34;
 
         // Expect
-        $this->repository->expects($this->once())
+        $this->eventRepository->expects($this->once())
             ->method('find')
             ->with(34);
 
@@ -118,7 +113,7 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         // Arrange
 
         // Expect
-        $this->repository->expects($this->once())
+        $this->eventRepository->expects($this->once())
             ->method('findAll');
 
         // Act
@@ -133,7 +128,7 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         // Arrange
 
         // Expect
-        $this->repository->expects($this->once())
+        $this->eventRepository->expects($this->once())
             ->method('findNext');
 
         // Act
@@ -150,7 +145,7 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $end = new \DateTime('2013-05-21');
 
         // Expect
-        $this->repository->expects($this->once())
+        $this->eventRepository->expects($this->once())
             ->method('findBetween')
             ->with($start, $end);
 
@@ -166,7 +161,7 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $today = new \DateTime();
 
         // Expect
-        $this->repository->expects($this->once())
+        $this->eventRepository->expects($this->once())
             ->method('findAllByDay')
             ->with($today);
 
@@ -182,7 +177,7 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $today = new \DateTime();
 
         // Expect
-        $this->repository->expects($this->once())
+        $this->eventRepository->expects($this->once())
             ->method('findAllByWeek')
             ->with($today);
 
@@ -199,7 +194,7 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $today = new \DateTime();
 
         // Expect
-        $this->repository->expects($this->once())
+        $this->eventRepository->expects($this->once())
             ->method('findAllByMonth')
             ->with($today);
 
@@ -215,7 +210,7 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
         $event = $this->calendar->createEvent();
 
         // Expect
-        $this->repository->expects($this->once())
+        $this->eventRepository->expects($this->once())
             ->method('persist')
             ->with($event);
 

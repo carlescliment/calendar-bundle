@@ -2,47 +2,45 @@
 
 namespace BladeTester\CalendarBundle\Model;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use BladeTester\CalendarBundle\Event\CalendarEvent,
     BladeTester\CalendarBundle\Event\CalendarEvents;
 use BladeTester\CalendarBundle\Factory\EventFactoryInterface;
+use BladeTester\CalendarBundle\Repository\SettingRepositoryInterface;
 
-class Calendar implements CalendarInterface {
-
-
-    private $om;
+class Calendar implements CalendarInterface
+{
     private $dispatcher;
-    private $settings;
     private $eventFactory;
+    private $eventRepository;
+    private $settingRepository;
 
     public function __construct(
-        ObjectManager $om,
         EventDispatcherInterface $dispatcher,
         EventFactoryInterface $event_factory,
-        EventRepositoryInterface $event_repository
+        EventRepositoryInterface $event_repository,
+        SettingRepositoryInterface $setting_repository
     )
     {
-        $this->om = $om;
         $this->dispatcher = $dispatcher;
         $this->eventFactory = $event_factory;
         $this->eventRepository = $event_repository;
+        $this->settingRepository = $setting_repository;
     }
 
     public function __call($method_name, $arguments)
     {
-
         return call_user_func_array(array(&$this->eventRepository, $method_name), $arguments);
     }
 
     public function getSettings()
     {
-        return $this->om->getRepository('BladeTesterCalendarBundle:Setting')->getSettings();
+        return $this->settingRepository->getSettings();
     }
 
     public function updateSettings(Settings $settings)
     {
-        return $this->om->getRepository('BladeTesterCalendarBundle:Setting')->updateSettings($settings);
+        return $this->settingRepository->updateSettings($settings);
     }
 
     public function getDefaultView()

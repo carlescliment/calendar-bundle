@@ -30,9 +30,15 @@ services:
         factory_method: getRepository
         arguments: ["%blade_tester_calendar.classes.category.entity%"]
 
+    blade_tester_calendar.repository.setting:
+        class: BladeTester\CalendarBundle\Repository\SettingRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: ["%blade_tester_calendar.classes.setting.entity%"]
+
     blade_tester_calendar.calendar:
         class: BladeTester\CalendarBundle\Model\Calendar
-        arguments: [@doctrine.orm.entity_manager, @event_dispatcher, @blade_tester_calendar.event_factory, @blade_tester_calendar.repository.event]
+        arguments: [@event_dispatcher, @blade_tester_calendar.event_factory, @blade_tester_calendar.repository.event, @blade_tester_calendar.repository.setting]
 
     blade_tester_calendar.event_category_manager:
         class: BladeTester\CalendarBundle\Model\EventCategoryManager

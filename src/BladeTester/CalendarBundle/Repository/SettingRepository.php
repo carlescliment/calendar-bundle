@@ -7,9 +7,10 @@ use Doctrine\ORM\EntityRepository;
 use BladeTester\CalendarBundle\Model\Settings,
     BladeTester\CalendarBundle\Entity\Setting;
 
-class SettingRepository Extends EntityRepository {
-
-    public function getSettings() {
+class SettingRepository extends EntityRepository implements SettingRepositoryInterface
+{
+    public function getSettings()
+    {
         $settings_class = new Settings;
         $settings = $this->findAll();
         foreach ($settings as $setting) {
@@ -18,7 +19,8 @@ class SettingRepository Extends EntityRepository {
         return $settings_class;
     }
 
-    public function updateSettings(Settings $settings) {
+    public function updateSettings(Settings $settings)
+    {
         $em = $this->getEntityManager();
         $default_view = $this->findOneByName('default_view');
         if (!$default_view) {

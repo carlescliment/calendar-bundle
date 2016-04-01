@@ -4,6 +4,7 @@ namespace BladeTester\CalendarBundle\Model;
 
 interface EventRepositoryInterface
 {
+    public function find($id);
     public function findAll();
     public function findNext();
     public function findBetween(\DateTime $start, \DateTime $end);
