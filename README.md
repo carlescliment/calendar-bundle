@@ -76,7 +76,7 @@ php app/console assets:install
 
 
 ## Using the calendar
-Go to http://yourapp.com/calendar and enjoy :)
+Go to http://www.example.com/calendar and enjoy :)
 
 
 
