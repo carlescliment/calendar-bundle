@@ -1,6 +1,8 @@
 <?php
 
-namespace BladeTester\CalendarBundle\Model;
+namespace BladeTester\CalendarBundle\Repository;
+
+use BladeTester\CalendarBundle\Model\EventCategoryInterface;
 
 interface EventCategoryRepositoryInterface
 {

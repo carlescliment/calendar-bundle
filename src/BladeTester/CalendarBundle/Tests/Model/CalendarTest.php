@@ -35,7 +35,7 @@ class CalendarTest extends \PHPUnit_Framework_TestCase {
     private $settingRepository;
 
     public function setUp() {
-        $this->eventRepository = $this->getMock('BladeTester\CalendarBundle\Model\EventRepositoryInterface');
+        $this->eventRepository = $this->getMock('BladeTester\CalendarBundle\Repository\EventRepositoryInterface');
         $this->settingRepository = $this->getMock('BladeTester\CalendarBundle\Repository\SettingRepositoryInterface');
         $this->dispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
         $this->calendar = new Calendar(

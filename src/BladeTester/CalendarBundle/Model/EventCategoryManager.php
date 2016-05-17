@@ -3,6 +3,7 @@
 namespace BladeTester\CalendarBundle\Model;
 
 use BladeTester\CalendarBundle\Factory\EventCategoryFactoryInterface;
+use BladeTester\CalendarBundle\Repository\EventCategoryRepositoryInterface;
 
 class EventCategoryManager
 {
