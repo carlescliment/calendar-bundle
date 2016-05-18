@@ -16,7 +16,7 @@ class EventCategoryManagerTest extends \PHPUnit_Framework_TestCase
     private $repository;
 
     public function setUp() {
-        $this->repository = $this->getMock('BladeTester\CalendarBundle\Model\EventCategoryRepositoryInterface');
+        $this->repository = $this->getMock('BladeTester\CalendarBundle\Repository\EventCategoryRepositoryInterface');
         $this->manager = new EventCategoryManager(
             new EventCategoryFactory('BladeTester\CalendarBundle\Tests\Model\FakeEventCategory'),
             $this->repository

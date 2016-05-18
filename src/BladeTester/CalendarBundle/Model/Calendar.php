@@ -6,7 +6,8 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use BladeTester\CalendarBundle\Event\CalendarEvent,
     BladeTester\CalendarBundle\Event\CalendarEvents;
 use BladeTester\CalendarBundle\Factory\EventFactoryInterface;
-use BladeTester\CalendarBundle\Repository\SettingRepositoryInterface;
+use BladeTester\CalendarBundle\Repository\SettingRepositoryInterface,
+    BladeTester\CalendarBundle\Repository\EventRepositoryInterface;
 
 class Calendar implements CalendarInterface
 {

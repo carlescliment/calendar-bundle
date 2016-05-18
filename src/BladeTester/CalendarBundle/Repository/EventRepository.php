@@ -3,9 +3,8 @@
 namespace BladeTester\CalendarBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use BladeTester\CalendarBundle\Model\EventRepositoryInterface,
-    BladeTester\CalendarBundle\Model\DatesTransformer;
-use BladeTester\CalendarBundle\Model\EventInterface;
+use BladeTester\CalendarBundle\Model\DatesTransformer,
+    BladeTester\CalendarBundle\Model\EventInterface;
 
 class EventRepository extends EntityRepository implements EventRepositoryInterface
 {

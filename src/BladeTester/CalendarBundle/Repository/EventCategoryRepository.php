@@ -3,7 +3,6 @@
 namespace BladeTester\CalendarBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use BladeTester\CalendarBundle\Model\EventCategoryRepositoryInterface;
 use BladeTester\CalendarBundle\Model\EventCategoryInterface;
 
 class EventCategoryRepository Extends EntityRepository implements EventCategoryRepositoryInterface
