@@ -3,7 +3,7 @@ bladetester_calendar.label.event.update: Mettre à jour l'événement
 bladetester_calendar.label.event.delete_warning: Voulez-vous vraiment supprimer cet événement ?
 bladetester_calendar.label.event_category.delete_warning: Voulez-vous vraiment supprimer cette catégorie ?
 bladetester_calendar.label.event.category.none: Non classé
-bladetester_calendar.label.agenda: Ordre du jour
+bladetester_calendar.label.agenda: Agenda
 bladetester_calendar.label.day: Jour
 bladetester_calendar.label.week: Semaine
 bladetester_calendar.label.month: Mois
@@ -15,8 +15,8 @@ bladetester_calendar.label.back_to_calendar: Revenir au calendrier
 
 bladetester_calendar.label.event.title: Titre
 bladetester_calendar.label.event.description: Description
-bladetester_calendar.label.event.start: Début 
-bladetester_calendar.label.event.end: Fin 
+bladetester_calendar.label.event.start: Début
+bladetester_calendar.label.event.end: Fin
 bladetester_calendar.label.event.category: Catégorie
 
 bladetester_calendar.label.delete: Effacer
@@ -74,5 +74,17 @@ October: Octobre
 November: Novembre
 December: Décembre
 
+Mon: lun
+Tue: mar
+Wed: mer
+Thu: jeu
+Fri: ven
+Sat: sam
+Sun: dim
 
+or: ou
 
+%month% of %year%: %month% %year%
+%month%-%day%: %day%/%month%
+Week from %from_day%, %from_month% of %from_year% to %to_day%, %to_month% of %to_year%: Semaine du %from_day% %from_month% %from_year% au %to_day% %to_month% %to_year%
+%week_day%, %month% %day%th of %year%: %week_day%, %day% %month% %year%
