@@ -82,8 +82,8 @@ class CategoryController extends BaseController {
 
 
     private function getFormForCategory($category) {
-        $form_instance = $this->get('blade_tester_calendar.forms.category');
-        return $this->createForm($form_instance, $category);
+        $form_class = $this->getParameter('blade_tester_calendar.form.type.category.class');
+        return $this->createForm($form_class, $category);
     }
 
     private function loadCategoryOr404($id) {

@@ -4,34 +4,30 @@ namespace BladeTester\CalendarBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class EventFormType extends AbstractType {
-
-    protected $dataClass;
-
-    public function __construct($dataClass)
-    {
-        $this->dataClass = $dataClass;
-    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text', array(
+            ->add('title', TextType::class, array(
                 'label' => 'bladetester_calendar.label.event.title',
             ))
-            ->add('description', 'textarea', array(
+            ->add('description', TextareaType::class, array(
                 'required' => false,
                 'label' => 'bladetester_calendar.label.event.description',
             ))
-            ->add('start', 'datetime', array(
+            ->add('start', DateTimeType::class, array(
                 'label' => 'bladetester_calendar.label.event.start',
             ))
-            ->add('end', 'datetime', array(
+            ->add('end', DateTimeType::class, array(
                 'label' => 'bladetester_calendar.label.event.end',
             ))
-            ->add('category', 'calendar_event_category_type', array(
+            ->add('category', CategoryType::class, array(
                 'label' => 'bladetester_calendar.label.event.category',
             ))
         ;
@@ -45,10 +41,9 @@ class EventFormType extends AbstractType {
         return 'event';
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => $this->dataClass
         ));
     }
 }

@@ -2,7 +2,7 @@
 
 namespace BladeTester\CalendarBundle\Model;
 
-use Symfony\Component\Validator\ExecutionContextInterface;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class Event implements EventInterface {
 

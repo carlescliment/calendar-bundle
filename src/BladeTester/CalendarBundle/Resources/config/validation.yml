@@ -1,4 +1,3 @@
 BladeTester\CalendarBundle\Entity\Event:
     constraints:
-        - Callback:
-            methods:   [isValid]
+        - Callback: isValid

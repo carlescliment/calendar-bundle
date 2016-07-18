@@ -3,7 +3,7 @@
 {% block body %}
 <h1>{{ "bladetester_calendar.title.category.add"|trans }}</h1>
 
-<form id="category-add" method="POST" action="{{ url('calendar_category_add') }}?destination={{ app.request.get('destination') }}" {{ form_enctype(form) }}>
+<form id="category-add" method="POST" action="{{ url('calendar_category_add') }}?destination={{ app.request.get('destination') }}" >
     {% include 'BladeTesterCalendarBundle:Category:form.html.twig' %}
     <input type="submit" value="{{ 'bladetester_calendar.label.category.add'|trans }}" />
 </form>
