@@ -38,11 +38,11 @@ services:
 
     blade_tester_calendar.calendar:
         class: BladeTester\CalendarBundle\Model\Calendar
-        arguments: [@event_dispatcher, @blade_tester_calendar.event_factory, @blade_tester_calendar.repository.event, @blade_tester_calendar.repository.setting]
+        arguments: ["@event_dispatcher", "@blade_tester_calendar.event_factory", "@blade_tester_calendar.repository.event", "@blade_tester_calendar.repository.setting"]
 
     blade_tester_calendar.event_category_manager:
         class: BladeTester\CalendarBundle\Model\EventCategoryManager
-        arguments: [@blade_tester_calendar.event_category_factory, @blade_tester_calendar.repository.event_category]
+        arguments: ["@blade_tester_calendar.event_category_factory", "@blade_tester_calendar.repository.event_category"]
 
     blade_tester_calendar.forms.category_transformer:
         class: BladeTester\CalendarBundle\Form\DataTransformer\EventCategoryTransformer
