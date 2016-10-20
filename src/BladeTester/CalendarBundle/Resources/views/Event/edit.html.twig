@@ -1,7 +1,7 @@
 {% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
 
 {% block body %}
-<form id="event-edit" method="POST" action="{{ url('calendar_event_edit', {'id' : event.id}) }}?destination={{ app.request.get('destination') }}" {{ form_enctype(form) }}>
+<form id="event-edit" method="POST" action="{{ url('calendar_event_edit', {'id' : event.id}) }}?destination={{ app.request.get('destination') }}">
     {% include 'BladeTesterCalendarBundle:Event:form.html.twig' %}
     <input type="submit" value="{{ 'bladetester_calendar.label.event.update'|trans }}" />
     <a class="btn delete" href="{{ path('calendar_event_delete', {'id': event.id}) }}?destination={{ app.request.get('destination') }}" onclick="return confirm('{{ 'bladetester_calendar.label.event.delete_warning'|trans }}')">{{ 'bladetester_calendar.label.delete'|trans }}</a>

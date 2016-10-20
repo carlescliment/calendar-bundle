@@ -4,26 +4,21 @@ namespace BladeTester\CalendarBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use BladeTester\CalendarBundle\Model\Color;
 
 class EventCategoryFormType extends AbstractType {
 
-    protected $dataClass;
-
-    public function __construct($dataClass)
-    {
-        $this->dataClass = $dataClass;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', array(
+            ->add('name', TextType::class, array(
                 'label' => 'bladetester_calendar.label.category.name',
             ))
-            ->add('color', 'choice', array(
+            ->add('color', ChoiceType::class, array(
                 'label' => 'bladetester_calendar.label.category.color',
                 'choices' => array(
                     Color::BLACK => 'Black',
@@ -48,10 +43,9 @@ class EventCategoryFormType extends AbstractType {
         return 'category';
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => $this->dataClass
         ));
     }
 }

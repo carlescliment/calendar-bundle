@@ -42,8 +42,8 @@ class EventController extends BaseController {
         $calendar = $this->getCalendar();
         $event = $calendar->createEvent();
         $this->setDefaultDatesFromRequest($event, $request);
-        $form_instance = $this->get('blade_tester_calendar.forms.event');
-        $form = $this->createForm($form_instance, $event);
+        $form_class = $this->getParameter('blade_tester_calendar.form.type.event.class');
+        $form = $this->createForm($form_class, $event);
         $form->handleRequest($request);
         if ($form->isValid()) {
             $calendar->persist($event);
@@ -84,8 +84,8 @@ class EventController extends BaseController {
     public function editAction($id, Request $request)
     {
         $event = $this->loadEventOr404($id);
-        $form_instance = $this->get('blade_tester_calendar.forms.event');
-        $form = $this->createForm($form_instance, $event);
+        $form_class = $this->getParameter('blade_tester_calendar.form.type.event.class');
+        $form = $this->createForm($form_class, $event);
         $form->handleRequest($request);
         if ($form->isValid()) {
             $this->getCalendar()->update($event);

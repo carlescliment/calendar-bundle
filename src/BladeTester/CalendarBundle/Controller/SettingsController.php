@@ -17,16 +17,14 @@ class SettingsController extends BaseController {
     public function indexAction() {
         $calendar = $this->get('blade_tester_calendar.calendar');
         $settings = $calendar->getSettings();
-        $settings_form = new SettingsType;
-        $form = $this->createForm($settings_form, $settings);
+        $form = $this->createForm(SettingsType::class, $settings);
         return array('form' => $form->createView());
     }
 
     public function updateAction(Request $request) {
         $calendar = $this->get('blade_tester_calendar.calendar');
         $settings = $calendar->getSettings();
-        $settings_form = new SettingsType;
-        $form = $this->createForm($settings_form, $settings);
+        $form = $this->createForm(SettingsType::class, $settings);
         $form->handleRequest($request);
         $calendar->updateSettings($settings);
         $this->getDoctrine()->getManager()->flush();

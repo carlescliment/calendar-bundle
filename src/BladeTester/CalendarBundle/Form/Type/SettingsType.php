@@ -4,6 +4,7 @@ namespace BladeTester\CalendarBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use BladeTester\CalendarBundle\Model\CalendarViews;
@@ -13,7 +14,7 @@ class SettingsType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('defaultView', 'choice', array(
+            ->add('defaultView', ChoiceType::class, array(
                 'choices' => array(
                     CalendarViews::AGENDA => 'bladetester_calendar.label.agenda',
                     CalendarViews::DAY => 'bladetester_calendar.label.day',

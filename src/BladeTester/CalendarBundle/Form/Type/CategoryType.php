@@ -4,7 +4,8 @@ namespace BladeTester\CalendarBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 use BladeTester\CalendarBundle\Model\EventCategoryManager;
 use Symfony\Component\Form\DataTransformerInterface;
@@ -35,10 +36,10 @@ class CategoryType extends AbstractType {
     }
 
     public function getParent() {
-        return 'choice';
+        return ChoiceType::class;
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $categories = $this->manager->findAll();
         $choices = array();
@@ -48,7 +49,7 @@ class CategoryType extends AbstractType {
         $resolver->setDefaults(array(
             'required' => false,
             'choices' => $choices,
-            'empty_value' => 'bladetester_calendar.label.event.category.none'
+            'placeholder' => 'bladetester_calendar.label.event.category.none'
         ));
     }
 }

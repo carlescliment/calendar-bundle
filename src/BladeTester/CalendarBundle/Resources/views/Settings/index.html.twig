@@ -4,11 +4,11 @@
     <h1>{{ 'bladetester_calendar.label.settings'|trans }}</h1>
 
 
-    {% render(controller('BladeTesterCalendarBundle:Category:list'))  %}
+    {{ render(controller('BladeTesterCalendarBundle:Category:list')) }}
 
 
     <h3>{{ 'bladetester_calendar.label.configuration_parameters'|trans }}</h3>
-    <form method="POST" action="{{ path('calendar_settings_update') }}" id="calendar-settings" {{ form_enctype(form) }}>
+    <form method="POST" action="{{ path('calendar_settings_update') }}" id="calendar-settings">
         {{ form_widget(form) }}
         <input type="submit" value="{{ 'bladetester_calendar.label.settings.update'|trans }}" /> {{ 'or'|trans }} <a href="{{ path('calendar_index') }}">{{ 'bladetester_calendar.label.back_to_calendar'|trans }}</a>
     </form>
